@@ -35,6 +35,17 @@
     .hero-right { position: relative; overflow: hidden; }
     .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .hero-img-label { position: absolute; bottom: 14px; left: 14px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: rgba(61,43,31,0.5); padding: 4px 10px; }
+    .editor-bar { position: fixed; top: 1rem; right: 1rem; z-index: 120; display: flex; flex-wrap: wrap; gap: 0.65rem; background: rgba(255,255,255,0.95); border: 1px solid rgba(237,217,204,0.9); padding: 0.85rem 0.95rem; border-radius: 999px; box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+    .editor-bar button { min-width: 120px; font-size: 10px; letter-spacing: 0.16em; padding: 10px 14px; }
+    .section-desc { font-size: 14px; line-height: 1.8; color: var(--mink-light); max-width: 760px; margin-top: 0.75rem; }
+    .upload-panel { margin-top: 1.5rem; display: grid; gap: 1rem; }
+    #drop-zone { min-height: 160px; border: 1px dashed var(--blush-border); border-radius: 18px; background: rgba(255,255,255,0.8); display: flex; align-items: center; justify-content: center; padding: 1.5rem; color: var(--mink-light); text-align: center; font-size: 13px; }
+    .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 1rem; }
+    .media-preview { position: relative; border: 0.5px solid var(--blush-border); border-radius: 18px; overflow: hidden; min-height: 160px; background: var(--white); }
+    .media-preview img, .media-preview video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .drag-over { outline: 2px dashed var(--rose-gold); }
+    body.edit-mode .editable { outline: 1px dashed rgba(201,149,108,0.85); }
+    body.edit-mode .section { background: rgba(255,255,255,0.92); }
     .section { padding: 5rem 3rem; border-bottom: 1px solid var(--blush-border); max-width: 1100px; margin: 0 auto; }
     .section-eyebrow { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 1.2rem; font-weight: 500; }
     .section-title { font-family: 'Bodoni Moda', serif; font-size: 36px; font-weight: 900; line-height: 1.1; margin-bottom: 1rem; color: var(--mink); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -165,11 +176,21 @@
 </head>
 <body>
 
+<div class="editor-bar" data-editor-only>
+  <button id="toggle-edit" class="btn-ghost">Bearbeiten</button>
+  <button id="toggle-drag" class="btn-ghost">Abschnitte verschieben</button>
+  <button id="open-upload" class="btn-primary">Fotos/Videos hochladen</button>
+  <button id="export-html" class="btn-primary">Seite herunterladen</button>
+  <button id="reset-layout" class="btn-ghost">Zurücksetzen</button>
+  <input id="media-upload" type="file" accept="image/*,video/*" multiple hidden />
+</div>
+
 <nav>
   <a href="#" class="nav-logo">The Bridal Glam</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#media-studio">Media Studio</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -337,6 +358,16 @@
 </section>
 </div>
 
+<section class="section" id="media-studio">
+  <p class="section-eyebrow">Media Studio</p>
+  <h2 class="section-title">Fotos & Videos hochladen</h2>
+  <p class="section-desc">Ziehe deine Bilder oder Videos hierher oder wähle sie über den Button aus. Vorschau und Design-Tests funktionieren direkt in dieser Seite.</p>
+  <div class="upload-panel">
+    <div id="drop-zone">Dateien hierher ziehen oder den Button "Fotos/Videos hochladen" oben klicken.</div>
+    <div id="media-gallery" class="media-gallery"></div>
+  </div>
+</section>
+
 <section class="section" id="services">
   <p class="section-eyebrow">Services & Pricing</p>
   <h2 class="section-title">What's <em>included</em></h2>
@@ -409,13 +440,202 @@
 </footer>
 
 <script>
+const editorButtons = {
+  edit: document.getElementById('toggle-edit'),
+  drag: document.getElementById('toggle-drag'),
+  upload: document.getElementById('open-upload'),
+  export: document.getElementById('export-html'),
+  reset: document.getElementById('reset-layout'),
+  input: document.getElementById('media-upload'),
+};
+const textSelectors = [
+  '.section-title',
+  '.section-eyebrow',
+  '.hero-desc',
+  '.hero h1',
+  '.hero-tag',
+  '.about-text p',
+  '.pillar-text',
+  '.service-name',
+  '.service-desc',
+  '.info-box-text',
+  '.testimonial-text',
+  '.testimonial-author',
+  '.contact-info p',
+  '.footer-copy',
+];
+let dragMode = false;
+let editMode = false;
+let draggedSection = null;
+const sections = Array.from(document.querySelectorAll('section.section'));
+
+function setEditMode(on) {
+  editMode = on;
+  document.body.classList.toggle('edit-mode', on);
+  editorButtons.edit.textContent = on ? 'Bearbeiten beenden' : 'Bearbeiten';
+  textSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.contentEditable = on;
+      el.spellcheck = false;
+      el.classList.toggle('editable', on);
+    });
+  });
+}
+
+function setDragMode(on) {
+  dragMode = on;
+  editorButtons.drag.textContent = on ? 'Verschieben beenden' : 'Abschnitte verschieben';
+  sections.forEach(section => {
+    section.draggable = on;
+    section.classList.toggle('draggable', on);
+  });
+}
+
 function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button');
-  btn.textContent = "Sent! I'll be in touch soon.";
+  btn.textContent = "Gesendet! Ich melde mich bald.";
   btn.style.opacity = '0.7';
   btn.disabled = true;
 }
+
+function createMediaPreview(file) {
+  const gallery = document.getElementById('media-gallery');
+  const preview = document.createElement('div');
+  preview.className = 'media-preview';
+  if (file.type.startsWith('image/')) {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    img.alt = file.name;
+    preview.appendChild(img);
+  } else if (file.type.startsWith('video/')) {
+    const video = document.createElement('video');
+    video.src = URL.createObjectURL(file);
+    video.controls = true;
+    preview.appendChild(video);
+  } else {
+    preview.textContent = file.name;
+  }
+  gallery.appendChild(preview);
+}
+
+function handleDropZoneFiles(files) {
+  const gallery = document.getElementById('media-gallery');
+  if (!gallery) return;
+  gallery.innerHTML = '';
+  Array.from(files).forEach(createMediaPreview);
+}
+
+function activateDragDrop() {
+  const dropZone = document.getElementById('drop-zone');
+  if (!dropZone) return;
+  ['dragenter', 'dragover'].forEach(event => dropZone.addEventListener(event, e => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+  }));
+  ['dragleave', 'drop'].forEach(event => dropZone.addEventListener(event, e => {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+  }));
+  dropZone.addEventListener('drop', e => {
+    handleDropZoneFiles(e.dataTransfer.files);
+  });
+}
+
+function handleSectionDragStart(e) {
+  draggedSection = e.currentTarget;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', '');
+}
+
+function handleSectionDragOver(e) {
+  if (!dragMode) return;
+  e.preventDefault();
+  e.currentTarget.classList.add('drag-over');
+}
+
+function handleSectionDrop(e) {
+  if (!dragMode || !draggedSection || draggedSection === e.currentTarget) return;
+  e.preventDefault();
+  const container = e.currentTarget.parentNode;
+  container.insertBefore(draggedSection, e.currentTarget);
+  e.currentTarget.classList.remove('drag-over');
+}
+
+function initSectionDrag() {
+  sections.forEach(section => {
+    section.addEventListener('dragstart', handleSectionDragStart);
+    section.addEventListener('dragover', handleSectionDragOver);
+    section.addEventListener('dragleave', () => section.classList.remove('drag-over'));
+    section.addEventListener('drop', handleSectionDrop);
+  });
+}
+
+function saveTextEdits() {
+  const saved = {};
+  document.querySelectorAll(textSelectors.join(',')).forEach((el, index) => {
+    saved[index] = el.innerHTML;
+  });
+  localStorage.setItem('bridalTextEdits', JSON.stringify(saved));
+}
+
+function restoreTextEdits() {
+  const data = localStorage.getItem('bridalTextEdits');
+  if (!data) return;
+  const saved = JSON.parse(data);
+  document.querySelectorAll(textSelectors.join(',')).forEach((el, index) => {
+    if (saved[index]) el.innerHTML = saved[index];
+  });
+}
+
+function buildCleanClone() {
+  const clone = document.documentElement.cloneNode(true);
+  clone.classList.remove('edit-mode');
+  clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('[draggable]').forEach(el => el.removeAttribute('draggable'));
+  clone.querySelectorAll('[data-editor-only]').forEach(el => el.remove());
+  clone.querySelectorAll('[onsubmit]').forEach(form => form.removeAttribute('onsubmit'));
+  clone.querySelectorAll('.editable').forEach(el => el.classList.remove('editable'));
+  clone.querySelectorAll('.draggable').forEach(el => el.classList.remove('draggable'));
+  clone.querySelectorAll('script').forEach(el => el.remove());
+  return '<!DOCTYPE html>\n' + clone.outerHTML;
+}
+
+function downloadUpdatedPage() {
+  const html = buildCleanClone();
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'index-updated.html';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+  alert('Deine aktuelle Seite wurde als HTML-Datei heruntergeladen. Lade sie auf dein Hosting, um die Änderungen online zu sehen.');
+}
+
+function resetLayout() {
+  localStorage.removeItem('bridalTextEdits');
+  location.reload();
+}
+
+editorButtons.edit?.addEventListener('click', () => {
+  const leavingEditMode = editMode;
+  setEditMode(!editMode);
+  if (leavingEditMode) saveTextEdits();
+});
+editorButtons.drag?.addEventListener('click', () => setDragMode(!dragMode));
+editorButtons.upload?.addEventListener('click', () => editorButtons.input.click());
+editorButtons.export?.addEventListener('click', downloadUpdatedPage);
+editorButtons.input?.addEventListener('change', () => handleDropZoneFiles(editorButtons.input.files));
+document.querySelector('form.contact-form')?.addEventListener('submit', handleSubmit);
+document.getElementById('reset-layout')?.addEventListener('click', resetLayout);
+activateDragDrop();
+initSectionDrag();
+restoreTextEdits();
+window.addEventListener('beforeunload', () => {
+  if (editMode) saveTextEdits();
+});
 </script>
 </body>
 </html>
