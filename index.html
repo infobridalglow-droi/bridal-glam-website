@@ -100,10 +100,22 @@
     .contact-info p { font-size: 14px; color: var(--mink-light); line-height: 1.9; font-weight: 300; }
     .contact-info strong { display: block; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 4px; margin-top: 1.5rem; font-weight: 500; }
     .contact-info strong:first-child { margin-top: 0; }
-    .contact-form { display: flex; flex-direction: column; gap: 10px; }
-    .contact-form input, .contact-form textarea { width: 100%; font-family: 'Jost', sans-serif; font-size: 14px; padding: 12px 14px; background: var(--white); border: 0.5px solid var(--blush-border); color: var(--mink); resize: none; outline: none; }
-    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--rose-gold); }
-    .contact-form textarea { height: 100px; }
+    .contact-form { display: flex; flex-direction: column; gap: 12px; }
+    .contact-form .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-form .field { display: flex; flex-direction: column; gap: 6px; }
+    .contact-form .field label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mink-light); font-weight: 500; }
+    .contact-form .field label .opt { text-transform: none; letter-spacing: 0; color: var(--mink-light); opacity: 0.65; font-weight: 400; }
+    .contact-form .field label .req { color: var(--rose-gold); margin-left: 2px; }
+    .contact-form input, .contact-form select, .contact-form textarea { width: 100%; font-family: 'Jost', sans-serif; font-size: 14px; padding: 12px 14px; background: var(--white); border: 0.5px solid var(--blush-border); color: var(--mink); resize: none; outline: none; appearance: none; }
+    .contact-form select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237A5C4E'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--rose-gold); }
+    .contact-form textarea { height: 90px; }
+    .contact-form .service-options { display: flex; gap: 18px; padding: 12px 14px; background: var(--white); border: 0.5px solid var(--blush-border); }
+    .contact-form .service-options label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 300; text-transform: none; letter-spacing: 0; color: var(--mink); cursor: pointer; }
+    .contact-form .service-options input { accent-color: var(--rose-gold); width: 15px; height: 15px; }
+    .form-success { display: none; background: var(--blush); border: 1px solid var(--blush-border); padding: 1.5rem; font-size: 14px; line-height: 1.7; color: var(--mink); }
+    .form-success.visible { display: block; }
+    .form-success strong { color: var(--rose-gold); }
     footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: var(--blush); border-top: 1px solid var(--blush-border); }
     .footer-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); font-weight: 400; }
     .footer-copy { font-size: 11px; color: var(--mink-light); }
@@ -160,7 +172,9 @@
 
       /* CONTACT */
       .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .contact-form input, .contact-form textarea { font-size: 16px; padding: 12px; }
+      .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; padding: 12px; }
+      .contact-form .field-row { grid-template-columns: 1fr; }
+      .contact-form .service-options { flex-direction: column; gap: 10px; }
 
       /* FOOTER */
       footer { flex-direction: column; gap: 0.8rem; padding: 1.5rem 1.2rem; text-align: center; }
@@ -417,13 +431,72 @@
       <strong>Email</strong><p>info@thebridalglam.nl</p>
       <strong>Instagram</strong><p>@the.bridal.glam</p>
     </div>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Email address" required />
-      <input type="text" name="date" placeholder="Wedding date (optional)" />
-      <textarea name="message" placeholder="Tell me about your day…"></textarea>
-      <button type="submit" class="btn-primary" style="align-self:flex-start;">Send enquiry</button>
-    </form>
+    <div>
+      <div id="form-success" class="form-success"><strong>Thank you!</strong> Your enquiry has been sent — I'll get back to you soon.</div>
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@thebridalglam.nl" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry — The Bridal Glam" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://thebridalglam.nl/?sent=1#contact" />
+
+        <div class="field-row">
+          <div class="field">
+            <label>Name <span class="req">*</span></label>
+            <input type="text" name="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="Email address" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Phone <span class="opt">(optional)</span></label>
+            <input type="tel" name="phone" placeholder="+31 6 ..." />
+          </div>
+          <div class="field">
+            <label>Wedding date <span class="req">*</span></label>
+            <input type="text" name="wedding_date" placeholder="e.g. 12 June 2026" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Location <span class="req">*</span></label>
+            <input type="text" name="location" placeholder="Venue, hotel or city" required />
+          </div>
+          <div class="field">
+            <label>Time <span class="opt">(if known)</span></label>
+            <input type="text" name="time" placeholder="e.g. around 8:00" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Service <span class="opt">(optional)</span></label>
+          <div class="service-options">
+            <label><input type="checkbox" name="service_makeup" value="Bridal makeup" /> Bridal makeup</label>
+            <label><input type="checkbox" name="service_hair" value="Hairstyling" /> Hairstyling</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Number of people <span class="opt">(optional)</span></label>
+          <select name="people">
+            <option value="">Just me</option>
+            <option value="2-3 people">2–3 people</option>
+            <option value="4+ people">4+ people</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Message <span class="opt">(optional)</span></label>
+          <textarea name="message" placeholder="Tell me about your day…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="align-self:flex-start;">Send enquiry</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -484,12 +557,13 @@ function setDragMode(on) {
   });
 }
 
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = "Gesendet! Ich melde mich bald.";
-  btn.style.opacity = '0.7';
-  btn.disabled = true;
+function showFormSuccessIfNeeded() {
+  if (new URLSearchParams(location.search).get('sent') !== '1') return;
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  if (form) form.style.display = 'none';
+  if (success) success.classList.add('visible');
+  history.replaceState(null, '', location.pathname + location.hash);
 }
 
 function createMediaPreview(file) {
@@ -621,11 +695,11 @@ editorButtons.drag?.addEventListener('click', () => setDragMode(!dragMode));
 editorButtons.upload?.addEventListener('click', () => editorButtons.input.click());
 editorButtons.export?.addEventListener('click', downloadUpdatedPage);
 editorButtons.input?.addEventListener('change', () => handleDropZoneFiles(editorButtons.input.files));
-document.querySelector('form.contact-form')?.addEventListener('submit', handleSubmit);
 document.getElementById('reset-layout')?.addEventListener('click', resetLayout);
 activateDragDrop();
 initSectionDrag();
 restoreTextEdits();
+showFormSuccessIfNeeded();
 window.addEventListener('beforeunload', () => {
   if (editMode) saveTextEdits();
 });
