@@ -206,6 +206,11 @@
     .footer-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); font-weight: 400; }
     .footer-copy { font-size: 11px; color: var(--mink-light); }
     /* BEHIND THE SCENES */
+    .making-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-film { margin-top: 2rem; overflow: hidden; border: 0.5px solid var(--blush-border); }
+    .service-film video { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; display: block; background: var(--blush); }
+    .film-solo { margin-top: 2.5rem; display: flex; justify-content: center; }
+    .film-solo .film-frame { width: 100%; max-width: 340px; }
     .film { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
     .film-frame { position: relative; overflow: hidden; background: var(--blush); border: 0.5px solid var(--blush-border); }
     .film-frame video { width: 100%; display: block; object-fit: cover; background: var(--blush); }
@@ -255,6 +260,11 @@
       .info-box { padding: 1rem; }
 
       /* BEHIND THE SCENES */
+      .making-grid { grid-template-columns: 1fr 1fr; }
+      .film-solo { margin-top: 1.5rem; }
+      .film-solo .film-frame { max-width: 290px; }
+      .service-film { margin-top: 1.4rem; }
+      .service-film video { aspect-ratio: 16 / 9; }
       .film { grid-template-columns: 1fr; gap: 1.4rem; margin-top: 1.5rem; }
       .film-frame.portrait { max-width: 290px; margin: 0 auto; width: 100%; }
       .film-text p { font-size: 13px; line-height: 1.85; }
@@ -288,6 +298,7 @@
       .nav-links { gap: 0.7rem; }
       .nav-links a { font-size: 8px; }
       .portfolio-grid { grid-template-columns: 1fr; }
+      .making-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -387,36 +398,24 @@
   <div style="margin-top: 4rem;">
     <p class="section-eyebrow">Behind the Scenes</p>
     <h2 class="section-title">The <em>making of</em></h2>
-    <div class="portfolio-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="portfolio-grid making-grid">
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#2a2520,#1c1c1c);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-01-arbeitsplatz.jpg" alt="The makeup station, ready before the morning begins" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1e1c,#2a2520);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-02-pinsel.jpg" alt="A brush at work on the bride's face" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#221c1c,#1a1e1c);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-03-lachen.jpg" alt="Anja Zander applying makeup to a laughing bride" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1e1e22,#2a2520);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-04-werkzeug.jpg" alt="Professional brushes in the kit, close up" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#2a2520,#221c1c);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-05-braut.jpg" alt="A bride with a braided updo, lipstick being applied" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <div style="width:100%;height:100%;background:linear-gradient(160deg,#1c1c1c,#1a1e1c);display:flex;align-items:center;justify-content:center;">
-          <i class="ti ti-camera" style="font-size:28px;color:rgba(201,149,108,0.4);"></i>
-        </div>
+        <img src="media/making-06-zweisamkeit.jpg" alt="Anja Zander and a bride during the morning preparations" loading="lazy" />
       </div>
     </div>
   </div>
@@ -468,15 +467,11 @@
 <section class="section" id="behind">
   <p class="section-eyebrow">Behind the scenes</p>
   <h2 class="section-title">The morning <em>itself</em></h2>
-  <div class="film">
+  <div class="film-solo">
     <div class="film-frame portrait">
       <video data-lazy data-src="media/making-of-portrait.mp4" poster="media/making-of-portrait.jpg"
              loop muted playsinline preload="none"
              aria-label="Bridal makeup being applied, behind the scenes"></video>
-    </div>
-    <div class="film-text">
-      <p>Before the dress, before the guests, there is a quieter morning — and that is where I am.</p>
-      <p>Close by, unhurried, and entirely focused on you, until you look in the mirror and recognise yourself.</p>
     </div>
   </div>
 </section>
@@ -484,6 +479,11 @@
 <section class="section" id="services">
   <p class="section-eyebrow">Services & Pricing</p>
   <h2 class="section-title">What's <em>included</em></h2>
+  <div class="service-film">
+    <video data-lazy data-src="media/making-of-wide.mp4" poster="media/making-of-wide.jpg"
+           loop muted playsinline preload="none"
+           aria-label="Makeup being applied with a brush"></video>
+  </div>
   <div style="margin-top: 2rem;">
     <p class="service-category-label">Bridal Makeup</p>
     <div class="service-item"><div><p class="service-name">Natural Glow</p><p class="service-desc">A light, fresh look that enhances your natural skin. Minimal coverage with a soft, dewy glow — perfect for outdoor & daytime weddings.</p></div><div class="service-price-col"><p class="service-total">€220</p><p class="service-split">€110 trial + €110 wedding day</p></div></div>
