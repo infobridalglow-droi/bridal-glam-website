@@ -205,6 +205,16 @@
     footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: var(--blush); border-top: 1px solid var(--blush-border); }
     .footer-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); font-weight: 400; }
     .footer-copy { font-size: 11px; color: var(--mink-light); }
+    /* BEHIND THE SCENES */
+    .film { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
+    .film-frame { position: relative; overflow: hidden; background: var(--blush); border: 0.5px solid var(--blush-border); }
+    .film-frame video { width: 100%; display: block; object-fit: cover; background: var(--blush); }
+    .film-frame.portrait video { aspect-ratio: 9 / 16; }
+    .film-frame.wide video { aspect-ratio: 16 / 9; }
+    .film-text p { font-size: 14px; line-height: 1.9; color: var(--mink-light); font-weight: 300; margin-bottom: 1rem; max-width: 460px; }
+    .film-text p:last-child { margin-bottom: 0; }
+    .film-wide { margin-top: 2.5rem; }
+    @media (prefers-reduced-motion: reduce) { .film-frame video { display: block; } }
     @media (max-width: 768px) {
       /* NAV */
       nav { padding: 1rem 1.2rem; }
@@ -243,6 +253,12 @@
       .service-item { gap: 0.5rem; }
       .info-boxes { grid-template-columns: 1fr; gap: 8px; }
       .info-box { padding: 1rem; }
+
+      /* BEHIND THE SCENES */
+      .film { grid-template-columns: 1fr; gap: 1.4rem; margin-top: 1.5rem; }
+      .film-frame.portrait { max-width: 290px; margin: 0 auto; width: 100%; }
+      .film-text p { font-size: 13px; line-height: 1.85; }
+      .film-wide { margin-top: 1.5rem; }
 
       /* PORTFOLIO */
       .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -449,6 +465,29 @@
 </section>
 </div>
 
+<section class="section" id="behind">
+  <p class="section-eyebrow">Behind the scenes</p>
+  <h2 class="section-title">The morning <em>itself</em></h2>
+  <div class="film">
+    <div class="film-frame portrait">
+      <video data-lazy data-src="media/making-of-portrait.mp4" poster="media/making-of-portrait.jpg"
+             loop muted playsinline preload="none"
+             aria-label="Bridal makeup being applied, behind the scenes"></video>
+    </div>
+    <div class="film-text">
+      <p>Before the dress, before the guests, there is a quieter morning — and that is where I am.</p>
+      <p>Close by, unhurried, and entirely focused on you, until you look in the mirror and recognise yourself.</p>
+    </div>
+  </div>
+  <div class="film-wide">
+    <div class="film-frame wide">
+      <video data-lazy data-src="media/making-of-wide.mp4" poster="media/making-of-wide.jpg"
+             loop muted playsinline preload="none"
+             aria-label="Makeup brushes at work, behind the scenes"></video>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="services">
   <p class="section-eyebrow">Services & Pricing</p>
   <h2 class="section-title">What's <em>included</em></h2>
@@ -580,6 +619,47 @@
 </footer>
 
 <script>
+// Videos are only downloaded once they come close to the viewport, and they pause
+// again when they leave it. On a phone that means nobody pays for a clip they
+// never scrolled to.
+function initLazyVideos() {
+  const videos = document.querySelectorAll('video[data-lazy]');
+  if (!videos.length) return;
+
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const load = video => {
+    if (video.dataset.loaded) return;
+    video.src = video.dataset.src;
+    video.dataset.loaded = '1';
+  };
+
+  if (calm) {
+    // Someone who asked for less motion gets a still frame and a play button instead.
+    videos.forEach(video => { video.controls = true; load(video); });
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    videos.forEach(video => { load(video); video.play().catch(() => {}); });
+    return;
+  }
+
+  const watcher = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        load(video);
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { rootMargin: '150px 0px', threshold: 0.2 });
+
+  videos.forEach(video => watcher.observe(video));
+}
+
 function showFormSuccessIfNeeded() {
   if (new URLSearchParams(location.search).get('sent') !== '1') return;
   const form = document.getElementById('contact-form');
@@ -589,6 +669,7 @@ function showFormSuccessIfNeeded() {
   history.replaceState(null, '', location.pathname + location.hash);
 }
 showFormSuccessIfNeeded();
+initLazyVideos();
 </script>
 </body>
 </html>
