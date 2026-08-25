@@ -233,17 +233,6 @@
     .satz-punkte i.an { background: var(--rose-gold-light); }
     /* BEHIND THE SCENES */
     .making-grid { grid-template-columns: repeat(3, 1fr); }
-    .film-solo { margin-top: 2.5rem; display: flex; justify-content: center; }
-    .film-solo .film-frame { width: 100%; max-width: 340px; }
-    .film { display: grid; grid-template-columns: 320px 1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
-    .film-frame { position: relative; overflow: hidden; background: var(--blush); border: 0.5px solid var(--blush-border); }
-    .film-frame video { width: 100%; display: block; object-fit: cover; background: var(--blush); }
-    .film-frame.portrait video { aspect-ratio: 9 / 16; }
-    .film-frame.wide video { aspect-ratio: 16 / 9; }
-    .film-text p { font-size: 14px; line-height: 1.9; color: var(--mink-light); font-weight: 300; margin-bottom: 1rem; max-width: 460px; }
-    .film-text p:last-child { margin-bottom: 0; }
-    .film-wide { margin-top: 2.5rem; }
-    @media (prefers-reduced-motion: reduce) { .film-frame video { display: block; } }
     @media (max-width: 768px) {
       /* NAV */
       nav { padding: 1rem 1.2rem; }
@@ -292,12 +281,6 @@
 
       /* BEHIND THE SCENES */
       .making-grid { grid-template-columns: 1fr 1fr; }
-      .film-solo { margin-top: 1.5rem; }
-      .film-solo .film-frame { max-width: 290px; }
-      .film { grid-template-columns: 1fr; gap: 1.4rem; margin-top: 1.5rem; }
-      .film-frame.portrait { max-width: 290px; margin: 0 auto; width: 100%; }
-      .film-text p { font-size: 13px; line-height: 1.85; }
-      .film-wide { margin-top: 1.5rem; }
 
       /* PORTFOLIO */
       .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -438,18 +421,6 @@
         <span class="braut-fuss"><span class="braut-zahl">2</span></span>
       </button>
   </div>
-<div style="margin-top: 4rem;" id="behind">
-    <p class="section-eyebrow">Behind the scenes</p>
-    <h2 class="section-title">The morning <em>itself</em></h2>
-    <div class="film-solo">
-      <div class="film-frame portrait">
-        <video data-lazy data-src="media/making-of-portrait.mp4" poster="media/making-of-portrait.jpg"
-               loop muted playsinline preload="none"
-               aria-label="A bride on her wedding morning, hair and makeup complete"></video>
-      </div>
-    </div>
-  </div>
-
   <div style="margin-top: 4rem;">
     <p class="section-eyebrow">Transformations</p>
     <h2 class="section-title">Before <em>& After</em></h2>
