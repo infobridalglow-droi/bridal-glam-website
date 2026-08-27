@@ -314,6 +314,95 @@
       .making-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
+<style>
+  /* ---------- Planer ---------- */
+  .planer-auf { display: block; width: 100%; margin-top: 12px; padding: 16px 20px; background: var(--white);
+    border: 0.5px solid var(--blush-border); font-family: 'Jost', sans-serif; font-size: 10px;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--rose-gold); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 12px; transition: background .25s ease; }
+  .planer-auf:hover { background: var(--blush); }
+  .planer-auf:focus-visible { outline: 2px solid var(--rose-gold); outline-offset: 2px; }
+  .planer-auf .pfeil { transition: transform .3s ease; }
+  .planer-auf[aria-expanded="true"] .pfeil { transform: rotate(180deg); }
+
+  .planer { display: none; border: 0.5px solid var(--blush-border); border-top: 0; background: var(--blush); padding: 2rem 2rem 1.75rem; }
+  .planer.auf { display: block; }
+  .planer-intro { font-size: 13px; line-height: 1.75; color: var(--mink-light); font-weight: 300; max-width: 60ch; margin-bottom: 1.75rem; }
+
+  .planer-teil { border-top: 1px solid var(--blush-border); padding-top: 1.1rem; margin-top: 1.6rem; }
+  .planer-teil:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+  .planer-titel { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-gold);
+    font-weight: 500; margin-bottom: 0.9rem; }
+
+  .wahl { display: flex; flex-direction: column; gap: 6px; }
+  .wahl label { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+    background: var(--white); border: 0.5px solid var(--blush-border); padding: 13px 16px; cursor: pointer;
+    transition: border-color .2s ease, background .2s ease; }
+  .wahl label:hover { border-color: var(--rose-gold-light); }
+  .wahl input { position: absolute; opacity: 0; pointer-events: none; }
+  .wahl .kreis { width: 15px; height: 15px; border: 1px solid var(--blush-border); border-radius: 50%;
+    display: block; position: relative; flex-shrink: 0; }
+  .wahl input:checked ~ .kreis::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--rose-gold); }
+  .wahl label:has(input:checked) { border-color: var(--rose-gold); background: #fff; }
+  .wahl input:focus-visible ~ .kreis { outline: 2px solid var(--rose-gold); outline-offset: 2px; }
+  .wahl .was { font-size: 14px; color: var(--mink); }
+  .wahl .wieviel { font-family: 'Marcellus', serif; font-size: 15px; color: var(--mink); white-space: nowrap; }
+
+  .gast { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 12px;
+    background: var(--white); border: 0.5px solid var(--blush-border); padding: 11px 14px; margin-bottom: 6px; }
+  .gast .was { font-size: 14px; }
+  .gast .wieviel { font-family: 'Marcellus', serif; font-size: 14px; color: var(--mink-light); white-space: nowrap; }
+  .zaehler { display: flex; align-items: center; gap: 2px; }
+  .zaehler button { width: 30px; height: 30px; border: 0.5px solid var(--blush-border); background: var(--cream);
+    color: var(--mink); font-size: 16px; line-height: 1; cursor: pointer; font-family: 'Jost', sans-serif; }
+  .zaehler button:hover:not([disabled]) { border-color: var(--rose-gold); color: var(--rose-gold); }
+  .zaehler button[disabled] { opacity: .35; cursor: default; }
+  .zaehler button:focus-visible { outline: 2px solid var(--rose-gold); outline-offset: 1px; }
+  .zaehler .zahl { min-width: 26px; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+
+  .planer-felder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .planer-feld { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .planer-feld label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink-light); }
+  .planer-feld input, .planer-feld select { width: 100%; padding: 11px 12px; border: 0.5px solid var(--blush-border);
+    background: var(--white); font-family: 'Jost', sans-serif; font-size: 14px; color: var(--mink); font-weight: 300; }
+  .planer-feld input:focus, .planer-feld select:focus { outline: 0; border-color: var(--rose-gold); }
+  .planer-feld .sagt { font-size: 11px; color: var(--rose-gold); min-height: 15px; }
+  .planer-feld .sagt.frag { color: var(--mink-light); }
+
+  .planer-summe { margin-top: 1.6rem; border-top: 1px solid var(--blush-border); padding-top: 1.3rem; }
+  .planer-leer { font-size: 13px; color: var(--mink-light); font-weight: 300; font-style: italic; }
+  .sz { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 7px 0;
+    font-size: 13.5px; font-weight: 300; color: var(--mink-light); border-bottom: 0.5px solid rgba(237,217,204,.55); }
+  .sz .b { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--mink); }
+  .sz.gesamt { border-bottom: 0; border-top: 1px solid var(--blush-border); margin-top: 6px; padding-top: 14px; }
+  .sz.gesamt .t { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mink-light); }
+  .sz.gesamt .b { font-family: 'Marcellus', serif; font-size: 30px; color: var(--mink); }
+  .sz.teil { border-bottom: 0; padding: 3px 0; font-size: 12.5px; color: var(--rose-gold); }
+  .sz.teil .b { color: var(--rose-gold); }
+
+  .planer-fuss { font-size: 11.5px; line-height: 1.7; color: var(--mink-light); font-weight: 300;
+    margin-top: 1.1rem; padding-top: 1rem; border-top: 0.5px solid rgba(237,217,204,.55); }
+  .planer-fuss strong { color: var(--mink); font-weight: 400; }
+
+  .planer-senden { display: inline-block; margin-top: 1.2rem; background: var(--rose-gold); color: #fff;
+    padding: 14px 32px; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; border: 0;
+    font-family: 'Jost', sans-serif; cursor: pointer; }
+  .planer-senden:hover { background: var(--mink); }
+  .planer-senden:focus-visible { outline: 2px solid var(--mink); outline-offset: 2px; }
+  .planer-senden[disabled] { opacity: .35; cursor: default; }
+  .planer-senden[disabled]:hover { background: var(--rose-gold); }
+
+  @media (max-width: 860px) {
+    .planer { padding: 1.5rem 1.1rem 1.35rem; }
+    .planer-felder { grid-template-columns: 1fr; }
+    .sz.gesamt .b { font-size: 26px; }
+    .wahl label { grid-template-columns: auto 1fr; row-gap: 4px; }
+    .wahl .wieviel { grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .planer-auf, .planer-auf .pfeil, .wahl label { transition: none; }
+  }
+</style>
 </head>
 <body>
 
@@ -370,7 +459,7 @@
   </div>
   <div class="pillars">
     <div class="pillar"><p class="pillar-title">More Than Just a Service</p><p class="pillar-text">Being chosen to accompany a bride on the most important day of her life is a responsibility I hold with pride.</p></div>
-    <div class="pillar"><p class="pillar-title">An Emotional Anchor</p><p class="pillar-text">Beyond the brushes and hairpins, I'm there for you — a calming word during the morning jitters, whenever you need it.</p></div>
+    <div class="pillar"><p class="pillar-title">An Emotional Anchor</p><p class="pillar-text">Beyond the brushes and hairpins, I'm there for you — a calming word when the nerves come, whenever you need it.</p></div>
     <div class="pillar"><p class="pillar-title">Professionalism Meets Soul</p><p class="pillar-text">Over a decade of experience, so you don't see a mask in the mirror — you see yourself, only more radiant.</p></div>
     <div class="pillar"><p class="pillar-title">Beauty That Lasts</p><p class="pillar-text">Professional techniques and premium products keep your look flawless from the first "I do" to the final dance.</p></div>
   </div>
@@ -489,7 +578,7 @@
     <h2 class="section-title">The <em>making of</em></h2>
     <div class="portfolio-grid making-grid">
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <img src="media/making-01-arbeitsplatz.jpg" alt="The makeup station, ready before the morning begins" loading="lazy" />
+        <img src="media/making-01-arbeitsplatz.jpg" alt="The makeup station, ready before the day begins" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
         <img src="media/making-02-pinsel.jpg" alt="A brush at work on the bride's face" loading="lazy" />
@@ -504,7 +593,7 @@
         <img src="media/making-04-werkzeug.jpg" alt="Professional brushes in the kit, close up" loading="lazy" />
       </div>
       <div class="portfolio-cell" style="aspect-ratio: 1/1;">
-        <img src="media/making-06-spiegel.jpg" alt="Anja Zander and a bride in front of the mirror on the wedding morning" loading="lazy" />
+        <img src="media/making-06-spiegel.jpg" alt="Anja Zander and a bride in front of the mirror on the wedding day" loading="lazy" />
       </div>
     </div>
   </div>
@@ -523,7 +612,7 @@
     <div class="service-item">
       <div>
         <p class="service-name">Bridal Makeup</p>
-        <p class="service-desc">Your trial and your wedding day. We find your look together at the trial — soft and natural, classic and radiant, or full glam — and I recreate it on the morning itself. Skin preparation, lashes and a touch-up kit are included.</p>
+        <p class="service-desc">Your trial and your wedding day. We find your look together at the trial — soft and natural, classic and radiant, or full glam — and I recreate it on the day itself. Skin preparation, lashes and a touch-up kit are included.</p>
       </div>
       <div class="service-price-col">
         <p class="service-total">&euro;350</p>
@@ -545,7 +634,7 @@
     <div class="service-item">
       <div>
         <p class="service-name">The Full Bridal</p>
-        <p class="service-desc">Hair and makeup together, in one trial and one unhurried wedding morning. Includes your touch-up kit and help with your dress and veil — <strong>&euro;110 less</strong> than booking hair and makeup separately.</p>
+        <p class="service-desc">Hair and makeup together, in one trial and one unhurried wedding day. Includes your touch-up kit and help with your dress and veil — <strong>&euro;110 less</strong> than booking hair and makeup separately.</p>
       </div>
       <div class="service-price-col">
         <p class="service-total">&euro;590</p>
@@ -555,8 +644,8 @@
 
     <div class="service-item">
       <div>
-        <p class="service-name">The Full Bridal &middot; All Morning</p>
-        <p class="service-desc">Everything in The Full Bridal — and I stay with you through the morning. While you step into your dress, before the ceremony and between photographs, I am there to keep everything just so: a pin back in place after the veil, powder, lipstick. You look in the last photograph the way you did in the first.</p>
+        <p class="service-name">The Full Bridal &middot; By Your Side</p>
+        <p class="service-desc">Everything in The Full Bridal — and I stay with you through the day. While you step into your dress, before the ceremony and between photographs, I am there to keep everything just so: a pin back in place after the veil, powder, lipstick. You look in the last photograph the way you did in the first.</p>
       </div>
       <div class="service-price-col">
         <p class="service-total">&euro;890</p>
@@ -569,7 +658,7 @@
     <div class="service-item">
       <div>
         <p class="service-name">Makeup</p>
-        <p class="service-desc">Natural, classic or glam — whichever each guest prefers. Styled on the wedding morning alongside your own, so everyone is ready together.</p>
+        <p class="service-desc">Natural, classic or glam — whichever each guest prefers. Styled on your wedding day alongside your own, so everyone is ready together.</p>
       </div>
       <div class="service-price-col"><p class="service-total">&euro;85 p.p.</p></div>
     </div>
@@ -577,7 +666,7 @@
     <div class="service-item">
       <div>
         <p class="service-name">Hair</p>
-        <p class="service-desc">Loose waves, a relaxed half-up style or a pinned updo, styled on the morning beside you.</p>
+        <p class="service-desc">Loose waves, a relaxed half-up style or a pinned updo, styled beside you on the day.</p>
       </div>
       <div class="service-price-col"><p class="service-total">&euro;85 p.p.</p></div>
     </div>
@@ -609,7 +698,7 @@
     <div class="info-box">
       <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M5.6 8.6l2.1 2.1M18.4 8.6l-2.1 2.1M3 16h18M8 16a4 4 0 0 1 8 0M6 20h12"/></svg>
       <p class="info-box-title">Early Starts</p>
-      <p class="info-box-text">Wedding mornings often begin before sunrise. A start before <strong>7:00</strong> is charged at <strong>&euro;45</strong>, before <strong>6:00</strong> at <strong>&euro;85</strong>.</p>
+      <p class="info-box-text">Some weddings begin long before sunrise. A start before <strong>7:00</strong> is charged at <strong>&euro;45</strong>, before <strong>6:00</strong> at <strong>&euro;85</strong>.</p>
     </div>
 
     <div class="info-box">
@@ -630,6 +719,69 @@
       <p class="info-box-text">Currently booking for <strong>2026 &amp; 2027</strong> weddings. Trial sessions by appointment. Early booking recommended.</p>
     </div>
 
+  </div>
+
+  <button class="planer-auf" id="planer-auf" type="button" aria-expanded="false" aria-controls="planer">
+    <span>Plan your bridal styling</span>
+    <svg class="pfeil" width="11" height="7" viewBox="0 0 11 7" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1"/></svg>
+  </button>
+
+  <div class="planer" id="planer">
+    <p class="planer-intro">Choose what you have in mind and see where your day lands. Everything is shown openly &mdash; travel, surcharges and all. It is an indication to plan with, not a quote: I confirm every detail with you personally before anything is booked.</p>
+
+    <div class="planer-teil">
+      <p class="planer-titel">For you</p>
+      <div class="wahl" id="w-braut">
+        <label><input type="radio" name="braut" value="b_makeup"><span class="kreis"></span><span class="was">Bridal Makeup</span><span class="wieviel">&euro;350</span></label>
+        <label><input type="radio" name="braut" value="b_hair"><span class="kreis"></span><span class="was">Bridal Hair</span><span class="wieviel">&euro;350</span></label>
+        <label><input type="radio" name="braut" value="b_full"><span class="kreis"></span><span class="was">The Full Bridal</span><span class="wieviel">&euro;590</span></label>
+        <label><input type="radio" name="braut" value="b_morning"><span class="kreis"></span><span class="was">The Full Bridal &middot; By Your Side</span><span class="wieviel">&euro;890</span></label>
+      </div>
+    </div>
+
+    <div class="planer-teil">
+      <p class="planer-titel">For your party</p>
+      <div class="gast"><span class="was">Makeup</span><span class="wieviel">&euro;85 each</span><span class="zaehler" data-g="g_makeup"><button type="button" data-s="-1" aria-label="One fewer">&minus;</button><span class="zahl">0</span><button type="button" data-s="1" aria-label="One more">+</button></span></div>
+      <div class="gast"><span class="was">Hair</span><span class="wieviel">&euro;85 each</span><span class="zaehler" data-g="g_hair"><button type="button" data-s="-1" aria-label="One fewer">&minus;</button><span class="zahl">0</span><button type="button" data-s="1" aria-label="One more">+</button></span></div>
+      <div class="gast"><span class="was">Hair &amp; Makeup</span><span class="wieviel">&euro;150 each</span><span class="zaehler" data-g="g_kombi"><button type="button" data-s="-1" aria-label="One fewer">&minus;</button><span class="zahl">0</span><button type="button" data-s="1" aria-label="One more">+</button></span></div>
+    </div>
+
+    <div class="planer-teil">
+      <p class="planer-titel">Your day</p>
+      <div class="planer-felder">
+        <div class="planer-feld">
+          <label for="p-plz">Postcode</label>
+          <input type="text" id="p-plz" inputmode="numeric" maxlength="7" placeholder="e.g. 2011" autocomplete="postal-code">
+          <span class="sagt frag" id="p-zone">For your travel costs</span>
+        </div>
+        <div class="planer-feld">
+          <label for="p-datum">Wedding date</label>
+          <input type="date" id="p-datum">
+          <span class="sagt frag" id="p-tag">&nbsp;</span>
+        </div>
+        <div class="planer-feld">
+          <label for="p-zeit">Start time</label>
+          <select id="p-zeit">
+            <option value="normal">From 7:00 onwards</option>
+            <option value="f7">Between 6:00 and 7:00</option>
+            <option value="f6">Before 6:00</option>
+          </select>
+          <span class="sagt frag" id="p-frueh">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="planer-summe" id="p-summe">
+      <p class="planer-leer">Choose your styling above and your day will add up here.</p>
+    </div>
+
+    <p class="planer-fuss">
+      <strong>Included:</strong> products, skin preparation, your touch-up kit, and travel for both the trial and the wedding day.
+      <strong>Added later:</strong> parking, at cost, only where it applies.
+      No VAT is charged &mdash; what you see is what you pay.
+    </p>
+
+    <button class="planer-senden" id="p-senden" type="button" disabled>Add this to your enquiry</button>
   </div>
 </section>
 
@@ -853,6 +1005,196 @@ function showFormSuccessIfNeeded() {
 showFormSuccessIfNeeded();
 initLazyVideos();
 initBrautGalerie();
+</script>
+<script>
+(function(){
+  var auf = document.getElementById('planer-auf');
+  if(!auf) return;
+  var feld = document.getElementById('planer');
+
+  var PREIS = {
+    b_makeup:{n:'Bridal Makeup', p:350}, b_hair:{n:'Bridal Hair', p:350},
+    b_full:{n:'The Full Bridal', p:590}, b_morning:{n:'The Full Bridal · By Your Side', p:890},
+    g_makeup:{n:'Makeup', p:85, pro:1}, g_hair:{n:'Hair', p:85, pro:1}, g_kombi:{n:'Hair & Makeup', p:150, pro:1}
+  };
+  var ZONE = { ams:{n:'within Amsterdam', p:35}, z25:{n:'up to 25 km', p:60}, z50:{n:'up to 50 km', p:95} };
+  var FRUEH = { f7:{n:'Early start, before 7:00', p:45}, f6:{n:'Early start, before 6:00', p:85} };
+
+  // Postleitzahl -> Zone. Die ersten vier Ziffern entscheiden.
+  var BEREICHE = [
+    ['ams', [[1000,1109]]],
+    ['z25', [[1110,1199],[1380,1399],[1400,1449],[1500,1549],[2000,2059],[2100,2159]]],
+    ['z50', [[1200,1279],[1300,1379],[1450,1489],[1550,1599],[1600,1699],[1700,1789],[1800,1829],
+             [1900,1999],[2060,2099],[2160,2199],[2200,2299],[2300,2399],[3500,3599],[3700,3799]]]
+  ];
+  function zoneVon(txt){
+    var m = String(txt||'').replace(/\s/g,'').match(/^(\d{4})/);
+    if(!m) return null;
+    var n = parseInt(m[1],10);
+    for(var i=0;i<BEREICHE.length;i++)
+      for(var j=0;j<BEREICHE[i][1].length;j++)
+        if(n>=BEREICHE[i][1][j][0] && n<=BEREICHE[i][1][j][1]) return BEREICHE[i][0];
+    return 'weit';
+  }
+
+  function ostern(j){
+    var a=j%19,b=Math.floor(j/100),c=j%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),
+        g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,
+        l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
+        mo=Math.floor((h+l-7*m+114)/31),ta=((h+l-7*m+114)%31)+1;
+    return new Date(Date.UTC(j,mo-1,ta));
+  }
+  function feiertag(d){
+    var j=d.getUTCFullYear(), o=ostern(j), T=86400000, s=function(x){return x.toISOString().slice(0,10);};
+    var koning = new Date(Date.UTC(j,3,27));
+    if(koning.getUTCDay()===0) koning = new Date(Date.UTC(j,3,26));
+    var liste = [s(new Date(Date.UTC(j,0,1))), s(o), s(new Date(+o+T)), s(koning),
+                 s(new Date(+o+39*T)), s(new Date(+o+49*T)), s(new Date(+o+50*T)),
+                 s(new Date(Date.UTC(j,11,25))), s(new Date(Date.UTC(j,11,26)))];
+    return liste.indexOf(s(d)) >= 0;
+  }
+
+  var stand = { braut:null, gaeste:{g_makeup:0,g_hair:0,g_kombi:0}, plz:'', datum:'', zeit:'normal' };
+
+  function geld(n){
+    return '€' + (Math.round(n*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
+  function rechne(){
+    var zeilen=[], leistungen=0;
+    if(stand.braut){ var b=PREIS[stand.braut]; leistungen+=b.p; zeilen.push([b.n, b.p]); }
+    ['g_makeup','g_hair','g_kombi'].forEach(function(k){
+      var a=stand.gaeste[k]; if(!a) return;
+      var p=PREIS[k], s=p.p*a; leistungen+=s;
+      zeilen.push([p.n+' — '+a+(a===1?' guest':' guests'), s]);
+    });
+
+    var tag='', satz=0;
+    if(stand.datum){
+      var d=new Date(stand.datum+'T00:00:00Z');
+      if(!isNaN(d.getTime())){
+        if(feiertag(d)){ tag='Public holiday'; satz=0.50; }
+        else if(d.getUTCDay()===0){ tag='Sunday'; satz=0.25; }
+      }
+    }
+    var zuschlag = leistungen*satz;
+    if(satz) zeilen.push([tag+' surcharge, +'+(satz*100)+'%', zuschlag]);
+
+    var fr = FRUEH[stand.zeit];
+    var frueh = (fr && leistungen) ? fr.p : 0;
+    if(frueh) zeilen.push([fr.n, fr.p]);
+
+    var z = stand.plz ? zoneVon(stand.plz) : null, anfahrt=0, weit=false;
+    if(z==='weit'){ weit=true; }
+    else if(z && leistungen){ anfahrt = ZONE[z].p*2; zeilen.push(['Travel, '+ZONE[z].n+' — trial and wedding day', anfahrt]); }
+
+    return { zeilen:zeilen, gesamt:leistungen+zuschlag+frueh+anfahrt, leistungen:leistungen, weit:weit, tag:tag, zone:z };
+  }
+
+  function male(){
+    var r = rechne(), k = document.getElementById('p-summe'), senden = document.getElementById('p-senden');
+
+    var zt = document.getElementById('p-zone');
+    if(!stand.plz){ zt.textContent='For your travel costs'; zt.className='sagt frag'; }
+    else if(r.zone==='weit'){ zt.textContent='Outside my usual area — tell me where you are'; zt.className='sagt frag'; }
+    else if(r.zone){ zt.textContent=ZONE[r.zone].n+' — '+geld(ZONE[r.zone].p)+' per visit'; zt.className='sagt'; }
+    else { zt.textContent='Four digits, please'; zt.className='sagt frag'; }
+
+    var tt = document.getElementById('p-tag');
+    tt.innerHTML = r.tag ? (r.tag+' — surcharge applies') : '&nbsp;';
+    tt.className = r.tag ? 'sagt' : 'sagt frag';
+
+    var ft = document.getElementById('p-frueh');
+    ft.innerHTML = FRUEH[stand.zeit] ? ('+'+geld(FRUEH[stand.zeit].p)) : '&nbsp;';
+    ft.className = FRUEH[stand.zeit] ? 'sagt' : 'sagt frag';
+
+    if(!r.leistungen){
+      k.innerHTML = '<p class="planer-leer">Choose your styling above and your day will add up here.</p>';
+      senden.disabled = true; return;
+    }
+    var h = r.zeilen.map(function(z){
+      return '<div class="sz"><span class="t">'+z[0]+'</span><span class="b">'+geld(z[1])+'</span></div>';
+    }).join('');
+    h += '<div class="sz gesamt"><span class="t">Your bridal styling, in full</span><span class="b">'+geld(r.gesamt)+'</span></div>';
+    h += '<div class="sz teil"><span class="t">At your trial, 50%</span><span class="b">'+geld(r.gesamt/2)+'</span></div>';
+    h += '<div class="sz teil"><span class="t">On your wedding day, 50%</span><span class="b">'+geld(r.gesamt/2)+'</span></div>';
+    if(r.weit) h += '<div class="sz teil"><span class="t">Travel still to be agreed</span><span class="b"></span></div>';
+    else if(!stand.plz) h += '<div class="sz teil"><span class="t">Travel not included yet — add your postcode</span><span class="b"></span></div>';
+    k.innerHTML = h;
+    senden.disabled = false;
+  }
+
+  auf.onclick = function(){
+    var offen = feld.classList.toggle('auf');
+    auf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+    if(offen) setTimeout(function(){ feld.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 60);
+  };
+
+  document.querySelectorAll('#w-braut input').forEach(function(i){
+    i.addEventListener('change', function(){ stand.braut = i.value; male(); });
+  });
+  document.querySelectorAll('.zaehler').forEach(function(z){
+    var k = z.getAttribute('data-g');
+    z.querySelectorAll('button').forEach(function(b){
+      b.onclick = function(){
+        stand.gaeste[k] = Math.max(0, Math.min(12, stand.gaeste[k] + Number(b.getAttribute('data-s'))));
+        z.querySelector('.zahl').textContent = stand.gaeste[k];
+        z.querySelector('[data-s="-1"]').disabled = stand.gaeste[k]===0;
+        male();
+      };
+    });
+    z.querySelector('[data-s="-1"]').disabled = true;
+  });
+  document.getElementById('p-plz').addEventListener('input', function(e){ stand.plz=e.target.value; male(); });
+  document.getElementById('p-datum').addEventListener('change', function(e){ stand.datum=e.target.value; male(); });
+  document.getElementById('p-zeit').addEventListener('change', function(e){ stand.zeit=e.target.value; male(); });
+
+  document.getElementById('p-senden').onclick = function(){
+    var r = rechne(), f = document.getElementById('contact-form');
+    if(!f) return;
+    var setz = function(n,v){ var el=f.querySelector('[name="'+n+'"]'); if(el && v) el.value=v; };
+
+    if(stand.datum){
+      var d=new Date(stand.datum+'T00:00:00Z');
+      setz('wedding_date', d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}));
+    }
+    if(stand.plz) setz('location', stand.plz);
+    if(stand.zeit!=='normal'){
+      setz('time', stand.zeit==='f6' ? 'Before 6:00' : 'Between 6:00 and 7:00');
+    }
+
+    var mk = f.querySelector('[name="service_makeup"]'), ha = f.querySelector('[name="service_hair"]');
+    if(mk) mk.checked = ['b_makeup','b_full','b_morning'].indexOf(stand.braut)>=0;
+    if(ha) ha.checked = ['b_hair','b_full','b_morning'].indexOf(stand.braut)>=0;
+
+    var g = stand.gaeste.g_makeup + stand.gaeste.g_hair + stand.gaeste.g_kombi;
+    var sel = f.querySelector('[name="people"]');
+    if(sel && g>0){
+      var wunsch = String(g+1)+' people';
+      for(var i=0;i<sel.options.length;i++) if(sel.options[i].value===wunsch) sel.selectedIndex=i;
+    }
+
+    var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
+    txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(r.gesamt/2)+' at the trial, '+geld(r.gesamt/2)+' on the day)';
+    if(r.weit || !stand.plz) txt += '\nTravel still to be agreed.';
+
+    var msg = f.querySelector('[name="message"]');
+    if(msg){
+      var vor = msg.value.trim();
+      msg.value = 'This is what I put together on your site:\n\n' + txt + (vor ? '\n\n' + vor : '\n\n');
+    }
+    var verborgen = f.querySelector('[name="estimate"]');
+    if(!verborgen){
+      verborgen=document.createElement('input');
+      verborgen.type='hidden'; verborgen.name='estimate';
+      f.appendChild(verborgen);
+    }
+    verborgen.value = txt.replace(/\n/g,' | ');
+
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    setTimeout(function(){ var n=f.querySelector('[name="name"]'); if(n) n.focus(); }, 700);
+  };
+})();
 </script>
 </body>
 </html>
