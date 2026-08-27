@@ -316,11 +316,15 @@
   </style>
 <style>
   /* ---------- Planer ---------- */
-  .planer-auf { display: block; width: 100%; margin-top: 12px; padding: 16px 20px; background: var(--white);
-    border: 0.5px solid var(--blush-border); font-family: 'Jost', sans-serif; font-size: 10px;
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--rose-gold); cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 12px; transition: background .25s ease; }
-  .planer-auf:hover { background: var(--blush); }
+  .planer-lockruf { font-family: 'Marcellus', serif; font-size: 19px; color: var(--mink);
+    text-align: center; margin: 2.2rem 0 0.1rem; font-weight: 400; }
+  .planer-lockruf em { font-style: normal; color: var(--rose-gold); }
+  .planer-auf { width: 100%; margin-top: 12px; padding: 18px 20px; background: var(--rose-gold);
+    border: 0.5px solid var(--rose-gold); font-family: 'Jost', sans-serif; font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    transition: background .25s ease, border-color .25s ease; }
+  .planer-auf:hover { background: var(--mink); border-color: var(--mink); }
   .planer-auf:focus-visible { outline: 2px solid var(--rose-gold); outline-offset: 2px; }
   .planer-auf .pfeil { transition: transform .3s ease; }
   .planer-auf[aria-expanded="true"] .pfeil { transform: rotate(180deg); }
@@ -393,6 +397,8 @@
   .planer-senden[disabled]:hover { background: var(--rose-gold); }
 
   @media (max-width: 860px) {
+    .planer-lockruf { font-size: 17px; margin-top: 1.7rem; }
+    .planer-auf { font-size: 10px; letter-spacing: 0.2em; padding: 16px 14px; }
     .planer { padding: 1.5rem 1.1rem 1.35rem; }
     .planer-felder { grid-template-columns: 1fr; }
     .sz.gesamt .b { font-size: 26px; }
@@ -721,6 +727,7 @@
 
   </div>
 
+  <p class="planer-lockruf">Wondering what your day <em>comes to</em>?</p>
   <button class="planer-auf" id="planer-auf" type="button" aria-expanded="false" aria-controls="planer">
     <span>Plan your bridal styling</span>
     <svg class="pfeil" width="11" height="7" viewBox="0 0 11 7" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1"/></svg>
