@@ -256,6 +256,29 @@
     .satz-punkte i.an { background: var(--rose-gold-light); }
     /* BEHIND THE SCENES */
     .making-grid { grid-template-columns: repeat(3, 1fr); }
+    /* CTA-BAND UEBER DEM FORMULAR */
+    .cta-band { display: grid; grid-template-columns: 1fr 34%; align-items: stretch;
+                border-top: 1px solid var(--blush-border); border-bottom: 1px solid var(--blush-border);
+                background: var(--blush); }
+    .cta-text { padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;
+                align-items: center; text-align: center; }
+    .cta-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+                   color: var(--rose-gold); margin-bottom: 1.2rem; }
+    .cta-titel { font-family: 'Marcellus', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 400;
+                 color: var(--mink); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.12;
+                 margin-bottom: 1.1rem; }
+    .cta-titel em { font-style: normal; color: var(--rose-gold); }
+    .cta-zeile { font-size: 14px; color: var(--mink-light); max-width: 40ch; margin-bottom: 1.8rem; }
+    .cta-knopf { display: inline-block; background: var(--rose-gold); color: #fff; padding: 14px 36px;
+                 font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; }
+    .cta-video { position: relative; min-height: 520px; overflow: hidden; }
+    .cta-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+                       object-position: center 35%; display: block; }
+    @media (max-width: 820px) {
+      .cta-band { grid-template-columns: 1fr; }
+      .cta-text { padding: 3rem 1.5rem; }
+      .cta-video { min-height: 420px; }
+    }
     @media (max-width: 768px) {
       /* NAV */
       nav { padding: 1rem 1.2rem; }
@@ -319,7 +342,8 @@
       .testimonial-block { padding: 1.5rem; }
       .testimonial-text { font-size: 15px; }
 
-      /* CONTACT */
+  
+    /* CONTACT */
       .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; padding: 12px; }
       .contact-form .field-row { grid-template-columns: 1fr; }
@@ -818,12 +842,16 @@
 </section>
 
 
-<div style="position:relative; width:100%; overflow:hidden; border-top: 1px solid var(--blush-border); border-bottom: 1px solid var(--blush-border);">
-  <img loading="lazy" src="media/cta-feld.jpg" alt="Bridal makeup in a golden field" style="width:100%; height:420px; object-fit:cover; object-position:center 30%; display:block;" />
-  <div style="position:absolute; inset:0; background:rgba(61,43,31,0.35); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem;">
-    <p style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(255,255,255,0.8); margin-bottom:1rem; font-family:Jost,sans-serif;">The Bridal Glam · Amsterdam</p>
-    <h2 style="font-family:Marcellus,serif; font-size:42px; font-weight:400; color:#fff; text-transform:uppercase; letter-spacing:0.05em; line-height:1.1; margin-bottom:1.2rem;">Ready for your<br><em style="font-weight:400; font-style:normal; color:#E8C4A8;">perfect bridal look?</em></h2>
-    <a href="#contact" style="display:inline-block; background:var(--rose-gold); color:#fff; padding:14px 36px; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; text-decoration:none; font-family:Jost,sans-serif; margin-top:0.5rem;">Book your trial</a>
+<div class="cta-band">
+  <div class="cta-text">
+    <p class="cta-eyebrow">The Bridal Glam &middot; Amsterdam</p>
+    <h2 class="cta-titel">Ready for your<br /><em>perfect bridal look?</em></h2>
+    <p class="cta-zeile">Trial dates are open for 2027. Tell me your date, and I will tell you if I am free.</p>
+    <a href="#contact" class="cta-knopf">Book your trial</a>
+  </div>
+  <div class="cta-video">
+    <video src="media/banner-kontakt.mp4" poster="media/cta-feld.jpg" autoplay loop muted playsinline preload="metadata"
+           aria-label="Bridal eye makeup, close up &mdash; The Bridal Glam Amsterdam"></video>
   </div>
 </div>
 
