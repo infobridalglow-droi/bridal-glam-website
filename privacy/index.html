@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Statement — The Bridal Glam</title>
+  <meta name="description" content="How The Bridal Glam handles your personal information: what is collected, why, who else sees it, and what you can ask for." />
+  <link rel="canonical" href="https://thebridalglam.nl/privacy/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <style>
+    /* SCHRIFTEN - liegen auf dem eigenen Server, es geht nichts an Google */
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 300; font-display: swap;
+      src: url('/media/fonts/jost-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 300; font-display: swap;
+      src: url('/media/fonts/jost-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 400; font-display: swap;
+      src: url('/media/fonts/jost-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 400; font-display: swap;
+      src: url('/media/fonts/jost-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 500; font-display: swap;
+      src: url('/media/fonts/jost-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Jost'; font-style: normal; font-weight: 500; font-display: swap;
+      src: url('/media/fonts/jost-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Marcellus'; font-style: normal; font-weight: 400; font-display: swap;
+      src: url('/media/fonts/marcellus-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Marcellus'; font-style: normal; font-weight: 400; font-display: swap;
+      src: url('/media/fonts/marcellus-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FDFAF6; --blush: #F7EFE8; --blush-border: #EDD9CC;
+      --rose-gold: #C9956C; --mink: #3D2B1F; --mink-light: #7A5C4E; --white: #FFFFFF;
+    }
+    body { font-family: 'Jost', sans-serif; font-weight: 300; color: var(--mink); background: var(--cream); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; border-bottom: 1px solid var(--blush-border); background: var(--cream); }
+    .nav-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); text-decoration: none; }
+    .nav-back { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: var(--mink-light); }
+    .nav-back:hover { color: var(--rose-gold); }
+
+    main { max-width: 44rem; margin: 0 auto; padding: 4.5rem 1.6rem 5rem; }
+    .eyebrow { font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--rose-gold); }
+    h1 { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(2.1rem, 5vw, 2.9rem); text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.1; margin: 1rem 0 0.7rem; text-wrap: balance; }
+    .stand { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mink-light); }
+    .lead { margin-top: 1.8rem; font-size: 1.05rem; color: var(--mink-light); }
+    h2 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.7rem; }
+    section { margin-top: 2.6rem; padding-top: 1.8rem; border-top: 1px solid var(--blush-border); }
+    p { margin-bottom: 0.85rem; }
+    ul { margin: 0.4rem 0 1rem 1.2rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { font-weight: 500; }
+    a { color: var(--mink); text-decoration: none; border-bottom: 1px solid var(--blush-border); }
+    a:hover, a:focus-visible { color: var(--rose-gold); border-color: var(--rose-gold); }
+
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 3rem; border-top: 1px solid var(--blush-border); flex-wrap: wrap; gap: 0.8rem; }
+    .footer-logo { font-family: 'Marcellus', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .footer-copy { font-size: 11px; color: var(--mink-light); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.2rem; }
+      main { padding: 3rem 1.2rem 3.5rem; }
+      footer { flex-direction: column; text-align: center; padding: 1.5rem 1.2rem; }
+    }
+    @media print { body { background: #fff; } nav, footer { display: none; } main { padding: 0; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">The Bridal Glam</a>
+  <a class="nav-back" href="/">← Back to the website</a>
+</nav>
+
+<main>
+  <div class="eyebrow">The Bridal Glam · Amsterdam</div>
+  <h1>Privacy Statement</h1>
+  <div class="stand">Last updated 29 August 2026</div>
+
+  <p class="lead">This page explains what personal information I collect when you contact or book me, why I need it,
+  who else sees it, and what you can ask me to do with it. It is written to be read, not to be endured.</p>
+
+  <section>
+    <h2>Who I am</h2>
+    <p>The Bridal Glam is the business of <strong>Anja Zander</strong>, bridal makeup artist and hairstylist in Amsterdam,
+    the Netherlands. I am the controller of the personal data described here, and you reach me directly:</p>
+    <ul>
+      <li>Email: <a href="mailto:info@thebridalglam.nl">info@thebridalglam.nl</a></li>
+      <li>Telephone: <a href="tel:+31623739358">+31 6 23 73 93 58</a></li>
+    </ul>
+    <p>There is no data protection officer — for anything on this page, you are writing to me.</p>
+  </section>
+
+  <section>
+    <h2>What I collect</h2>
+    <ul>
+      <li><strong>When you use the contact form:</strong> your name, email address, and whatever you write in the
+      message — usually your wedding date, the location, and what you are looking for.</li>
+      <li><strong>When we correspond:</strong> the contents of our emails or messages, and your telephone number if you give it.</li>
+      <li><strong>When you book:</strong> the address where I come to you, the timings for the day, and any allergies or
+      skin sensitivities you tell me about, so that I can work safely.</li>
+      <li><strong>For invoicing:</strong> your name, billing address, and the amounts and dates of payment.</li>
+      <li><strong>Photographs and video</strong> of your hair and makeup — only where you have given separate written consent.</li>
+    </ul>
+    <p>I do not buy personal data, and I collect nothing about you from other sources.</p>
+  </section>
+
+  <section>
+    <h2>Why I need it, and on what basis</h2>
+    <ul>
+      <li><strong>To answer your enquiry</strong> and prepare a quote — steps taken at your request before a contract.</li>
+      <li><strong>To carry out the booking</strong> — performance of our agreement.</li>
+      <li><strong>To invoice and keep records</strong> — a legal obligation under Dutch tax law.</li>
+      <li><strong>To show my work</strong> on my website and social media — only with your consent, which you may
+      withdraw at any time.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Who else sees it</h2>
+    <p>I keep the circle as small as I can. These are the parties involved:</p>
+    <ul>
+      <li><strong>FormSubmit</strong> — delivers the contact form to my inbox. The message passes through their servers,
+      which are located outside the European Union.</li>
+      <li><strong>Google (Gmail)</strong> — my email is hosted there, so our correspondence is stored in that account.</li>
+      <li><strong>GitHub Pages</strong> — hosts this website. Their servers record standard access data such as IP addresses.</li>
+      <li><strong>My accountant</strong> — sees invoices, as tax law requires.</li>
+    </ul>
+    <p>I do not sell your data, and I do not pass it to anyone for their own marketing.</p>
+  </section>
+
+  <section>
+    <h2>Cookies and fonts</h2>
+    <p>This website sets no tracking cookies and uses no analytics. The typefaces are served from this website's own
+    server, so opening the page sends nothing to Google or any other third party.</p>
+  </section>
+
+  <section>
+    <h2>How long I keep it</h2>
+    <ul>
+      <li><strong>Enquiries that do not lead to a booking:</strong> twelve months, then deleted.</li>
+      <li><strong>Bookings, invoices and payment records:</strong> seven years, because Dutch tax law requires it.</li>
+      <li><strong>Photographs:</strong> until you withdraw your consent.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Your rights</h2>
+    <p>You can ask me at any time to:</p>
+    <ul>
+      <li>show you what I hold about you, and give you a copy;</li>
+      <li>correct anything that is wrong;</li>
+      <li>delete what I no longer need to keep;</li>
+      <li>stop using your data for a particular purpose;</li>
+      <li>withdraw a consent you gave earlier — for photographs, for example.</li>
+    </ul>
+    <p>Write to <a href="mailto:info@thebridalglam.nl">info@thebridalglam.nl</a> and I will answer within a month.
+    If you are not satisfied with how I handle it, you may complain to the Dutch data protection authority, the
+    <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.</p>
+  </section>
+
+  <section>
+    <h2>Keeping it safe</h2>
+    <p>Your data sits in password-protected accounts with two-factor authentication, on devices only I use. If something
+    goes wrong in a way that puts you at risk, I will tell you.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this statement</h2>
+    <p>If the way I work changes, this page changes with it. The date at the top always tells you which version you are reading.</p>
+  </section>
+</main>
+
+<footer>
+  <span class="footer-logo">The Bridal Glam</span>
+  <span class="footer-copy">© 2026 · Anja Zander · Amsterdam · All rights reserved</span>
+</footer>
+
+</body>
+</html>
