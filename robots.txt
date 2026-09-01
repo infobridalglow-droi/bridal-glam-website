@@ -1,0 +1,7 @@
+# thebridalglam.nl
+# Suchmaschinen duerfen alles lesen - die Seite soll gefunden werden.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://thebridalglam.nl/sitemap.xml
