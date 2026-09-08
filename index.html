@@ -1274,6 +1274,11 @@ initBrautGalerie();
     return '€' + (Math.round(n*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
   }
 
+  // Anzahlung und Rest getrennt runden, damit beide zusammen genau die Summe ergeben.
+  // Zweimal gesamt/2 zu runden ergibt bei ungeraden Cents einen Cent zu viel.
+  function teilEins(g){ return Math.round(g*50)/100; }
+  function teilZwei(g){ return Math.round((g-teilEins(g))*100)/100; }
+
   function rechne(){
     var zeilen=[], leistungen=0;
     if(stand.braut){ var b=PREIS[stand.braut]; leistungen+=b.p; zeilen.push([b.n, b.p]); }
@@ -1330,8 +1335,8 @@ initBrautGalerie();
       return '<div class="sz"><span class="t">'+z[0]+'</span><span class="b">'+geld(z[1])+'</span></div>';
     }).join('');
     h += '<div class="sz gesamt"><span class="t">Your bridal styling, in full</span><span class="b">'+geld(r.gesamt)+'</span></div>';
-    h += '<div class="sz teil"><span class="t">At your trial, 50%</span><span class="b">'+geld(r.gesamt/2)+'</span></div>';
-    h += '<div class="sz teil"><span class="t">On your wedding day, 50%</span><span class="b">'+geld(r.gesamt/2)+'</span></div>';
+    h += '<div class="sz teil"><span class="t">At your trial, 50%</span><span class="b">'+geld(teilEins(r.gesamt))+'</span></div>';
+    h += '<div class="sz teil"><span class="t">On your wedding day, 50%</span><span class="b">'+geld(teilZwei(r.gesamt))+'</span></div>';
     if(r.weit) h += '<div class="sz teil"><span class="t">Travel still to be agreed</span><span class="b"></span></div>';
     else if(!stand.plz) h += '<div class="sz teil"><span class="t">Travel not included yet — add your postcode</span><span class="b"></span></div>';
     k.innerHTML = h;
@@ -1389,7 +1394,7 @@ initBrautGalerie();
     }
 
     var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
-    txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(r.gesamt/2)+' at the trial, '+geld(r.gesamt/2)+' on the day)';
+    txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(teilEins(r.gesamt))+' at the trial, '+geld(teilZwei(r.gesamt))+' on the day)';
     if(r.weit || !stand.plz) txt += '\nTravel still to be agreed.';
 
     var msg = f.querySelector('[name="message"]');
