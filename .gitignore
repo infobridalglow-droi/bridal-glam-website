@@ -13,3 +13,6 @@ Reviews/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Claude-Einstellungen und Waechter - gehoeren nicht auf die Website
+.claude/
