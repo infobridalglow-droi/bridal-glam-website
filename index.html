@@ -159,7 +159,7 @@
         "name": "How do I secure my date?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A 50% deposit at your trial session holds your date; the remaining 50% is due on the wedding day. Until the trial, nothing is owed."
+          "text": "At your trial you pay half of your own bridal styling, plus the travel for that visit — that holds your date. Everything else follows on the wedding day: the second half, your guests' styling and the travel for the day itself. You only ever pay for what has already happened, and until the trial nothing is owed."
         }
       },
       {
@@ -846,7 +846,7 @@
     <div class="info-box">
       <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h.01M11 15h2"/></svg>
       <p class="info-box-title">Payment</p>
-      <p class="info-box-text">A <strong>50% deposit</strong> is paid at your trial session to secure your date. The remaining <strong>50% is due on your wedding day.</strong></p>
+      <p class="info-box-text">At your trial you pay <strong>half of your own bridal styling</strong>, together with the travel for that visit &mdash; and your date is yours. <strong>Everything else is due on your wedding day</strong>, your guests&rsquo; styling included.</p>
     </div>
 
     <div class="info-box">
@@ -983,7 +983,7 @@
     </details>
     <details class="faq-punkt">
       <summary>How do I secure my date?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
-      <p>A <strong>50% deposit at your trial session</strong> holds your date; the remaining 50% is due on the wedding day. Until the trial, nothing is owed.</p>
+      <p>At your trial you pay <strong>half of your own bridal styling</strong>, plus the travel for that visit &mdash; that holds your date. Everything else follows on the wedding day: the second half, your guests&rsquo; styling and the travel for the day itself. You only ever pay for what has already happened, and until the trial nothing is owed.</p>
     </details>
     <details class="faq-punkt">
       <summary>Which languages do you speak?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
@@ -1279,14 +1279,18 @@ initBrautGalerie();
     return '€' + (Math.round(n*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
   }
 
-  // Anzahlung und Rest getrennt runden, damit beide zusammen genau die Summe ergeben.
-  // Zweimal gesamt/2 zu runden ergibt bei ungeraden Cents einen Cent zu viel.
-  function teilEins(g){ return Math.round(g*50)/100; }
-  function teilZwei(g){ return Math.round((g-teilEins(g))*100)/100; }
+  // Beim Probetermin wird nur bezahlt, was an dem Tag auch stattfindet: die Haelfte
+  // des eigenen Brautstylings (samt dessen Zuschlag) und die Fahrt zu diesem Termin.
+  // Die Gaeste werden erst am Hochzeitstag gestylt, der Fruehstart-Zuschlag betrifft
+  // nur den Hochzeitsmorgen - beides also erst am Hochzeitstag faellig.
+  // Der Rest ist immer die Differenz, nie zweimal gerundet: sonst fehlt oder
+  // ueberschiesst ein Cent.
+  function teilEins(r){ return Math.round((r.brautAnteil/2 + r.proBesuch)*100)/100; }
+  function teilZwei(r){ return Math.round((r.gesamt - teilEins(r))*100)/100; }
 
   function rechne(){
-    var zeilen=[], leistungen=0;
-    if(stand.braut){ var b=PREIS[stand.braut]; leistungen+=b.p; zeilen.push([b.n, b.p]); }
+    var zeilen=[], leistungen=0, brautPreis=0;
+    if(stand.braut){ var b=PREIS[stand.braut]; leistungen+=b.p; brautPreis=b.p; zeilen.push([b.n, b.p]); }
     ['g_makeup','g_hair','g_kombi'].forEach(function(k){
       var a=stand.gaeste[k]; if(!a) return;
       var p=PREIS[k], s=p.p*a; leistungen+=s;
@@ -1312,7 +1316,9 @@ initBrautGalerie();
     if(z==='weit'){ weit=true; }
     else if(z && leistungen){ anfahrt = ZONE[z].p*2; zeilen.push(['Travel, '+ZONE[z].n+' — trial and wedding day', anfahrt]); }
 
-    return { zeilen:zeilen, gesamt:leistungen+zuschlag+frueh+anfahrt, leistungen:leistungen, weit:weit, tag:tag, zone:z };
+    return { zeilen:zeilen, gesamt:leistungen+zuschlag+frueh+anfahrt, leistungen:leistungen,
+             weit:weit, tag:tag, zone:z,
+             brautAnteil: brautPreis*(1+satz), proBesuch: anfahrt ? ZONE[z].p : 0 };
   }
 
   function male(){
@@ -1340,8 +1346,8 @@ initBrautGalerie();
       return '<div class="sz"><span class="t">'+z[0]+'</span><span class="b">'+geld(z[1])+'</span></div>';
     }).join('');
     h += '<div class="sz gesamt"><span class="t">Your bridal styling, in full</span><span class="b">'+geld(r.gesamt)+'</span></div>';
-    h += '<div class="sz teil"><span class="t">At your trial, 50%</span><span class="b">'+geld(teilEins(r.gesamt))+'</span></div>';
-    h += '<div class="sz teil"><span class="t">On your wedding day, 50%</span><span class="b">'+geld(teilZwei(r.gesamt))+'</span></div>';
+    h += '<div class="sz teil"><span class="t">At your trial — half your own styling'+(r.proBesuch?', plus that visit':'')+'</span><span class="b">'+geld(teilEins(r))+'</span></div>';
+    h += '<div class="sz teil"><span class="t">On your wedding day — everything else</span><span class="b">'+geld(teilZwei(r))+'</span></div>';
     if(r.weit) h += '<div class="sz teil"><span class="t">Travel still to be agreed</span><span class="b"></span></div>';
     else if(!stand.plz) h += '<div class="sz teil"><span class="t">Travel not included yet — add your postcode</span><span class="b"></span></div>';
     k.innerHTML = h;
@@ -1399,7 +1405,7 @@ initBrautGalerie();
     }
 
     var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
-    txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(teilEins(r.gesamt))+' at the trial, '+geld(teilZwei(r.gesamt))+' on the day)';
+    txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(teilEins(r))+' at the trial, '+geld(teilZwei(r))+' on the day)';
     if(r.weit || !stand.plz) txt += '\nTravel still to be agreed.';
 
     var msg = f.querySelector('[name="message"]');
