@@ -65,6 +65,13 @@
       "@type": "Country",
       "name": "Netherlands"
     },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "knowsLanguage": ["en", "de"],
     "sameAs": [
       "https://www.instagram.com/the.bridal.glam/"
     ],
@@ -213,6 +220,11 @@
     :root {
       --cream: #FDFAF6; --blush: #F7EFE8; --blush-border: #EDD9CC;
       --rose-gold: #C9956C; --rose-gold-light: #E8C4A8;
+      /* Dasselbe Rosegold, nur dunkler - fuer TEXT. Das helle #C9956C kommt auf
+         Creme nur auf 2,5:1, lesbar sind erst 4,5:1; diese Fassung schafft 5,0:1.
+         Gleicher Farbton, gleiche Saettigung. Es ist der Ton, den auch die
+         Buchungs-App als --rose2 benutzt. Linien, Haken und Zierde bleiben hell. */
+      --rose-gold-text: #96603A;
       --mink: #3D2B1F; --mink-light: #7A5C4E; --white: #FFFFFF;
     }
     html { scroll-behavior: smooth; }
@@ -221,15 +233,15 @@
     .nav-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); font-weight: 400; text-decoration: none; flex-shrink: 0; }
     .nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
     .nav-links a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; color: var(--mink-light); }
-    .nav-links a:hover { color: var(--rose-gold); }
+    .nav-links a:hover { color: var(--rose-gold-text); }
     .nav-links .nav-taal { margin-left: -1rem; padding-left: 1rem; border-left: 1px solid var(--blush-border); }
-    .nav-links .nav-taal a { color: var(--rose-gold); }
+    .nav-links .nav-taal a { color: var(--rose-gold-text); }
     .nav-links .nav-taal a:hover { color: var(--mink); }
     .hero { display: grid; grid-template-columns: 1fr 1.05fr; min-height: 92vh; gap: 3rem; align-items: center; border-bottom: 1px solid var(--blush-border); padding: 1rem 3rem 2rem; }
     .hero-left { padding: 10rem 4.5rem 4.5rem; display: flex; flex-direction: column; justify-content: center; max-width: 560px; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(237,217,204,0.9); border-radius: 32px; box-shadow: 0 32px 80px rgba(61,43,31,0.08); }
-    .hero-tag { display: inline-block; font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; border: 0.5px solid rgba(201,149,108,0.4); padding: 7px 16px; margin-bottom: 1.75rem; color: var(--rose-gold); background: rgba(255,255,255,0.95); width: fit-content; }
+    .hero-tag { display: inline-block; font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; border: 0.5px solid rgba(201,149,108,0.4); padding: 7px 16px; margin-bottom: 1.75rem; color: var(--rose-gold-text); background: rgba(255,255,255,0.95); width: fit-content; }
     .hero h1 { font-family: 'Marcellus', serif; font-size: clamp(3rem, 5vw, 5.6rem); font-weight: 400; line-height: 1.02; text-transform: uppercase; margin-bottom: 1.5rem; color: var(--mink); }
-    .hero h1 em { font-style: normal; font-weight: 400; color: var(--rose-gold); text-transform: none; }
+    .hero h1 em { font-style: normal; font-weight: 400; color: var(--rose-gold-text); text-transform: none; }
     .hero-desc { font-size: 1rem; color: var(--mink-light); line-height: 1.85; margin-bottom: 2rem; font-weight: 300; max-width: 520px; }
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
     .btn-primary { background: var(--rose-gold); color: var(--white); border: none; padding: 14px 32px; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif; font-weight: 500; text-decoration: none; display: inline-block; }
@@ -244,17 +256,17 @@
     body.edit-mode .editable { outline: 1px dashed rgba(201,149,108,0.85); }
     body.edit-mode .section { background: rgba(255,255,255,0.92); }
     .section { padding: 5rem 3rem; border-bottom: 1px solid var(--blush-border); max-width: 1100px; margin: 0 auto; }
-    .section-eyebrow { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 1.2rem; font-weight: 500; }
+    .section-eyebrow { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-gold-text); margin-bottom: 1.2rem; font-weight: 500; }
     .section-title { font-family: 'Marcellus', serif; font-size: 36px; font-weight: 400; line-height: 1.1; margin-bottom: 1rem; color: var(--mink); text-transform: uppercase; letter-spacing: 0.05em; }
     .section-lead { font-size: 15px; line-height: 1.8; color: var(--mink-light); font-weight: 300; max-width: 58ch; margin-top: 0.2rem; }
-    .section-title em { font-style: normal; color: var(--rose-gold); font-weight: 400; text-transform: none; }
+    .section-title em { font-style: normal; color: var(--rose-gold-text); font-weight: 400; text-transform: none; }
     .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; margin-top: 2.5rem; }
     .about-img { aspect-ratio: 2/3; overflow: hidden; border: 0.5px solid var(--blush-border); }
     .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .about-text p { font-size: 14px; line-height: 1.9; color: var(--mink-light); margin-bottom: 1rem; font-weight: 300; }
     .about-text p strong { color: var(--mink); font-weight: 500; }
     .about-stat { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 0.5px solid var(--blush-border); }
-    .stat-num { font-family: 'Marcellus', serif; font-size: 42px; font-weight: 400; display: block; color: var(--rose-gold); line-height: 1; margin-bottom: 4px; }
+    .stat-num { font-family: 'Marcellus', serif; font-size: 42px; font-weight: 400; display: block; color: var(--rose-gold-text); line-height: 1; margin-bottom: 4px; }
     .stat-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mink-light); }
     .philosophy-box { margin-top: 2rem; padding: 1.5rem; background: var(--white); border: 0.5px solid var(--blush-border); border-left: 3px solid var(--rose-gold); }
     .philosophy-title { font-family: 'Marcellus', serif; font-size: 16px; font-weight: 400; color: var(--mink); margin-bottom: 8px; }
@@ -263,17 +275,17 @@
     .pillar { background: var(--white); border: 0.5px solid var(--blush-border); padding: 1.25rem; }
     .pillar-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; color: var(--mink); margin-bottom: 6px; }
     .pillar-text { font-size: 12px; color: var(--mink-light); line-height: 1.75; font-weight: 300; }
-    .service-category-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-gold); padding: 1.2rem 0 0.5rem; border-top: 1px solid var(--blush-border); margin-top: 1.5rem; font-weight: 500; }
+    .service-category-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-gold-text); padding: 1.2rem 0 0.5rem; border-top: 1px solid var(--blush-border); margin-top: 1.5rem; font-weight: 500; }
     .service-category-label:first-child { border-top: none; margin-top: 0; }
     .service-item { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 1.5rem; padding: 1.4rem 0; border-bottom: 0.5px solid var(--blush-border); }
     .service-name { font-family: 'Marcellus', serif; font-size: 20px; font-weight: 400; margin-bottom: 5px; color: var(--mink); }
     .service-desc { font-size: 13px; color: var(--mink-light); line-height: 1.75; max-width: 480px; font-weight: 300; }
     .service-price-col { text-align: right; min-width: 120px; }
     .service-total { font-family: 'Marcellus', serif; font-size: 18px; font-weight: 400; white-space: nowrap; color: var(--mink); }
-    .service-split { font-size: 11px; color: var(--rose-gold); margin-top: 4px; white-space: nowrap; }
+    .service-split { font-size: 11px; color: var(--rose-gold-text); margin-top: 4px; white-space: nowrap; }
     .info-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 2.5rem; }
     .info-box { background: var(--blush); border: 0.5px solid var(--blush-border); padding: 1.5rem; }
-    .info-box .info-icon { color: var(--rose-gold); display: block; margin-bottom: 10px; }
+    .info-box .info-icon { color: var(--rose-gold-text); display: block; margin-bottom: 10px; }
     .info-box-title { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; color: var(--mink); }
     .info-box-text { font-size: 13px; color: var(--mink-light); line-height: 1.75; font-weight: 300; }
     .info-box-text strong { color: var(--mink); font-weight: 500; }
@@ -292,37 +304,37 @@
     .ba-tag.after { background: var(--rose-gold); color: var(--white); }
     .testimonial-block { margin-top: 2rem; padding: 2.5rem; background: var(--white); border: 0.5px solid var(--blush-border); border-left: 3px solid var(--rose-gold); }
     .testimonial-text { font-family: 'Marcellus', serif; font-style: normal; font-size: 20px; line-height: 1.65; margin-bottom: 1.2rem; color: var(--mink); }
-    .testimonial-author { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-gold); }
+    .testimonial-author { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-gold-text); }
     .contact-grid { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
     .contact-info p { font-size: 14px; color: var(--mink-light); line-height: 1.9; font-weight: 300; }
-    .contact-info strong { display: block; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 4px; margin-top: 1.5rem; font-weight: 500; }
+    .contact-info strong { display: block; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose-gold-text); margin-bottom: 4px; margin-top: 1.5rem; font-weight: 500; }
     .contact-info strong:first-child { margin-top: 0; }
     .contact-info a { color: var(--mink-light); text-decoration: none; border-bottom: 1px solid var(--blush-border); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
-    .contact-info a:hover, .contact-info a:focus-visible { color: var(--rose-gold); border-color: var(--rose-gold); }
+    .contact-info a:hover, .contact-info a:focus-visible { color: var(--rose-gold-text); border-color: var(--rose-gold-text); }
     .form-privacy { font-size: 11px; color: var(--mink-light); line-height: 1.7; margin-top: 0.9rem; max-width: 46ch; }
     .form-privacy a { color: var(--mink-light); border-bottom: 1px solid var(--blush-border); text-decoration: none; }
-    .form-privacy a:hover, .form-privacy a:focus-visible { color: var(--rose-gold); border-color: var(--rose-gold); }
+    .form-privacy a:hover, .form-privacy a:focus-visible { color: var(--rose-gold-text); border-color: var(--rose-gold-text); }
     .contact-form { display: flex; flex-direction: column; gap: 12px; }
     .contact-form .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .contact-form .field { display: flex; flex-direction: column; gap: 6px; }
     .contact-form .field label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mink-light); font-weight: 500; }
     .contact-form .field label .opt { text-transform: none; letter-spacing: 0; color: var(--mink-light); opacity: 0.65; font-weight: 400; }
-    .contact-form .field label .req { color: var(--rose-gold); margin-left: 2px; }
+    .contact-form .field label .req { color: var(--rose-gold-text); margin-left: 2px; }
     .contact-form input:not([type="checkbox"]), .contact-form select, .contact-form textarea { width: 100%; font-family: 'Jost', sans-serif; font-size: 14px; padding: 12px 14px; background: var(--white); border: 0.5px solid var(--blush-border); color: var(--mink); resize: none; outline: none; appearance: none; }
     .contact-form select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237A5C4E'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
-    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--rose-gold); }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--rose-gold-text); }
     .contact-form textarea { height: 90px; }
     .contact-form .service-options { display: flex; gap: 18px; padding: 12px 14px; background: var(--white); border: 0.5px solid var(--blush-border); }
     .contact-form .service-options label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 300; text-transform: none; letter-spacing: 0; color: var(--mink); cursor: pointer; }
-    .contact-form .service-options input { accent-color: var(--rose-gold); width: 15px; height: 15px; }
+    .contact-form .service-options input { accent-color: var(--rose-gold-text); width: 15px; height: 15px; }
     .form-success { display: none; background: var(--blush); border: 1px solid var(--blush-border); padding: 1.5rem; font-size: 14px; line-height: 1.7; color: var(--mink); }
     .form-success.visible { display: block; }
-    .form-success strong { color: var(--rose-gold); }
+    .form-success strong { color: var(--rose-gold-text); }
     footer { padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: var(--blush); border-top: 1px solid var(--blush-border); }
     .footer-logo { font-family: 'Marcellus', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink); font-weight: 400; }
     .footer-copy { font-size: 11px; color: var(--mink-light); }
     .footer-copy a { color: var(--mink-light); text-decoration: none; border-bottom: 1px solid var(--blush-border); }
-    .footer-copy a:hover, .footer-copy a:focus-visible { color: var(--rose-gold); border-color: var(--rose-gold); }
+    .footer-copy a:hover, .footer-copy a:focus-visible { color: var(--rose-gold-text); border-color: var(--rose-gold-text); }
 
     /* PORTFOLIO NACH BRAEUTEN */
     .braut-gitter { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 2.5rem; }
@@ -360,15 +372,15 @@
                          justify-content: space-between; gap: 1.5rem; padding: 1.35rem 0;
                          font-family: 'Marcellus', serif; font-size: 17px; color: var(--mink); }
     .faq-punkt summary::-webkit-details-marker { display: none; }
-    .faq-punkt summary:hover { color: var(--rose-gold); }
-    .faq-zeichen { flex-shrink: 0; color: var(--rose-gold); font-family: 'Jost', sans-serif;
+    .faq-punkt summary:hover { color: var(--rose-gold-text); }
+    .faq-zeichen { flex-shrink: 0; color: var(--rose-gold-text); font-family: 'Jost', sans-serif;
                    font-size: 20px; font-weight: 300; line-height: 1; transition: transform 0.25s ease; }
     .faq-punkt[open] .faq-zeichen { transform: rotate(45deg); }
     .faq-punkt p { font-size: 13.5px; line-height: 1.9; color: var(--mink-light); font-weight: 300;
                    max-width: 68ch; padding-bottom: 1.5rem; margin-top: -0.3rem; }
     .faq-punkt p strong { color: var(--mink); font-weight: 500; }
     .faq-nachsatz { margin-top: 2rem; font-size: 13px; color: var(--mink-light); font-weight: 300; }
-    .faq-nachsatz a { color: var(--rose-gold); }
+    .faq-nachsatz a { color: var(--rose-gold-text); }
 
     .cta-band { display: grid; grid-template-columns: 1fr 34%; align-items: stretch;
                 border-top: 1px solid var(--blush-border); border-bottom: 1px solid var(--blush-border);
@@ -376,11 +388,11 @@
     .cta-text { padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;
                 align-items: center; text-align: center; }
     .cta-eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
-                   color: var(--rose-gold); margin-bottom: 1.2rem; }
+                   color: var(--rose-gold-text); margin-bottom: 1.2rem; }
     .cta-titel { font-family: 'Marcellus', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 400;
                  color: var(--mink); text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.12;
                  margin-bottom: 1.1rem; }
-    .cta-titel em { font-style: normal; color: var(--rose-gold); }
+    .cta-titel em { font-style: normal; color: var(--rose-gold-text); }
     .cta-zeile { font-size: 14px; color: var(--mink-light); max-width: 40ch; margin-bottom: 1.8rem; }
     .cta-knopf { display: inline-block; background: var(--rose-gold); color: #fff; padding: 14px 36px;
                  font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; }
@@ -485,7 +497,7 @@
   /* ---------- Planer ---------- */
   .planer-lockruf { font-family: 'Marcellus', serif; font-size: 19px; color: var(--mink);
     text-align: center; margin: 2.2rem 0 0.1rem; font-weight: 400; }
-  .planer-lockruf em { font-style: normal; color: var(--rose-gold); }
+  .planer-lockruf em { font-style: normal; color: var(--rose-gold-text); }
   .planer-auf { width: 100%; margin-top: 12px; padding: 18px 20px; background: var(--rose-gold);
     border: 0.5px solid var(--rose-gold); font-family: 'Jost', sans-serif; font-size: 11px;
     letter-spacing: 0.25em; text-transform: uppercase; color: #fff; cursor: pointer;
@@ -502,7 +514,7 @@
 
   .planer-teil { border-top: 1px solid var(--blush-border); padding-top: 1.1rem; margin-top: 1.6rem; }
   .planer-teil:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
-  .planer-titel { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-gold);
+  .planer-titel { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-gold-text);
     font-weight: 500; margin-bottom: 0.9rem; }
 
   .wahl { display: flex; flex-direction: column; gap: 6px; }
@@ -514,7 +526,7 @@
   .wahl .kreis { width: 15px; height: 15px; border: 1px solid var(--blush-border); border-radius: 50%;
     display: block; position: relative; flex-shrink: 0; }
   .wahl input:checked ~ .kreis::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--rose-gold); }
-  .wahl label:has(input:checked) { border-color: var(--rose-gold); background: #fff; }
+  .wahl label:has(input:checked) { border-color: var(--rose-gold-text); background: #fff; }
   .wahl input:focus-visible ~ .kreis { outline: 2px solid var(--rose-gold); outline-offset: 2px; }
   .wahl .was { font-size: 14px; color: var(--mink); }
   .wahl .wieviel { font-family: 'Marcellus', serif; font-size: 15px; color: var(--mink); white-space: nowrap; }
@@ -526,7 +538,7 @@
   .zaehler { display: flex; align-items: center; gap: 2px; }
   .zaehler button { width: 30px; height: 30px; border: 0.5px solid var(--blush-border); background: var(--cream);
     color: var(--mink); font-size: 16px; line-height: 1; cursor: pointer; font-family: 'Jost', sans-serif; }
-  .zaehler button:hover:not([disabled]) { border-color: var(--rose-gold); color: var(--rose-gold); }
+  .zaehler button:hover:not([disabled]) { border-color: var(--rose-gold-text); color: var(--rose-gold-text); }
   .zaehler button[disabled] { opacity: .35; cursor: default; }
   .zaehler button:focus-visible { outline: 2px solid var(--rose-gold); outline-offset: 1px; }
   .zaehler .zahl { min-width: 26px; text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
@@ -536,8 +548,8 @@
   .planer-feld label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mink-light); }
   .planer-feld input, .planer-feld select { width: 100%; padding: 11px 12px; border: 0.5px solid var(--blush-border);
     background: var(--white); font-family: 'Jost', sans-serif; font-size: 14px; color: var(--mink); font-weight: 300; }
-  .planer-feld input:focus, .planer-feld select:focus { outline: 0; border-color: var(--rose-gold); }
-  .planer-feld .sagt { font-size: 11px; color: var(--rose-gold); min-height: 15px; }
+  .planer-feld input:focus, .planer-feld select:focus { outline: 0; border-color: var(--rose-gold-text); }
+  .planer-feld .sagt { font-size: 11px; color: var(--rose-gold-text); min-height: 15px; }
   .planer-feld .sagt.frag { color: var(--mink-light); }
 
   .planer-summe { margin-top: 1.6rem; border-top: 1px solid var(--blush-border); padding-top: 1.3rem; }
@@ -548,8 +560,8 @@
   .sz.gesamt { border-bottom: 0; border-top: 1px solid var(--blush-border); margin-top: 6px; padding-top: 14px; }
   .sz.gesamt .t { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mink-light); }
   .sz.gesamt .b { font-family: 'Marcellus', serif; font-size: 30px; color: var(--mink); }
-  .sz.teil { border-bottom: 0; padding: 3px 0; font-size: 12.5px; color: var(--rose-gold); }
-  .sz.teil .b { color: var(--rose-gold); }
+  .sz.teil { border-bottom: 0; padding: 3px 0; font-size: 12.5px; color: var(--rose-gold-text); }
+  .sz.teil .b { color: var(--rose-gold-text); }
 
   .planer-fuss { font-size: 11.5px; line-height: 1.7; color: var(--mink-light); font-weight: 300;
     margin-top: 1.1rem; padding-top: 1rem; border-top: 0.5px solid rgba(237,217,204,.55); }
@@ -575,6 +587,48 @@
   @media (prefers-reduced-motion: reduce) {
     .planer-auf, .planer-auf .pfeil, .wahl label { transition: none; }
   }
+
+  /* LESBARKEIT AUF DEM HANDY - 14.09.2026
+     Eine Braut hat gemeldet, der Text sei schwer zu lesen. Nachgemessen im echten
+     Browser bei 360, 390 und 430 px: acht Stellen fielen durch. Ursache war beides
+     zugleich - Schrift unter 12 px UND das helle Rosegold bei 2,5:1.
+     Die Farbe loest --rose-gold-text oben. Hier stehen die Groessen.
+     Absichtlich klein bleiben die reinen Zierzeilen: sie sind Schmuck, kein Lesetext,
+     und 10,5 px Versalien mit weitem Abstand liest man auch so. */
+  @media (max-width: 768px) {
+    /* Was eine Braut wirklich liest - nichts mehr unter 12 px */
+    .hero-desc, .about-text p, .faq-punkt p, .info-box-text { font-size: 14px; }
+    .philosophy-text, .service-desc { font-size: 13px; }
+    .service-split, .planer-auf, .planer-feld .sagt { font-size: 12.5px; }
+    .planer-fuss, .form-privacy, .footer-copy { font-size: 12.5px; }
+    .planer-intro, .planer-leer, .sz { font-size: 14px; }
+    .sz.teil { font-size: 13px; }
+    .sz.gesamt .t { font-size: 12px; }
+
+    /* Beschriftungen an Feldern und Knoepfen - hier tippt sie hin */
+    .planer-titel { font-size: 12px; }
+    .planer-feld label, .contact-form .field label { font-size: 12px; }
+    .planer-senden, .btn-primary, .btn-ghost, .cta-knopf { font-size: 12px; }
+    .contact-info strong { font-size: 12px; }
+
+    /* Zierzeilen: klein, aber nicht winzig */
+    .hero-tag, .section-eyebrow, .stat-label, .service-category-label,
+    .cta-eyebrow, .info-box-title, .testimonial-author, .braut-zahl,
+    .pillar-title, .pillar-text { font-size: 10.5px; }
+    .portfolio-label, .ba-tag { font-size: 10px; }
+
+    /* Menue: etwas groesser, dafuer enger gesetzt - sonst laeuft es hinaus */
+    .nav-links a { font-size: 9.5px; letter-spacing: 0.08em; }
+    .nav-links { gap: 0.8rem; }
+  }
+  /* Auf 360 px wird es eng. Die niederlaendische Leiste ist laenger ("Over Anja"
+     gegen "About") und lief bei 360 px um 15 px hinaus - gemessen, nicht geschaetzt.
+     Beide Seiten bekommen dieselben Werte, damit sie nie auseinanderlaufen. */
+  @media (max-width: 400px) {
+    nav { padding: 1rem 0.7rem; }
+    .nav-links { gap: 0.3rem; }
+    .nav-logo { font-size: 10.5px; letter-spacing: 0.08em; }
+  }
 </style>
 </head>
 <body>
@@ -593,8 +647,8 @@
 <section class="hero" id="hero">
   <div class="hero-left">
     <span class="hero-tag">Bridal Makeup Amsterdam · Since 2014</span>
-    <h1>Your natural <em>glow</em> perfected</h1>
-    <p class="hero-desc">Professional natural glow bridal hair and makeup in Amsterdam — I come to you, wherever you are.</p>
+    <h1>Bridal Makeup Artist<br /><em>in Amsterdam</em></h1>
+    <p class="hero-desc">Your natural glow, perfected — professional bridal hair and makeup, at home or on location. I come to you, wherever you are.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn-primary">Book a trial</a>
       <a href="#services" class="btn-ghost">View services</a>
