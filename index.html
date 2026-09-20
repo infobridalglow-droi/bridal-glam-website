@@ -103,6 +103,16 @@
             { "@type": "Offer", "priceCurrency": "EUR", "price": "85", "itemOffered": { "@type": "Service", "name": "Hair (per person)" } },
             { "@type": "Offer", "priceCurrency": "EUR", "price": "150", "itemOffered": { "@type": "Service", "name": "Hair & Makeup (per person)" } }
           ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Without a bride — guests, events & occasions",
+          "itemListElement": [
+            { "@type": "Offer", "priceCurrency": "EUR", "price": "95", "itemOffered": { "@type": "Service", "name": "Natural Makeup" } },
+            { "@type": "Offer", "priceCurrency": "EUR", "price": "110", "itemOffered": { "@type": "Service", "name": "Glow Makeup" } },
+            { "@type": "Offer", "priceCurrency": "EUR", "price": "130", "itemOffered": { "@type": "Service", "name": "Event Makeup" } },
+            { "@type": "Offer", "priceCurrency": "EUR", "price": "75", "itemOffered": { "@type": "Service", "name": "Hairstyling (added to any makeup)" } }
+          ]
         }
       ]
     }
@@ -903,6 +913,44 @@
       <div class="service-price-col"><p class="service-total">&euro;150 p.p.</p></div>
     </div>
 
+    <!-- Am 20.09.2026 dazugekommen. Eine Hochzeitsgaestin hatte den Gastpreis von
+         85 Euro fuer sich selbst gelesen - der gilt aber nur, wenn Anja ohnehin
+         fuer die Braut da ist. Bewusst klein gehalten und unter dem Brautbereich:
+         Anja ist Brautstylistin, das soll die Seite auch weiter sagen. -->
+    <p class="service-category-label">Without a bride — guests, events &amp; occasions</p>
+
+    <div class="service-item">
+      <div>
+        <p class="service-name">Natural Makeup</p>
+        <p class="service-desc">Fresh and even, so you still look like yourself. For a wedding you are attending, a christening, a dinner.</p>
+      </div>
+      <div class="service-price-col"><p class="service-total">&euro;95</p></div>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <p class="service-name">Glow Makeup</p>
+        <p class="service-desc">My signature: skin that looks lit from within, and stays that way all evening.</p>
+      </div>
+      <div class="service-price-col"><p class="service-total">&euro;110</p></div>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <p class="service-name">Event Makeup</p>
+        <p class="service-desc">Gala, celebration or photographs — full intensity, built to hold from the first drink to the last dance.</p>
+      </div>
+      <div class="service-price-col"><p class="service-total">&euro;130</p></div>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <p class="service-name">Hair</p>
+        <p class="service-desc">Soft waves, a relaxed half-up or a pinned boho updo. Added to any of the three above.</p>
+      </div>
+      <div class="service-price-col"><p class="service-total">+&euro;75</p></div>
+    </div>
+
   </div>
 
   <div class="info-boxes">
@@ -917,6 +965,12 @@
       <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2M9 17h6"/></svg>
       <p class="info-box-title">Travel</p>
       <p class="info-box-text">Anja comes to you — at home, hotel or venue. Travel is charged per visit, for the trial and the wedding day: <strong>&euro;35</strong> within Amsterdam, <strong>&euro;60</strong> up to 25 km, <strong>&euro;95</strong> up to 50 km, <strong>&euro;160</strong> up to 100 km. Beyond 100 km on request. <strong>Parking is charged at cost.</strong></p>
+    </div>
+
+    <div class="info-box">
+      <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <p class="info-box-title">Guests &amp; events</p>
+      <p class="info-box-text">Are you a guest and your bride has booked me? Then your styling is <strong>&euro;85</strong> — I am there anyway. The prices above apply when I come <strong>just for you</strong>. Brides come first: Saturdays in the season are usually held for weddings, so <strong>evenings and Sundays</strong> are easiest. Ask me and I will check.</p>
     </div>
 
     <div class="info-box">
@@ -1007,6 +1061,63 @@
     </p>
 
     <button class="planer-senden" id="p-senden" type="button" disabled>Add this to your enquiry</button>
+  </div>
+
+  <!-- Zweiter Rechner, am 20.09.2026 dazugekommen. Anja: "Gaeste, die kein
+       Brautgast sind, braeuchten ja auch eine Auswahl, dass sie das kalkulieren
+       koennen." Bewusst getrennt vom Brautrechner - dort geht es um Probetermin,
+       zwei Anfahrten und Gaeste, hier um einen einzigen Besuch. -->
+  <p class="planer-lockruf">Not a bride, but you want to <em>feel like one</em>?</p>
+  <button class="planer-auf" id="gast-auf" type="button" aria-expanded="false" aria-controls="gast-planer">
+    <span>Plan your styling</span>
+    <svg class="pfeil" width="11" height="7" viewBox="0 0 11 7" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4.5 4.5L10 1"/></svg>
+  </button>
+
+  <div class="planer" id="gast-planer">
+    <p class="planer-intro">For a wedding you are attending, a gala or any other occasion &mdash; when I come just for you. One visit, no trial session. Everything is shown openly, travel and surcharges included.</p>
+
+    <div class="planer-teil">
+      <p class="planer-titel">Your makeup</p>
+      <div class="wahl" id="w-gast">
+        <label><input type="radio" name="gastwahl" value="e_natural"><span class="kreis"></span><span class="was">Natural Makeup</span><span class="wieviel">&euro;95</span></label>
+        <label><input type="radio" name="gastwahl" value="e_glow"><span class="kreis"></span><span class="was">Glow Makeup</span><span class="wieviel">&euro;110</span></label>
+        <label><input type="radio" name="gastwahl" value="e_event"><span class="kreis"></span><span class="was">Event Makeup</span><span class="wieviel">&euro;130</span></label>
+      </div>
+    </div>
+
+    <div class="planer-teil">
+      <p class="planer-titel">Hair and how many of you</p>
+      <div class="gast"><span class="was">Hair as well</span><span class="wieviel">+&euro;75 each</span><span class="zaehler" data-e="e_haar"><button type="button" data-s="-1" aria-label="No hair">&minus;</button><span class="zahl">0</span><button type="button" data-s="1" aria-label="With hair">+</button></span></div>
+      <div class="gast"><span class="was">People</span><span class="wieviel">makeup each</span><span class="zaehler" data-e="e_leute"><button type="button" data-s="-1" aria-label="One fewer">&minus;</button><span class="zahl">1</span><button type="button" data-s="1" aria-label="One more">+</button></span></div>
+    </div>
+
+    <div class="planer-teil">
+      <p class="planer-titel">Where and when</p>
+      <div class="planer-felder">
+        <div class="planer-feld">
+          <label for="g-plz">Postcode</label>
+          <input type="text" id="g-plz" inputmode="numeric" maxlength="7" placeholder="e.g. 1017" autocomplete="postal-code">
+          <span class="sagt frag" id="g-zone">For your travel costs</span>
+        </div>
+        <div class="planer-feld">
+          <label for="g-datum">Date</label>
+          <input type="date" id="g-datum">
+          <span class="sagt frag" id="g-tag">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="planer-summe" id="g-summe">
+      <p class="planer-leer">Choose your makeup above and it will add up here.</p>
+    </div>
+
+    <p class="planer-fuss">
+      <strong>Included:</strong> products, skin preparation and travel to you.
+      <strong>Added later:</strong> parking, at cost, only where it applies.
+      All prices are final &mdash; what you see is what you pay.
+    </p>
+
+    <button class="planer-senden" id="g-senden" type="button" disabled>Add this to your enquiry</button>
   </div>
 </section>
 
@@ -1149,8 +1260,25 @@
           <textarea name="message" placeholder="Tell me about your day…"></textarea>
         </div>
 
+        <!-- Anjas Idee vom 20.09.2026: ohne diese Zeile weiss niemand, welcher
+             Kanal wirklich Braeute bringt. Freiwillig und ganz am Schluss, damit
+             es niemanden vom Absenden abhaelt. Die Werte sind auf beiden
+             Sprachfassungen gleich, sonst laesst sich nichts zusammenzaehlen. -->
+        <div class="field">
+          <label>How did you find me? <span class="opt">(optional)</span></label>
+          <select name="gefunden_ueber">
+            <option value="">—</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Google">Google</option>
+            <option value="Friend or another bride">A friend or another bride</option>
+            <option value="Photographer or venue">My photographer or venue</option>
+            <option value="Wedding website">A wedding website</option>
+            <option value="Somewhere else">Somewhere else</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn-primary" style="align-self:flex-start;">Send enquiry</button>
-        <p class="form-privacy">Your details are used only to answer you. How I handle them is described in my <a href="/privacy/">privacy statement</a>.</p>
+        <p class="form-privacy">Your details are used only to answer you, and the last question simply helps me understand where brides find me. How I handle them is described in my <a href="/privacy/">privacy statement</a>.</p>
       </form>
     </div>
   </div>
@@ -1430,7 +1558,9 @@ initBrautGalerie();
   document.querySelectorAll('#w-braut input').forEach(function(i){
     i.addEventListener('change', function(){ stand.braut = i.value; male(); });
   });
-  document.querySelectorAll('.zaehler').forEach(function(z){
+  // Nur die Zaehler IM Brautrechner. Seit es einen zweiten Rechner gibt, wuerde
+  // '.zaehler' auch dessen Knoepfe erwischen und beide durcheinanderbringen.
+  document.querySelectorAll('#planer .zaehler').forEach(function(z){
     var k = z.getAttribute('data-g');
     z.querySelectorAll('button').forEach(function(b){
       b.onclick = function(){
@@ -1491,6 +1621,137 @@ initBrautGalerie();
     document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     setTimeout(function(){ var n=f.querySelector('[name="name"]'); if(n) n.focus(); }, 700);
   };
+
+  // ---- Zweiter Rechner: ohne Braut -------------------------------------
+  // Liegt bewusst in derselben Klammer, damit er zoneVon, feiertag, geld und
+  // ZONE mitbenutzt. Zwei Kopien derselben Postleitzahl-Tabelle waeren die
+  // sichere Art, sie irgendwann auseinanderlaufen zu lassen.
+  (function(){
+    var gAuf = document.getElementById('gast-auf');
+    if(!gAuf) return;
+    var gFeld = document.getElementById('gast-planer');
+    var E = { e_natural:{n:'Natural Makeup', p:95}, e_glow:{n:'Glow Makeup', p:110},
+              e_event:{n:'Event Makeup', p:130} };
+    var HAAR = 75;
+    var g = { was:null, haar:0, leute:1, plz:'', datum:'' };
+
+    function gRechne(){
+      var zeilen=[], leistungen=0;
+      if(g.was){
+        var e=E[g.was], s=e.p*g.leute;
+        leistungen+=s;
+        zeilen.push([e.n+' — '+g.leute+(g.leute===1?' person':' people'), s]);
+      }
+      var haar = Math.min(g.haar, g.leute);      // nie mehr Haare als Koepfe
+      if(haar && g.was){
+        leistungen += HAAR*haar;
+        zeilen.push(['Hair — '+haar+(haar===1?' person':' people'), HAAR*haar]);
+      }
+      var tag='', satz=0;
+      if(g.datum){
+        var d=new Date(g.datum+'T00:00:00Z');
+        if(!isNaN(d.getTime())){
+          if(feiertag(d)){ tag='Public holiday'; satz=0.50; }
+          else if(d.getUTCDay()===0){ tag='Sunday'; satz=0.25; }
+        }
+      }
+      var zuschlag = leistungen*satz;
+      if(satz) zeilen.push([tag+' surcharge, +'+(satz*100)+'%', zuschlag]);
+
+      // Nur ein Besuch, also die Anfahrt einfach - nicht doppelt wie bei der Braut.
+      var z = g.plz ? zoneVon(g.plz) : null, anfahrt=0, weit=false;
+      if(z==='weit'){ weit=true; }
+      else if(z && leistungen){ anfahrt = ZONE[z].p; zeilen.push(['Travel, '+ZONE[z].n, anfahrt]); }
+
+      return { zeilen:zeilen, gesamt:leistungen+zuschlag+anfahrt, leistungen:leistungen,
+               weit:weit, tag:tag, zone:z };
+    }
+
+    function gMale(){
+      var r = gRechne();
+      var zone = document.getElementById('g-zone');
+      if(!g.plz){ zone.textContent='For your travel costs'; zone.className='sagt frag'; }
+      else if(r.weit){ zone.textContent='Further away — on request'; zone.className='sagt'; }
+      else if(r.zone){ zone.textContent=ZONE[r.zone].n+' — €'+ZONE[r.zone].p; zone.className='sagt'; }
+      else { zone.textContent='Four digits, please'; zone.className='sagt frag'; }
+
+      var tag = document.getElementById('g-tag');
+      tag.textContent = r.tag ? r.tag+' — surcharge applies' : ' ';
+      tag.className = r.tag ? 'sagt' : 'sagt frag';
+
+      var kasten = document.getElementById('g-summe');
+      if(!r.leistungen){
+        kasten.innerHTML = '<p class="planer-leer">Choose your makeup above and it will add up here.</p>';
+        document.getElementById('g-senden').disabled = true;
+        return;
+      }
+      var h = r.zeilen.map(function(z){
+        return '<div class="summe-zeile"><span>'+z[0]+'</span><span>'+geld(z[1])+'</span></div>';
+      }).join('');
+      h += '<div class="summe-zeile summe-gesamt"><span>Your styling</span><span>'+geld(r.gesamt)+'</span></div>';
+      if(r.weit || !g.plz) h += '<p class="planer-leer" style="margin-top:.7rem">Travel still to be agreed.</p>';
+      kasten.innerHTML = h;
+      document.getElementById('g-senden').disabled = false;
+    }
+
+    gAuf.onclick = function(){
+      var offen = gFeld.classList.toggle('auf');
+      gAuf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+      if(offen) setTimeout(function(){ gFeld.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 60);
+    };
+    document.querySelectorAll('#w-gast input').forEach(function(i){
+      i.addEventListener('change', function(){ g.was = i.value; gMale(); });
+    });
+    document.querySelectorAll('[data-e]').forEach(function(z){
+      var k = z.getAttribute('data-e')==='e_haar' ? 'haar' : 'leute';
+      var min = k==='leute' ? 1 : 0;
+      z.querySelectorAll('button').forEach(function(b){
+        b.onclick = function(){
+          g[k] = Math.max(min, Math.min(8, g[k] + Number(b.getAttribute('data-s'))));
+          z.querySelector('.zahl').textContent = g[k];
+          z.querySelector('[data-s="-1"]').disabled = g[k]===min;
+          gMale();
+        };
+      });
+      z.querySelector('[data-s="-1"]').disabled = true;
+    });
+    document.getElementById('g-plz').addEventListener('input', function(e){ g.plz=e.target.value; gMale(); });
+    document.getElementById('g-datum').addEventListener('change', function(e){ g.datum=e.target.value; gMale(); });
+
+    document.getElementById('g-senden').onclick = function(){
+      var r = gRechne(), f = document.getElementById('contact-form');
+      if(!f) return;
+      var setz = function(n,v){ var el=f.querySelector('[name="'+n+'"]'); if(el && v) el.value=v; };
+      if(g.datum){
+        var d=new Date(g.datum+'T00:00:00Z');
+        setz('wedding_date', d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}));
+      }
+      if(g.plz) setz('location', g.plz);
+      var mk = f.querySelector('[name="service_makeup"]'), ha = f.querySelector('[name="service_hair"]');
+      if(mk) mk.checked = !!g.was;
+      if(ha) ha.checked = Math.min(g.haar, g.leute) > 0;
+
+      var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
+      txt += '\n\nEstimated total: '+geld(r.gesamt);
+      if(r.weit || !g.plz) txt += '\nTravel still to be agreed.';
+
+      var msg = f.querySelector('[name="message"]');
+      if(msg){
+        var vor = msg.value.trim();
+        msg.value = 'Not a wedding of my own — this is what I put together on your site:\n\n'
+                  + txt + (vor ? '\n\n' + vor : '\n\n');
+      }
+      var verborgen = f.querySelector('[name="estimate"]');
+      if(!verborgen){
+        verborgen=document.createElement('input');
+        verborgen.type='hidden'; verborgen.name='estimate';
+        f.appendChild(verborgen);
+      }
+      verborgen.value = txt.replace(/\n/g,' | ');
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){ var n=f.querySelector('[name="name"]'); if(n) n.focus(); }, 700);
+    };
+  })();
 })();
 </script>
 </body>
