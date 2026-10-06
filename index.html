@@ -502,6 +502,24 @@
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .making-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* IN THEIR OWN WORDS - drei echte Google-Bewertungen, Wortlaut unveraendert */
+    .stimmen { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.2rem; }
+    .stimme { background: var(--white); border: 0.5px solid var(--blush-border); border-left: 3px solid var(--rose-gold); padding: 2rem 2.2rem; display: flex; flex-direction: column; gap: 1.3rem; margin: 0; }
+    .stimme.breit { grid-column: 1 / -1; }
+    .stimme blockquote { margin: 0; font-family: 'Marcellus', serif; font-size: 19px; line-height: 1.65; color: var(--mink); }
+    .stimme.kurz blockquote { font-size: 22px; }
+    .stimme figcaption { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
+    .stimme figcaption img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: 0 0 56px; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--blush-border); }
+    .stimme-wer { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-gold-text); font-weight: 500; line-height: 1.6; }
+    .stimme-wer span { display: block; color: var(--mink-light); font-weight: 300; letter-spacing: 0.08em; }
+    .stimmen-quelle { margin-top: 1.8rem; font-size: 13px; color: var(--mink-light); font-weight: 300; }
+    .stimmen-quelle a { color: var(--rose-gold-text); }
+    @media (max-width: 760px) {
+      .stimmen { grid-template-columns: 1fr; }
+      .stimme { padding: 1.5rem; }
+      .stimme blockquote, .stimme.kurz blockquote { font-size: 16px; }
+    }
   </style>
 <style>
   /* ---------- Planer ---------- */
@@ -1171,6 +1189,27 @@
   </div>
 
   <p class="faq-nachsatz">Something not answered here? <a href="#contact">Write to me</a> &mdash; I read every message myself.</p>
+</section>
+
+<section class="section" id="stimmen">
+  <p class="section-eyebrow">Kind words</p>
+  <h2 class="section-title">In their own <em>words</em></h2>
+  <p class="section-lead">Three women I styled, in what they wrote on Google afterwards.</p>
+  <div class="stimmen">
+    <figure class="stimme breit">
+      <blockquote>&ldquo;I couldn&rsquo;t have wished for a better makeup artist for my 🏳️&zwj;🌈 wedding! &hellip; She noticed straight away how nervous I was. Anja was very empathetic, and with her calm, warm and at the same time funny way she managed to settle me. We laughed a lot, and from the very beginning I felt I was in the best hands.&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="media/stimme-erika.jpg" alt="Erika on her wedding day" width="56" height="56" /><span class="stimme-wer">Erika &middot; Bride<span>Wedding, June 2025 &middot; translated from German</span></span></figcaption>
+    </figure>
+    <figure class="stimme kurz">
+      <blockquote>&ldquo;All day long I felt beautiful &mdash; simply like the best version of myself.&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="media/stimme-nici.jpg" alt="Nici on her wedding day" width="56" height="56" /><span class="stimme-wer">Nici &middot; Bride<span>Wedding, June 2025 &middot; translated from German</span></span></figcaption>
+    </figure>
+    <figure class="stimme">
+      <blockquote>&ldquo;Several make-overs for different events. Lots of attention to detail, to my wishes and to what the makeup was meant to do.&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="media/stimme-mahra.jpg" alt="Mahra after her make-over" width="56" height="56" /><span class="stimme-wer">Mahra v. d. B. &middot; Events<span>translated from Dutch</span></span></figcaption>
+    </figure>
+  </div>
+  <p class="stimmen-quelle">Every word here is from a real Google review. <a href="https://www.google.com/maps?cid=13464019171565134447" target="_blank" rel="noopener">Read them all on Google</a></p>
 </section>
 
 

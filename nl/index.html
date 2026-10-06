@@ -491,6 +491,24 @@
       .portfolio-grid { grid-template-columns: 1fr 1fr; }
       .making-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* IN THEIR OWN WORDS - drei echte Google-Bewertungen, Wortlaut unveraendert */
+    .stimmen { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2.2rem; }
+    .stimme { background: var(--white); border: 0.5px solid var(--blush-border); border-left: 3px solid var(--rose-gold); padding: 2rem 2.2rem; display: flex; flex-direction: column; gap: 1.3rem; margin: 0; }
+    .stimme.breit { grid-column: 1 / -1; }
+    .stimme blockquote { margin: 0; font-family: 'Marcellus', serif; font-size: 19px; line-height: 1.65; color: var(--mink); }
+    .stimme.kurz blockquote { font-size: 22px; }
+    .stimme figcaption { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
+    .stimme figcaption img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: 0 0 56px; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--blush-border); }
+    .stimme-wer { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-gold-text); font-weight: 500; line-height: 1.6; }
+    .stimme-wer span { display: block; color: var(--mink-light); font-weight: 300; letter-spacing: 0.08em; }
+    .stimmen-quelle { margin-top: 1.8rem; font-size: 13px; color: var(--mink-light); font-weight: 300; }
+    .stimmen-quelle a { color: var(--rose-gold-text); }
+    @media (max-width: 760px) {
+      .stimmen { grid-template-columns: 1fr; }
+      .stimme { padding: 1.5rem; }
+      .stimme blockquote, .stimme.kurz blockquote { font-size: 16px; }
+    }
   </style>
 <style>
   /* ---------- Planer ---------- */
@@ -1159,6 +1177,27 @@
   </div>
 
   <p class="faq-nachsatz">Staat je vraag er niet bij? <a href="#contact">Schrijf me gerust</a> &mdash; ik lees elk bericht zelf.</p>
+</section>
+
+<section class="section" id="stimmen">
+  <p class="section-eyebrow">Lieve woorden</p>
+  <h2 class="section-title">In hun eigen <em>woorden</em></h2>
+  <p class="section-lead">Drie vrouwen die ik heb gestyled, met wat ze daarna op Google schreven.</p>
+  <div class="stimmen">
+    <figure class="stimme breit">
+      <blockquote>&ldquo;Ik had me voor mijn 🏳️&zwj;🌈-bruiloft geen betere make-upartiest kunnen wensen! &hellip; Ze merkte meteen hoe zenuwachtig ik was. Anja was heel empathisch en wist me met haar rustige, hartelijke en tegelijk humorvolle manier gerust te stellen. We hebben veel gelachen en ik had vanaf het begin het gevoel dat ik in de beste handen was.&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="../media/stimme-erika.jpg" alt="Erika op haar trouwdag" width="56" height="56" /><span class="stimme-wer">Erika &middot; Bruid<span>Bruiloft, juni 2025 &middot; vertaald uit het Duits</span></span></figcaption>
+    </figure>
+    <figure class="stimme kurz">
+      <blockquote>&ldquo;Ik voelde me de hele dag prachtig &mdash; gewoon de beste versie van mezelf.&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="../media/stimme-nici.jpg" alt="Nici op haar trouwdag" width="56" height="56" /><span class="stimme-wer">Nici &middot; Bruid<span>Bruiloft, juni 2025 &middot; vertaald uit het Duits</span></span></figcaption>
+    </figure>
+    <figure class="stimme">
+      <blockquote>&ldquo;Meerdere make-overs gehad voor verschillende events. Veel aandacht voor details, mijn wensen en het doel van de make up. Het gebruik van professionele producten maken dat je hier heel veel plezier van hebt ❤️&rdquo;</blockquote>
+      <figcaption><img loading="lazy" src="../media/stimme-mahra.jpg" alt="Mahra na haar make-over" width="56" height="56" /><span class="stimme-wer">Mahra v. d. B. &middot; Events<span>in het Nederlands geschreven</span></span></figcaption>
+    </figure>
+  </div>
+  <p class="stimmen-quelle">Elk woord hier komt uit een echte Google-review. <a href="https://www.google.com/maps?cid=13464019171565134447" target="_blank" rel="noopener">Lees ze allemaal op Google</a></p>
 </section>
 
 
