@@ -132,7 +132,7 @@
         "name": "Do you come to me on the wedding day?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — always. I come to you at home, at your hotel or at the venue, so you never have to travel on your own morning. Travel is charged per visit, for the trial and for the wedding day: €50 within Amsterdam, €60 up to 25 km, €95 up to 50 km, €160 up to 100 km. Beyond 100 km on request, and parking at cost where it applies. Tell me your address and your venue and I’ll put the exact amount in your quotation — never more than the figures above."
+          "text": "Yes — always. I come to you at home, at your hotel or at the venue, so you never have to travel on your own morning. Travel is charged for each visit, your trial and your wedding day, and it depends on how far I come. Add your postcode to the planner on the website and it is worked out for you — the same amount goes in your quotation, and parking, where the venue charges for it, is estimated in there too. Nothing is added afterwards."
         }
       },
       {
@@ -1033,7 +1033,7 @@
     <div class="info-box">
       <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2M9 17h6"/></svg>
       <p class="info-box-title">Travel</p>
-      <p class="info-box-text">Anja comes to you — at home, hotel or venue. Travel is charged per visit, for the trial and the wedding day: <strong>&euro;50</strong> within Amsterdam, <strong>&euro;60</strong> up to 25 km, <strong>&euro;95</strong> up to 50 km, <strong>&euro;160</strong> up to 100 km. Beyond 100 km on request. Tell me your address and your venue and I’ll put the exact amount in your quotation — <strong>never more than above.</strong> <strong>Parking is charged at cost.</strong></p>
+      <p class="info-box-text">Anja comes to you — at home, hotel or venue. Travel is charged for each visit: your trial and your wedding day. <strong>Add your postcode to the planner below and your travel is worked out for you</strong> — the same amount goes in your quotation, so there is nothing to add later. Parking, where the venue charges for it, is estimated in your quotation too.</p>
     </div>
 
     <div class="info-box">
@@ -1201,7 +1201,7 @@
   <div class="faq-liste">
     <details class="faq-punkt">
       <summary>Do you come to me on the wedding day?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
-      <p>Yes — always. I come to you at home, at your hotel or at the venue, so you never have to travel on your own morning. Travel is charged per visit, for the trial and for the wedding day: <strong>&euro;50 within Amsterdam, &euro;60 up to 25 km, &euro;95 up to 50 km, &euro;160 up to 100 km</strong>. Beyond 100 km on request, and parking at cost where it applies. Tell me your address and your venue and I’ll put the exact amount in your quotation — never more than the figures above.</p>
+      <p>Yes — always. I come to you at home, at your hotel or at the venue, so you never have to travel on your own morning. Travel is charged for each visit, your trial and your wedding day, and it depends on how far I come. <strong>Add your postcode to the planner above and it is worked out for you</strong> — the same amount goes in your quotation, and parking, where the venue charges for it, is estimated in there too. Nothing is added afterwards.</p>
     </details>
     <details class="faq-punkt">
       <summary>Is a trial session included in the price?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
@@ -1519,12 +1519,16 @@ initBrautGalerie();
     b_full:{n:'The Full Bridal', p:590}, b_morning:{n:'The Full Bridal · By Your Side', p:890},
     g_makeup:{n:'Makeup', p:85, pro:1}, g_hair:{n:'Hair', p:85, pro:1}, g_kombi:{n:'Hair & Makeup', p:150, pro:1}
   };
-  var ZONE = { ams:{n:'within Amsterdam', p:50}, z25:{n:'up to 25 km', p:60}, z50:{n:'up to 50 km', p:95}, z100:{n:'up to 100 km', p:160} };
+  var ZONE = { ams:{n:'within Amsterdam', p:55}, amsR:{n:'outer Amsterdam', p:70}, z25:{n:'up to 25 km', p:75}, z50:{n:'up to 50 km', p:95}, z100:{n:'up to 100 km', p:160} };
   var FRUEH = { f7:{n:'Early start, before 7:00', p:45}, f6:{n:'Early start, before 6:00', p:85} };
 
   // Postleitzahl -> Zone. Die ersten vier Ziffern entscheiden.
   var BEREICHE = [
-    ['ams', [[1000,1109]]],
+    ['ams',  [[1000,1025],[1029,1085],[1088,1099]]],
+    // Rand: Durgerdam und die Waterland-Doerfer, IJburg, Zuidoost/Bijlmer.
+    // Gemessen 20.10.2026: Bijlmer 26 EUR je Strecke, Durgerdam 23 - gegen
+    // 15-20 EUR in der uebrigen Stadt. Siehe Entscheidungsbuch 20.10.
+    ['amsR', [[1026,1028],[1086,1087],[1100,1109]]],
     ['z25', [[1110,1199],[1380,1399],[1400,1449],[1500,1549],[2000,2059],[2100,2159]]],
     ['z50', [[1200,1279],[1300,1379],[1450,1489],[1550,1599],[1600,1699],[1700,1779],[1800,1829],
              [1900,1999],[2060,2099],[2160,2199],[2200,2299],[2300,2399],[3500,3599],[3700,3799]]],
