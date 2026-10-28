@@ -1180,6 +1180,15 @@
           <input type="date" id="g-datum">
           <span class="sagt frag" id="g-tag">&nbsp;</span>
         </div>
+        <div class="planer-feld">
+          <label for="g-zeit">Starttijd</label>
+          <select id="g-zeit">
+            <option value="normal">Vanaf 7:00</option>
+            <option value="f7">Tussen 6:00 en 7:00</option>
+            <option value="f6">Voor 6:00</option>
+          </select>
+          <span class="sagt frag" id="g-frueh">&nbsp;</span>
+        </div>
       </div>
     </div>
 
@@ -1777,7 +1786,7 @@ initBrautGalerie();
     var E = { e_natural:{n:'Natural Makeup', p:99}, e_glow:{n:'Glow Makeup', p:110},
               e_event:{n:'Event Makeup', p:130} };
     var HAAR = 85;
-    var g = { was:null, haar:0, leute:1, plz:'', datum:'' };
+    var g = { was:null, haar:0, leute:1, plz:'', datum:'', zeit:'normal' };
 
     function gRechne(){
       var zeilen=[], leistungen=0;
@@ -1802,12 +1811,17 @@ initBrautGalerie();
       var zuschlag = leistungen*satz;
       if(satz) zeilen.push([tag+'toeslag, +'+(satz*100)+'%', zuschlag]);
 
+      // Frueher Start gilt hier genauso wie bei der Braut - die Buchungs-App
+      // rechnet ihn ohnehin bei jeder Buchung.
+      var fr = FRUEH[g.zeit], frueh = (fr && leistungen) ? fr.p : 0;
+      if(frueh) zeilen.push([fr.n, frueh]);
+
       // Nur ein Besuch, also die Anfahrt einfach - nicht doppelt wie bei der Braut.
       var z = g.plz ? zoneVon(g.plz) : null, anfahrt=0, weit=false;
       if(z==='weit'){ weit=true; }
       else if(z && leistungen){ anfahrt = ZONE[z].p; zeilen.push(['Reiskosten, '+ZONE[z].n, anfahrt]); }
 
-      return { zeilen:zeilen, gesamt:leistungen+zuschlag+anfahrt, leistungen:leistungen,
+      return { zeilen:zeilen, gesamt:leistungen+zuschlag+frueh+anfahrt, leistungen:leistungen,
                weit:weit, tag:tag, zone:z };
     }
 
@@ -1822,6 +1836,10 @@ initBrautGalerie();
       var tag = document.getElementById('g-tag');
       tag.textContent = r.tag ? r.tag+' — toeslag van toepassing' : ' ';
       tag.className = r.tag ? 'sagt' : 'sagt frag';
+
+      var gf = document.getElementById('g-frueh');
+      gf.innerHTML = FRUEH[g.zeit] ? ('+'+geld(FRUEH[g.zeit].p)) : '&nbsp;';
+      gf.className = FRUEH[g.zeit] ? 'sagt' : 'sagt frag';
 
       var kasten = document.getElementById('g-summe');
       if(!r.leistungen){
@@ -1861,6 +1879,7 @@ initBrautGalerie();
     });
     document.getElementById('g-plz').addEventListener('input', function(e){ g.plz=e.target.value; gMale(); });
     document.getElementById('g-datum').addEventListener('change', function(e){ g.datum=e.target.value; gMale(); });
+    document.getElementById('g-zeit').addEventListener('change', function(e){ g.zeit=e.target.value; gMale(); });
 
 
     waSpiegel('g-senden','g-wa');
@@ -1872,6 +1891,7 @@ initBrautGalerie();
         kopf.push('Date: '+d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}));
       }
       if(g.plz) kopf.push('Postcode: '+g.plz);
+      if(g.zeit!=='normal') kopf.push('Start: '+(g.zeit==='f6' ? 'Before 6:00' : 'Between 6:00 and 7:00'));
       var txt = r.zeilen.map(function(z){ return '• '+waEn(z[0])+' — '+geld(z[1]); }).join('\n');
       txt += '\n\n'+'Estimated total: '+geld(r.gesamt);
       if(r.weit || !g.plz) txt += '\nTravel still to be agreed.';
@@ -1887,6 +1907,7 @@ initBrautGalerie();
         setz('wedding_date', d.toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}));
       }
       if(g.plz) setz('location', g.plz);
+      if(g.zeit!=='normal') setz('time', g.zeit==='f6' ? 'Before 6:00' : 'Between 6:00 and 7:00');
       var mk = f.querySelector('[name="service_makeup"]'), ha = f.querySelector('[name="service_hair"]');
       if(mk) mk.checked = !!g.was;
       if(ha) ha.checked = Math.min(g.haar, g.leute) > 0;
