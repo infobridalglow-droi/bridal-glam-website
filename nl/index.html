@@ -119,7 +119,7 @@
         "name": "Kom je op de trouwdag naar mij toe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja — altijd. Ik kom naar je toe: thuis, in je hotel of op de locatie, zodat jij op je eigen ochtend nergens naartoe hoeft. Reiskosten worden per bezoek berekend, je proefsessie en je trouwdag, en ze hangen af van hoe ver ik kom. Vul je postcode in bij de rekenhulp op de website, dan wordt het voor je uitgerekend — hetzelfde bedrag staat in je offerte, en parkeerkosten, als de locatie die rekent, worden daarin geschat. Er komt achteraf niets bij."
+          "text": "Ja — altijd. Ik kom naar je toe: thuis, in je hotel of op de locatie, zodat jij op je eigen ochtend nergens naartoe hoeft. Reiskosten worden per bezoek berekend, je proefsessie en je trouwdag, en ze hangen af van hoe ver ik kom. Vul je postcode in bij de rekenhulp op de website voor een schatting. Zodra ik de locatie weet, bevestig ik de reiskosten in je offerte, samen met parkeerkosten als de locatie die rekent — en die offerte is de prijs die je betaalt."
         }
       },
       {
@@ -1042,7 +1042,7 @@
     <div class="info-box">
       <svg class="info-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2M9 17h6"/></svg>
       <p class="info-box-title">Reiskosten</p>
-      <p class="info-box-text">Anja komt naar jou toe — thuis, in het hotel of op locatie. Reiskosten worden per bezoek berekend: je proefsessie en je trouwdag. <strong>Vul je postcode in bij de rekenhulp hieronder, dan rekent die je reiskosten uit</strong> — hetzelfde bedrag staat in je offerte, er komt later niets bij. Parkeerkosten, als de locatie die rekent, worden geschat en staan daar ook in.</p>
+      <p class="info-box-text">Anja komt naar jou toe — thuis, in het hotel of op locatie. Reiskosten worden per bezoek berekend: je proefsessie en je trouwdag. <strong>Vul je postcode in bij de rekenhulp hieronder voor een schatting</strong> — laat me de locatie weten, dan bevestig ik de reiskosten in je offerte, samen met parkeerkosten als de locatie die rekent. Je offerte is de prijs die je betaalt.</p>
     </div>
 
     <div class="info-box">
@@ -1134,8 +1134,8 @@
 
     <p class="planer-fuss">
       <strong>Inbegrepen:</strong> producten, huidverzorging, je bijwerksetje, en de reiskosten voor zowel de proefsessie als de trouwdag.
-      <strong>Komt er later bij:</strong> parkeerkosten, tegen kostprijs, alleen waar die gelden.
-      Alle prijzen zijn definitief &mdash; wat je ziet, is wat je betaalt.
+      <strong>Je stylingprijzen zijn definitief</strong> &mdash; wat je ziet, is wat je betaalt.
+      <strong>De reiskosten hier zijn een schatting op basis van je postcode.</strong> Laat me de locatie weten, dan bevestig ik ze, met parkeerkosten, in je offerte.
     </p>
 
     <button class="planer-senden" id="p-senden" type="button" disabled>Zet dit bij mijn aanvraag</button>
@@ -1189,8 +1189,8 @@
 
     <p class="planer-fuss">
       <strong>Inbegrepen:</strong> producten, huidverzorging en de reis naar jou toe.
-      <strong>Komt er later bij:</strong> parkeerkosten, tegen kostprijs, alleen waar die gelden.
-      Alle prijzen zijn definitief &mdash; wat je ziet, is wat je betaalt.
+      <strong>Je stylingprijzen zijn definitief</strong> &mdash; wat je ziet, is wat je betaalt.
+      <strong>De reiskosten hier zijn een schatting op basis van je postcode.</strong> Laat me de locatie weten, dan bevestig ik ze, met parkeerkosten, in je offerte.
     </p>
 
     <button class="planer-senden" id="g-senden" type="button" disabled>Zet dit bij mijn aanvraag</button>
@@ -1207,7 +1207,7 @@
   <div class="faq-liste">
     <details class="faq-punkt">
       <summary>Kom je op de trouwdag naar mij toe?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
-      <p>Ja — altijd. Ik kom naar je toe: thuis, in je hotel of op de locatie, zodat jij op je eigen ochtend nergens naartoe hoeft. Reiskosten worden per bezoek berekend, je proefsessie en je trouwdag, en ze hangen af van hoe ver ik kom. <strong>Vul je postcode in bij de rekenhulp hierboven, dan wordt het voor je uitgerekend</strong> — hetzelfde bedrag staat in je offerte, en parkeerkosten, als de locatie die rekent, worden daarin geschat. Er komt achteraf niets bij.</p>
+      <p>Ja — altijd. Ik kom naar je toe: thuis, in je hotel of op de locatie, zodat jij op je eigen ochtend nergens naartoe hoeft. Reiskosten worden per bezoek berekend, je proefsessie en je trouwdag, en ze hangen af van hoe ver ik kom. <strong>Vul je postcode in bij de rekenhulp hierboven voor een schatting.</strong> Zodra ik de locatie weet, bevestig ik de reiskosten in je offerte, samen met parkeerkosten als de locatie die rekent — en die offerte is de prijs die je betaalt.</p>
     </details>
     <details class="faq-punkt">
       <summary>Zit de proefsessie bij de prijs inbegrepen?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
@@ -1642,7 +1642,7 @@ initBrautGalerie();
     var h = r.zeilen.map(function(z){
       return '<div class="sz"><span class="t">'+z[0]+'</span><span class="b">'+geld(z[1])+'</span></div>';
     }).join('');
-    h += '<div class="sz gesamt"><span class="t">Je bruidsstyling, compleet</span><span class="b">'+geld(r.gesamt)+'</span></div>';
+    h += '<div class="sz gesamt"><span class="t">Je bruidsstyling — reiskosten geschat</span><span class="b">'+geld(r.gesamt)+'</span></div>';
     h += '<div class="sz teil"><span class="t">Bij de proefsessie — de helft van je eigen styling'+(r.proBesuch?', plus dat bezoek':'')+'</span><span class="b">'+geld(teilEins(r))+'</span></div>';
     h += '<div class="sz teil"><span class="t">Op je trouwdag — al het overige</span><span class="b">'+geld(teilZwei(r))+'</span></div>';
     if(r.weit) h += '<div class="sz teil"><span class="t">Reiskosten nog af te spreken</span><span class="b"></span></div>';
