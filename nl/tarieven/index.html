@@ -608,7 +608,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
 .menu.open{display:flex}
 .menu a{font-family:'Marcellus',serif;font-size:30px;color:var(--mink);text-decoration:none;letter-spacing:.04em}
 .menu a.here{color:var(--rgt)}
-.menu .small{font-family:'Jost';font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rgt);margin-top:10px}
+.menu .small{font-family:'Jost';font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--rgt);margin-top:10px} .top .lang{margin:0 14px 0 auto;color:inherit;text-decoration:none;white-space:nowrap}
 .menu .close{position:absolute;top:18px;right:20px;border:0;background:none;font-size:28px;color:var(--mink);cursor:pointer}
 .probe{position:fixed;top:72px;right:0;z-index:45;background:#B5673F;color:#fff;font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:5px 9px;border-radius:3px 0 0 3px;opacity:.9}
 .eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--rgt);font-weight:500}
@@ -626,7 +626,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(253,250,246,.94);backdrop-filter:blur(10px);border-top:1px solid var(--bb)}
 .bar a{flex:1;text-align:center;padding:14px 10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:2px;font-weight:500}
 .bar .b1{background:var(--rgt);color:#fff} .bar .b2{border:1px solid #25D366;color:#1E9E4F;flex:0 0 auto;padding-left:16px;padding-right:16px}
-@media(min-width:820px){ .top{padding:22px 48px} .top .inline{display:flex} .burger{display:none} .bar{display:none} .foot{padding-bottom:40px} .sub{padding:150px 48px 56px} }
+@media(min-width:820px){ .top{padding:22px 48px} .top .inline{display:flex} .burger{display:none} .top .lang{margin:0 0 0 26px} .bar{display:none} .foot{padding-bottom:40px} .sub{padding:150px 48px 56px} }
 /* Lightbox */
 #lb{position:fixed;inset:0;background:rgba(30,20,15,.94);display:none;align-items:center;justify-content:center;z-index:99;cursor:zoom-out;padding:16px}
 #lb img{max-width:100%;max-height:100%;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.5)} #lb.on{display:flex}
@@ -643,7 +643,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
 .service-category-label:first-child{border-top:none;margin-top:.4rem}
 @media(min-width:820px){.service-category-label{font-size:26px;padding-top:2rem;margin-top:3.2rem}}
 </style></head><body>
-<header class="top solid" id="top"><a class="logo" href="/nl/">The Bridal Glam</a><nav class="inline"><a href="/nl/portfolio/" class="">Portfolio</a><a href="/nl/tarieven/" class="here">Tarieven</a><a href="/nl/over-anja/" class="">Over Anja</a><a href="/nl/contact/" class="">Contact</a></nav><button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.add('open')"><i></i><i></i><i></i></button></header>
+<header class="top solid" id="top"><a class="logo" href="/nl/">The Bridal Glam</a><nav class="inline"><a href="/nl/portfolio/" class="">Portfolio</a><a href="/nl/tarieven/" class="here">Tarieven</a><a href="/nl/over-anja/" class="">Over Anja</a><a href="/nl/contact/" class="">Contact</a></nav><a class="small lang" href="/services/" hreflang="en" lang="en" title="English">EN</a><button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.add('open')"><i></i><i></i><i></i></button></header>
 <div class="menu" id="menu"><button class="close" onclick="this.parentNode.classList.remove('open')">×</button><a href="/nl/" class="">Home</a><a href="/nl/portfolio/" class="">Portfolio</a><a href="/nl/tarieven/" class="here">Tarieven</a><a href="/nl/over-anja/" class="">Over Anja</a><a href="/nl/contact/" class="">Contact</a><a class="small" href="/services/" hreflang="en" lang="en" style="text-decoration:none">EN · English</a></div>
 
 <section class="sub"><div class="eyebrow">Tarieven</div><h1>Wat erbij zit, en wat het kost</h1><p>Duidelijke prijzen, geen verrassingen. Gebruik de planner voor jouw eigen totaal en stuur het me via WhatsApp.</p></section>
