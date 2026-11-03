@@ -81,7 +81,15 @@
       "name": "How do I secure my date?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Your trial is paid in advance: half of your own bridal styling, plus the travel for that visit — that is what secures your date. Once the trial has taken place, you receive the invoice for your wedding day: the second half, your guests' styling and the travel for that day. Until you book, nothing is owed."
+        "text": "Your trial is paid in advance: half of your own bridal styling, plus the travel for that visit — that is what secures your date. Once the trial has taken place, you receive the invoice for your wedding day: the second half, your guests' styling and the travel for that day. Until you book, nothing is owed. If your trial takes place in my studio, no travel is charged for that visit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my trial take place in your studio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Until 31 January 2027, the first five brides who book a 2027 wedding have their trial in my studio corner in the Jordaan: the travel for that visit is on me, you may bring one guest, and you take home a handful of edited photos of your trial look. Your advance payment is then half of your own bridal styling, without travel. The wedding-day price stays as listed. A trial at your home remains possible at any time, with travel as listed."
       }
     },
     {
@@ -643,6 +651,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
 .service-category-label{font-family:'Marcellus',serif;font-size:22px;letter-spacing:.06em;text-transform:none;color:var(--mink);padding:1.6rem 0 .9rem;margin-top:2.6rem;border-top:2px solid var(--rose-gold);font-weight:400;line-height:1.2}
 .service-category-label:first-child{border-top:none;margin-top:.4rem}
 @media(min-width:820px){.service-category-label{font-size:26px;padding-top:2rem;margin-top:3.2rem}}
+.planer-studio{grid-column:1/-1}.studio-wahl{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer;line-height:1.45}.studio-wahl input{margin:4px 0 0;accent-color:var(--rgt);flex:0 0 auto;width:17px;height:17px}.studio-wahl em{font-style:normal;color:var(--minkl);font-size:12.5px}
 </style></head><body>
 <header class="top solid" id="top"><a class="logo" href="/">The Bridal Glam</a><nav class="inline"><a href="/portfolio/" class="">Portfolio</a><a href="/services/" class="here">Services</a><a href="/about/" class="">About</a><a href="/contact/" class="">Contact</a></nav><a class="small lang" href="/nl/tarieven/" hreflang="nl" lang="nl" title="Nederlands">NL</a><button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.add('open')"><i></i><i></i><i></i></button></header>
 <div class="menu" id="menu"><button class="close" onclick="this.parentNode.classList.remove('open')">×</button><a href="/" class="">Home</a><a href="/portfolio/" class="">Portfolio</a><a href="/services/" class="here">Services</a><a href="/about/" class="">About</a><a href="/contact/" class="">Contact</a><a class="small" href="/nl/tarieven/" hreflang="nl" lang="nl" style="text-decoration:none">NL · Nederlands</a></div>
@@ -808,6 +817,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
           <input type="text" id="p-plz" inputmode="numeric" maxlength="7" placeholder="e.g. 2011" autocomplete="postal-code">
           <span class="sagt frag" id="p-zone">For your travel costs</span>
         </div>
+        <div class="planer-feld planer-studio"><label class="studio-wahl"><input type="checkbox" id="p-studio"> <span>My trial in Anja’s studio in Amsterdam — travel for the trial on me <em>(first five 2027 brides, booked by 31 January)</em></span></label></div>
         <div class="planer-feld">
           <label for="p-datum">Wedding date</label>
           <input type="date" id="p-datum">
@@ -944,7 +954,11 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     </details>
     <details class="faq-punkt">
       <summary>How do I secure my date?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
-      <p>Your trial is paid <strong>in advance</strong>: half of your own bridal styling, plus the travel for that visit &mdash; that is what secures your date. Once the trial has taken place, you receive the invoice for your wedding day: the second half, your guests&rsquo; styling and the travel for that day. Until you book, nothing is owed.</p>
+      <p>Your trial is paid <strong>in advance</strong>: half of your own bridal styling, plus the travel for that visit &mdash; that is what secures your date. Once the trial has taken place, you receive the invoice for your wedding day: the second half, your guests&rsquo; styling and the travel for that day. Until you book, nothing is owed. If your trial takes place in my studio, no travel is charged for that visit.</p>
+    </details>
+    <details class="faq-punkt">
+      <summary>Can my trial take place in your studio?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
+      <p>Yes. Until 31 January 2027, the first five brides who book a 2027 wedding have their trial in my studio corner in the Jordaan: the travel for that visit is on me, you may bring one guest, and you take home a handful of edited photos of your trial look. Your advance payment is then half of your own bridal styling, without travel. The wedding-day price stays as listed. A trial at your home remains possible at any time, with travel as listed.</p>
     </details>
     <details class="faq-punkt">
       <summary>Which languages do you speak?<span class="faq-zeichen" aria-hidden="true">+</span></summary>
@@ -1021,7 +1035,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     return liste.indexOf(s(d)) >= 0;
   }
 
-  var stand = { braut:null, gaeste:{g_makeup:0,g_hair:0,g_kombi:0}, plz:'', datum:'', zeit:'normal' };
+  var stand = { braut:null, gaeste:{g_makeup:0,g_hair:0,g_kombi:0}, plz:'', datum:'', zeit:'normal', studio:false };
 
   function geld(n){
     return '€' + (Math.round(n*100)/100).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -1062,11 +1076,11 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
 
     var z = stand.plz ? zoneVon(stand.plz) : null, anfahrt=0, weit=false;
     if(z==='weit'){ weit=true; }
-    else if(z && leistungen){ anfahrt = ZONE[z].p*2; zeilen.push(['Travel, '+ZONE[z].n+' — trial and wedding day', anfahrt]); }
+    else if(z && leistungen){ if(stand.studio){ anfahrt = ZONE[z].p; zeilen.push(['Travel, '+ZONE[z].n+' — wedding day only, trial in the studio', anfahrt]); } else { anfahrt = ZONE[z].p*2; zeilen.push(['Travel, '+ZONE[z].n+' — trial and wedding day', anfahrt]); } }
 
     return { zeilen:zeilen, gesamt:leistungen+zuschlag+frueh+anfahrt, leistungen:leistungen,
              weit:weit, tag:tag, zone:z,
-             brautAnteil: brautPreis*(1+satz), proBesuch: anfahrt ? ZONE[z].p : 0 };
+             brautAnteil: brautPreis*(1+satz), proBesuch: (anfahrt && !stand.studio) ? ZONE[z].p : 0 };
   }
 
   function male(){
@@ -1075,7 +1089,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     var zt = document.getElementById('p-zone');
     if(!stand.plz){ zt.textContent='For your travel costs'; zt.className='sagt frag'; }
     else if(r.zone==='weit'){ zt.textContent='Outside my usual area — tell me where you are'; zt.className='sagt frag'; }
-    else if(r.zone){ zt.textContent=ZONE[r.zone].n+' — '+geld(ZONE[r.zone].p)+' per visit'; zt.className='sagt'; }
+    else if(r.zone){ zt.textContent=ZONE[r.zone].n+' — '+geld(ZONE[r.zone].p)+(stand.studio ? ' — wedding day only' : ' per visit'); zt.className='sagt'; }
     else { zt.textContent='Four digits, please'; zt.className='sagt frag'; }
 
     var tt = document.getElementById('p-tag');
@@ -1125,6 +1139,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     });
     z.querySelector('[data-s="-1"]').disabled = true;
   });
+  document.getElementById('p-studio').addEventListener('change', function(e){ stand.studio=e.target.checked; male(); });
   document.getElementById('p-plz').addEventListener('input', function(e){ stand.plz=e.target.value; male(); });
   document.getElementById('p-datum').addEventListener('change', function(e){ stand.datum=e.target.value; male(); });
   document.getElementById('p-zeit').addEventListener('change', function(e){ stand.zeit=e.target.value; male(); });
@@ -1157,6 +1172,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
     txt += '\n\n'+'Estimated total: '+geld(r.gesamt)+'  ('+geld(teilEins(r))+' at the trial, '+geld(teilZwei(r))+' on the day)';
     if(r.weit || !stand.plz) txt += '\nTravel still to be agreed.';
+    if(stand.studio) txt += '\nTrial in your studio — first five 2027 brides.';
     waOeffnen('Hi Anja, I worked out my price on your website:\n\n'+(kopf.length ? kopf.join('\n')+'\n\n' : '')+txt);
   };
 
@@ -1188,6 +1204,7 @@ body{margin:0;font-family:'Jost',sans-serif;color:var(--mink);background:var(--c
     var txt = r.zeilen.map(function(z){ return '• '+z[0]+' — '+geld(z[1]); }).join('\n');
     txt += '\n\nEstimated total: '+geld(r.gesamt)+'  ('+geld(teilEins(r))+' at the trial, '+geld(teilZwei(r))+' on the day)';
     if(r.weit || !stand.plz) txt += '\nTravel still to be agreed.';
+    if(stand.studio) txt += '\nTrial in your studio — first five 2027 brides.';
 
     var msg = f.querySelector('[name="message"]');
     if(msg){

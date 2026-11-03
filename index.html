@@ -218,8 +218,52 @@ section.blk{padding:64px 20px}
  .promises .wrap{grid-template-columns:repeat(3,1fr);gap:18px;max-width:1240px;margin:0 auto}
  .ckurz .ways{flex-direction:row;max-width:900px} .ckurz .ways a{flex:1}
 }
+
+/* ---- Aktion 2027: Probetermin im Studio (03.11.2026) ---- */
+.akt{background:var(--blush);border-top:1px solid var(--bb);border-bottom:1px solid var(--bb)}
+.akt-in{display:flex;flex-direction:column;gap:26px;max-width:1100px;margin:0 auto}
+.akt-foto{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:4px;box-shadow:0 20px 50px rgba(61,43,31,.14);background:#fff}
+.akt-foto img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.akt-foto .stempel{position:absolute;top:14px;left:14px;background:var(--rgt);color:#fff;font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:8px 12px;border-radius:2px;font-weight:500}
+.akt h2{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(28px,5.4vw,42px);line-height:1.1;margin:8px 0 14px}
+.akt h2 em{font-style:normal;color:var(--rgt)}
+.akt p{color:var(--minkl);margin:0 0 14px;font-size:15.5px;max-width:560px}
+.akt ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
+.akt li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:15px}
+.akt li i{font-style:normal;color:var(--rgt);font-family:'Marcellus',serif;font-size:18px;line-height:1.3}
+.akt li b{font-weight:500}
+.akt .klein{font-size:12.5px;color:var(--minkl);margin-top:14px}
+.akt .btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.akt .btns a.mehr{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rgt);text-decoration:none;border-bottom:1px solid var(--rg);padding-bottom:3px}
+@media(min-width:820px){.akt-in{flex-direction:row;align-items:center;gap:64px}.akt-foto{width:40%;max-width:460px;flex:0 0 auto}.akt-text{flex:1}}
+.band{position:fixed;top:0;left:0;right:0;z-index:52;background:var(--blush);color:var(--mink);border-bottom:1px solid var(--bb);font-family:'Marcellus',serif;font-size:13px;letter-spacing:.03em;text-align:center;padding:11px 44px 11px 16px;line-height:1.45}
+.band a{color:var(--mink);text-decoration:none} .band i{font-style:normal;color:var(--rgt);margin-right:8px} .band em{font-style:normal;color:var(--rgt);white-space:nowrap}
+.band .lang-txt{display:none} .band .kurz-txt{display:inline}
+.band button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--minkl);font-size:18px;cursor:pointer;line-height:1;padding:4px 8px}
+body.mit-band .top{top:42px}
+body.ohne-band .band{display:none}
+@media(min-width:820px){.band{font-size:14.5px;padding:12px 48px;letter-spacing:.04em}.band .lang-txt{display:inline}.band .kurz-txt{display:none}body.mit-band .top{top:46px}}
+.pop{position:fixed;inset:0;z-index:70;background:rgba(40,25,15,.55);display:none;align-items:center;justify-content:center;padding:24px}
+.pop.on{display:flex}
+.pop-karte{position:relative;background:var(--cream);width:100%;max-width:720px;border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;flex-direction:row}
+.pop-foto{width:42%;overflow:hidden;position:relative;flex:0 0 auto}
+.pop-foto img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.pop-foto .stempel{position:absolute;top:12px;left:12px;background:var(--rgt);color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:7px 11px;border-radius:2px;font-weight:500}
+.pop-text{padding:34px 34px 36px}
+.pop h3{font-family:'Marcellus',serif;font-weight:400;font-size:24px;line-height:1.15;margin:6px 0 10px}
+.pop h3 em{font-style:normal;color:var(--rgt)}
+.pop p{color:var(--minkl);font-size:14.5px;margin:0 0 14px}
+.pop ul{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:6px;font-size:14px}
+.pop li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start} .pop li i{font-style:normal;color:var(--rgt);font-family:'Marcellus',serif;font-size:16px} .pop li b{font-weight:500}
+.pop .klein{font-size:12px;color:var(--minkl);margin:16px 0 0;line-height:1.5}
+.pop .btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pop .btns a.spaeter{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--minkl);text-decoration:none;cursor:pointer}
+.pop .zu{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(253,250,246,.92);color:var(--mink);font-size:22px;line-height:1;cursor:pointer}
+@media(max-width:819px){.pop{display:none!important}}
 </style><script>(function(){var m={"#services":"/services/","#faq":"/services/#faq","#portfolio":"/portfolio/","#about":"/about/","#contact":"/contact/","#stimmen":"/about/#stimmen"};var t=m[location.hash];if(t){location.replace(t);}})();</script>
-</head><body>
+</head><body><div class="band" id="band"><a href="#trial-2027"><i>✦</i><span class="lang-txt">For the first five brides of 2027 — your trial in my studio, travel on me, photos included. <em>Book by 31 January →</em></span><span class="kurz-txt">2027 brides: your trial in my studio, travel on me. <em>Until 31 Jan →</em></span></a><button aria-label="Close" onclick="document.body.classList.remove('mit-band');document.body.classList.add('ohne-band')">×</button></div>
+<script>document.body.classList.add('mit-band');</script>
+
 <header class="top" id="top"><a class="logo" href="/">The Bridal Glam</a><nav class="inline"><a href="/portfolio/" class="">Portfolio</a><a href="/services/" class="">Services</a><a href="/about/" class="">About</a><a href="/contact/" class="">Contact</a></nav><a class="small lang" href="/nl/" hreflang="nl" lang="nl" title="Nederlands">NL</a><button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.add('open')"><i></i><i></i><i></i></button></header>
 <div class="menu" id="menu"><button class="close" onclick="this.parentNode.classList.remove('open')">×</button><a href="/" class="here">Home</a><a href="/portfolio/" class="">Portfolio</a><a href="/services/" class="">Services</a><a href="/about/" class="">About</a><a href="/contact/" class="">Contact</a><a class="small" href="/nl/" hreflang="nl" lang="nl" style="text-decoration:none">NL · Nederlands</a></div>
 
@@ -234,6 +278,16 @@ section.blk{padding:64px 20px}
  <div class="btns"><a class="btn" href="/contact/">Book a trial</a><a class="btn ghost" href="/portfolio/">See my work</a></div></div>
  <div class="hint">Scroll</div>
 </section>
+
+<section class="blk akt" id="trial-2027"><div class="akt-in">
+ <div class="akt-foto"><span class="stempel">First five brides · 2027</span><img src="/media/making-01-arbeitsplatz.jpg" alt="Anja’s makeup station in her Jordaan studio: lit mirror, palettes, brushes and studio light" loading="lazy" width="700" height="700"></div>
+ <div class="akt-text"><div class="eyebrow">Book your 2027 date by 31 January</div>
+  <h2>Your trial in my Amsterdam studio — <em>travel on me, photos included.</em></h2>
+  <p>Book your 2027 wedding by 31 January 2027 and your trial takes place in my studio corner in the Jordaan: studio light, a proper makeup mirror, and my camera.</p>
+  <ul><li><i>✦</i><span><b>Travel for your trial is on me</b> — otherwise €55 to €160, depending on where you live.</span></li><li><i>✦</i><span><b>You take home your photos</b> — a handful of edited pictures of your trial look.</span></li><li><i>✦</i><span><b>Bring one guest</b> — your mother, your sister, your best friend.</span></li></ul>
+  <div class="btns"><a class="btn" href="/contact/">Book my 2027 date</a><a class="mehr" href="/services/#faq">How it works</a></div>
+  <p class="klein">For the first five brides who book, for every bridal booking. Your wedding-day price stays exactly as listed. A trial at your home remains possible, with travel as listed. It is a working space with studio light, not a salon — and I love it.</p>
+ </div></div></section>
 <section class="blk rw"><div class="sec-head"><div class="eyebrow">Portfolio</div><h2>Brides, models, and the morning before</h2><p>Every face with passion. Every glow, perfected.</p></div><div class="rw-grid"><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/fernanda/01.jpg" alt="Fernanda" loading="lazy" width="1066" height="1600"><span>Fernanda</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/betka/01.jpg" alt="Betka" loading="lazy" width="1600" height="1066"><span>Betka</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/mizuki/01.jpg" alt="Mizuki" loading="lazy" width="1066" height="1600"><span>Mizuki</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/luna/01.jpg" alt="Luna" loading="lazy" width="1074" height="1600"><span>Luna</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/erika/01.jpg" alt="Erika" loading="lazy" width="1064" height="1600"><span>Erika</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/mahra/01.jpg" alt="Mahra" loading="lazy" width="1068" height="1600"><span>Mahra</span></a></div><div class="rw-more"><a class="btn line" href="/portfolio/">Open the portfolio</a></div></section>
 <section class="blk come"><div class="sec-head"><div class="eyebrow">On location</div><h2>I come to you</h2><p>Home, hotel or venue: bridal hair and makeup on location, in Amsterdam and beyond. You sit down, I bring everything else.</p></div>
 <div class="come-grid"><a href="/about/" class="come-foto"><img src="/media/making-06-spiegel.jpg" alt="Anja’s makeup station on a wedding morning: lit mirror, palettes and brushes" loading="lazy" width="700" height="700"></a><a href="/about/" class="come-foto"><img src="/media/band-arbeitsplatz.jpg" alt="Lipstick being applied to a bride with a braided updo and veil" loading="lazy" width="1373" height="1400"></a><a href="/about/" class="come-foto"><img src="/media/making-05-braut.jpg" alt="Anja’s travel makeup case with lit mirror, products and brushes" loading="lazy" width="700" height="700"></a></div></section>
@@ -249,4 +303,27 @@ section.blk{padding:64px 20px}
 <div class="bar"><a class="b1" href="/contact/">Book a trial</a><a class="b2" href="https://wa.me/31623739358" target="_blank">WhatsApp</a></div>
 <div id="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
 <script>document.querySelectorAll('[data-lb]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.getElementById('lbimg').src=a.getAttribute('href');document.getElementById('lb').classList.add('on');}));</script>
-<script>const topbar=document.getElementById('top');addEventListener('scroll',()=>topbar.classList.toggle('solid',scrollY>innerHeight*0.8),{passive:true});</script></body></html>
+<script>const topbar=document.getElementById('top');addEventListener('scroll',()=>topbar.classList.toggle('solid',scrollY>innerHeight*0.8),{passive:true});</script>
+<div class="pop" id="pop" onclick="if(event.target===this)popZu()">
+ <div class="pop-karte" role="dialog" aria-label="Trial gift for 2027 brides">
+  <button class="zu" aria-label="Close" onclick="popZu()">×</button>
+  <div class="pop-foto"><span class="stempel">First five brides · 2027</span><img src="/media/making-01-arbeitsplatz.jpg" alt="Anja’s makeup station in her Jordaan studio: lit mirror, palettes, brushes and studio light"></div>
+  <div class="pop-text"><div class="eyebrow">Book your 2027 date by 31 January</div>
+   <h3>Your trial in my Amsterdam studio — <em>travel on me, photos included.</em></h3>
+   <p>Studio light, a proper makeup mirror, my camera — and you take home your photos. For the first five brides who book their 2027 wedding by 31 January 2027.</p>
+   <ul><li><i>✦</i><span><b>Travel for your trial is on me</b> — otherwise €55 to €160, depending on where you live.</span></li><li><i>✦</i><span><b>You take home your photos</b> — a handful of edited pictures of your trial look.</span></li><li><i>✦</i><span><b>Bring one guest</b> — your mother, your sister, your best friend.</span></li></ul>
+   <div class="btns"><a class="btn" href="/contact/">Book my 2027 date</a><a class="spaeter" onclick="popZu()">Not now</a></div>
+   <p class="klein">For the first five brides who book, for every bridal booking. Your wedding-day price stays exactly as listed. A trial at your home remains possible, with travel as listed. It is a working space with studio light, not a salon — and I love it.</p>
+  </div>
+ </div>
+</div>
+<script>
+function popZu(){document.getElementById('pop').classList.remove('on');try{localStorage.setItem('akt2027',String(Date.now()));}catch(e){}}
+(function(){var gesehen=0;try{gesehen=Number(localStorage.getItem('akt2027')||0);}catch(e){}
+ if(Date.now()-gesehen<7*864e5) return;          /* einmal geschlossen = eine Woche Ruhe */
+ if(innerWidth<820) return;                        /* nur am Laptop - auf dem Handy nur Band und Abschnitt (Google) */
+ var auf=false;function zeig(){if(auf)return;auf=true;document.getElementById('pop').classList.add('on');}
+ addEventListener('scroll',function(){if(scrollY>innerHeight*0.25)zeig();},{passive:true});
+ setTimeout(zeig,4500);})();
+</script>
+</body></html>

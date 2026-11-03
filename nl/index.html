@@ -218,8 +218,52 @@ section.blk{padding:64px 20px}
  .promises .wrap{grid-template-columns:repeat(3,1fr);gap:18px;max-width:1240px;margin:0 auto}
  .ckurz .ways{flex-direction:row;max-width:900px} .ckurz .ways a{flex:1}
 }
+
+/* ---- Aktion 2027: Probetermin im Studio (03.11.2026) ---- */
+.akt{background:var(--blush);border-top:1px solid var(--bb);border-bottom:1px solid var(--bb)}
+.akt-in{display:flex;flex-direction:column;gap:26px;max-width:1100px;margin:0 auto}
+.akt-foto{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:4px;box-shadow:0 20px 50px rgba(61,43,31,.14);background:#fff}
+.akt-foto img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.akt-foto .stempel{position:absolute;top:14px;left:14px;background:var(--rgt);color:#fff;font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:8px 12px;border-radius:2px;font-weight:500}
+.akt h2{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(28px,5.4vw,42px);line-height:1.1;margin:8px 0 14px}
+.akt h2 em{font-style:normal;color:var(--rgt)}
+.akt p{color:var(--minkl);margin:0 0 14px;font-size:15.5px;max-width:560px}
+.akt ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:9px}
+.akt li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:15px}
+.akt li i{font-style:normal;color:var(--rgt);font-family:'Marcellus',serif;font-size:18px;line-height:1.3}
+.akt li b{font-weight:500}
+.akt .klein{font-size:12.5px;color:var(--minkl);margin-top:14px}
+.akt .btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.akt .btns a.mehr{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rgt);text-decoration:none;border-bottom:1px solid var(--rg);padding-bottom:3px}
+@media(min-width:820px){.akt-in{flex-direction:row;align-items:center;gap:64px}.akt-foto{width:40%;max-width:460px;flex:0 0 auto}.akt-text{flex:1}}
+.band{position:fixed;top:0;left:0;right:0;z-index:52;background:var(--blush);color:var(--mink);border-bottom:1px solid var(--bb);font-family:'Marcellus',serif;font-size:13px;letter-spacing:.03em;text-align:center;padding:11px 44px 11px 16px;line-height:1.45}
+.band a{color:var(--mink);text-decoration:none} .band i{font-style:normal;color:var(--rgt);margin-right:8px} .band em{font-style:normal;color:var(--rgt);white-space:nowrap}
+.band .lang-txt{display:none} .band .kurz-txt{display:inline}
+.band button{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--minkl);font-size:18px;cursor:pointer;line-height:1;padding:4px 8px}
+body.mit-band .top{top:42px}
+body.ohne-band .band{display:none}
+@media(min-width:820px){.band{font-size:14.5px;padding:12px 48px;letter-spacing:.04em}.band .lang-txt{display:inline}.band .kurz-txt{display:none}body.mit-band .top{top:46px}}
+.pop{position:fixed;inset:0;z-index:70;background:rgba(40,25,15,.55);display:none;align-items:center;justify-content:center;padding:24px}
+.pop.on{display:flex}
+.pop-karte{position:relative;background:var(--cream);width:100%;max-width:720px;border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);display:flex;flex-direction:row}
+.pop-foto{width:42%;overflow:hidden;position:relative;flex:0 0 auto}
+.pop-foto img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.pop-foto .stempel{position:absolute;top:12px;left:12px;background:var(--rgt);color:#fff;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;padding:7px 11px;border-radius:2px;font-weight:500}
+.pop-text{padding:34px 34px 36px}
+.pop h3{font-family:'Marcellus',serif;font-weight:400;font-size:24px;line-height:1.15;margin:6px 0 10px}
+.pop h3 em{font-style:normal;color:var(--rgt)}
+.pop p{color:var(--minkl);font-size:14.5px;margin:0 0 14px}
+.pop ul{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:6px;font-size:14px}
+.pop li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start} .pop li i{font-style:normal;color:var(--rgt);font-family:'Marcellus',serif;font-size:16px} .pop li b{font-weight:500}
+.pop .klein{font-size:12px;color:var(--minkl);margin:16px 0 0;line-height:1.5}
+.pop .btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pop .btns a.spaeter{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--minkl);text-decoration:none;cursor:pointer}
+.pop .zu{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(253,250,246,.92);color:var(--mink);font-size:22px;line-height:1;cursor:pointer}
+@media(max-width:819px){.pop{display:none!important}}
 </style><script>(function(){var m={"#services":"/nl/tarieven/","#faq":"/nl/tarieven/#faq","#portfolio":"/nl/portfolio/","#about":"/nl/over-anja/","#contact":"/nl/contact/","#stimmen":"/nl/over-anja/#stimmen"};var t=m[location.hash];if(t){location.replace(t);}})();</script>
-</head><body>
+</head><body><div class="band" id="band"><a href="#trial-2027"><i>✦</i><span class="lang-txt">Voor de eerste vijf bruiden van 2027 — je proefsessie in mijn studio, reiskosten voor mij, foto’s inbegrepen. <em>Boek vóór 31 januari →</em></span><span class="kurz-txt">Bruiden 2027: je proefsessie in mijn studio, reiskosten voor mij. <em>Tot 31 jan →</em></span></a><button aria-label="Sluiten" onclick="document.body.classList.remove('mit-band');document.body.classList.add('ohne-band')">×</button></div>
+<script>document.body.classList.add('mit-band');</script>
+
 <header class="top" id="top"><a class="logo" href="/nl/">The Bridal Glam</a><nav class="inline"><a href="/nl/portfolio/" class="">Portfolio</a><a href="/nl/tarieven/" class="">Tarieven</a><a href="/nl/over-anja/" class="">Over Anja</a><a href="/nl/contact/" class="">Contact</a></nav><a class="small lang" href="/" hreflang="en" lang="en" title="English">EN</a><button class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.add('open')"><i></i><i></i><i></i></button></header>
 <div class="menu" id="menu"><button class="close" onclick="this.parentNode.classList.remove('open')">×</button><a href="/nl/" class="here">Home</a><a href="/nl/portfolio/" class="">Portfolio</a><a href="/nl/tarieven/" class="">Tarieven</a><a href="/nl/over-anja/" class="">Over Anja</a><a href="/nl/contact/" class="">Contact</a><a class="small" href="/" hreflang="en" lang="en" style="text-decoration:none">EN · English</a></div>
 
@@ -234,6 +278,16 @@ section.blk{padding:64px 20px}
  <div class="btns"><a class="btn" href="/nl/contact/">Proefsessie boeken</a><a class="btn ghost" href="/nl/portfolio/">Bekijk mijn werk</a></div></div>
  <div class="hint">Scroll</div>
 </section>
+
+<section class="blk akt" id="trial-2027"><div class="akt-in">
+ <div class="akt-foto"><span class="stempel">Eerste vijf bruiden · 2027</span><img src="/media/making-01-arbeitsplatz.jpg" alt="Anja’s make-upplek in haar studio in de Jordaan: verlichte spiegel, paletten, kwasten en studiolicht" loading="lazy" width="700" height="700"></div>
+ <div class="akt-text"><div class="eyebrow">Boek je datum voor 2027 vóór 31 januari</div>
+  <h2>Je proefsessie in mijn studio in Amsterdam — <em>reiskosten voor mij, foto’s inbegrepen.</em></h2>
+  <p>Boek je bruiloft van 2027 vóór 31 januari 2027 en je proefsessie vindt plaats in mijn studiohoek in de Jordaan: studiolicht, een echte make-upspiegel en mijn camera.</p>
+  <ul><li><i>✦</i><span><b>De reiskosten van je proefsessie zijn voor mij</b> — anders €55 tot €160, afhankelijk van waar je woont.</span></li><li><i>✦</i><span><b>Je krijgt je foto’s mee</b> — een handvol bewerkte foto’s van je prooflook.</span></li><li><i>✦</i><span><b>Neem één gast mee</b> — je moeder, je zus, je beste vriendin.</span></li></ul>
+  <div class="btns"><a class="btn" href="/nl/contact/">Mijn datum voor 2027 boeken</a><a class="mehr" href="/nl/tarieven/#faq">Zo werkt het</a></div>
+  <p class="klein">Voor de eerste vijf bruiden die boeken, bij elke bruidsboeking. De prijs voor je trouwdag blijft precies zoals vermeld. Een proefsessie bij jou thuis blijft mogelijk, met reiskosten zoals vermeld. Het is een werkruimte met studiolicht, geen salon — en ik ben er dol op.</p>
+ </div></div></section>
 <section class="blk rw"><div class="sec-head"><div class="eyebrow">Portfolio</div><h2>Bruiden, modellen en de ochtend ervoor</h2><p>Elk gezicht met passie. Elke glow geperfectioneerd.</p></div><div class="rw-grid"><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/fernanda/01.jpg" alt="Fernanda" loading="lazy" width="1066" height="1600"><span>Fernanda</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/betka/01.jpg" alt="Betka" loading="lazy" width="1600" height="1066"><span>Betka</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/mizuki/01.jpg" alt="Mizuki" loading="lazy" width="1066" height="1600"><span>Mizuki</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/luna/01.jpg" alt="Luna" loading="lazy" width="1074" height="1600"><span>Luna</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/erika/01.jpg" alt="Erika" loading="lazy" width="1064" height="1600"><span>Erika</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/mahra/01.jpg" alt="Mahra" loading="lazy" width="1068" height="1600"><span>Mahra</span></a></div><div class="rw-more"><a class="btn line" href="/nl/portfolio/">Bekijk het portfolio</a></div></section>
 <section class="blk come"><div class="sec-head"><div class="eyebrow">Aan huis &amp; op locatie</div><h2>Ik kom naar jou toe</h2><p>Thuis, in het hotel of op de trouwlocatie: bruidsmake-up en bruidskapsel aan huis, in Amsterdam en omgeving. Jij gaat zitten, ik breng de rest mee.</p></div>
 <div class="come-grid"><a href="/nl/over-anja/" class="come-foto"><img src="/media/making-06-spiegel.jpg" alt="Anja’s make-upstation op een trouwochtend: verlichte spiegel, paletten en kwasten" loading="lazy" width="700" height="700"></a><a href="/nl/over-anja/" class="come-foto"><img src="/media/band-arbeitsplatz.jpg" alt="Lipstick wordt aangebracht bij een bruid met gevlochten opsteekkapsel en sluier" loading="lazy" width="1373" height="1400"></a><a href="/nl/over-anja/" class="come-foto"><img src="/media/making-05-braut.jpg" alt="Anja’s make-upkoffer met verlichte spiegel, producten en kwasten" loading="lazy" width="700" height="700"></a></div></section>
@@ -249,4 +303,27 @@ section.blk{padding:64px 20px}
 <div class="bar"><a class="b1" href="/nl/contact/">Proefsessie boeken</a><a class="b2" href="https://wa.me/31623739358" target="_blank">WhatsApp</a></div>
 <div id="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
 <script>document.querySelectorAll('[data-lb]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.getElementById('lbimg').src=a.getAttribute('href');document.getElementById('lb').classList.add('on');}));</script>
-<script>const topbar=document.getElementById('top');addEventListener('scroll',()=>topbar.classList.toggle('solid',scrollY>innerHeight*0.8),{passive:true});</script></body></html>
+<script>const topbar=document.getElementById('top');addEventListener('scroll',()=>topbar.classList.toggle('solid',scrollY>innerHeight*0.8),{passive:true});</script>
+<div class="pop" id="pop" onclick="if(event.target===this)popZu()">
+ <div class="pop-karte" role="dialog" aria-label="Cadeau bij je proefsessie voor bruiden 2027">
+  <button class="zu" aria-label="Sluiten" onclick="popZu()">×</button>
+  <div class="pop-foto"><span class="stempel">Eerste vijf bruiden · 2027</span><img src="/media/making-01-arbeitsplatz.jpg" alt="Anja’s make-upplek in haar studio in de Jordaan: verlichte spiegel, paletten, kwasten en studiolicht"></div>
+  <div class="pop-text"><div class="eyebrow">Boek je datum voor 2027 vóór 31 januari</div>
+   <h3>Je proefsessie in mijn studio in Amsterdam — <em>reiskosten voor mij, foto’s inbegrepen.</em></h3>
+   <p>Studiolicht, een echte make-upspiegel, mijn camera — en je krijgt je foto’s mee. Voor de eerste vijf bruiden die hun bruiloft van 2027 vóór 31 januari 2027 boeken.</p>
+   <ul><li><i>✦</i><span><b>De reiskosten van je proefsessie zijn voor mij</b> — anders €55 tot €160, afhankelijk van waar je woont.</span></li><li><i>✦</i><span><b>Je krijgt je foto’s mee</b> — een handvol bewerkte foto’s van je prooflook.</span></li><li><i>✦</i><span><b>Neem één gast mee</b> — je moeder, je zus, je beste vriendin.</span></li></ul>
+   <div class="btns"><a class="btn" href="/nl/contact/">Mijn datum voor 2027 boeken</a><a class="spaeter" onclick="popZu()">Nu niet</a></div>
+   <p class="klein">Voor de eerste vijf bruiden die boeken, bij elke bruidsboeking. De prijs voor je trouwdag blijft precies zoals vermeld. Een proefsessie bij jou thuis blijft mogelijk, met reiskosten zoals vermeld. Het is een werkruimte met studiolicht, geen salon — en ik ben er dol op.</p>
+  </div>
+ </div>
+</div>
+<script>
+function popZu(){document.getElementById('pop').classList.remove('on');try{localStorage.setItem('akt2027',String(Date.now()));}catch(e){}}
+(function(){var gesehen=0;try{gesehen=Number(localStorage.getItem('akt2027')||0);}catch(e){}
+ if(Date.now()-gesehen<7*864e5) return;          /* einmal geschlossen = eine Woche Ruhe */
+ if(innerWidth<820) return;                        /* nur am Laptop - auf dem Handy nur Band und Abschnitt (Google) */
+ var auf=false;function zeig(){if(auf)return;auf=true;document.getElementById('pop').classList.add('on');}
+ addEventListener('scroll',function(){if(scrollY>innerHeight*0.25)zeig();},{passive:true});
+ setTimeout(zeig,4500);})();
+</script>
+</body></html>
