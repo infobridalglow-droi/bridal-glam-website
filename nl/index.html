@@ -261,6 +261,35 @@ body.ohne-band .band{display:none}
 .pop .zu{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(253,250,246,.92);color:var(--mink);font-size:22px;line-height:1;cursor:pointer}
 @media(max-width:819px){.pop{display:none!important}}
 </style><script>(function(){var m={"#services":"/nl/tarieven/","#faq":"/nl/tarieven/#faq","#portfolio":"/nl/portfolio/","#about":"/nl/over-anja/","#contact":"/nl/contact/","#stimmen":"/nl/over-anja/#stimmen"};var t=m[location.hash];if(t){location.replace(t);}})();</script>
+<style>
+.datum{margin-top:22px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.datum label{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.9}
+.datum .zeile{display:flex;gap:0;flex-wrap:wrap;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.datum input{font:inherit;font-size:15px;padding:12px 14px;border:0;border-radius:2px 0 0 2px;background:rgba(255,255,255,.95);color:var(--mink);min-width:180px}
+.datum .btn{border-radius:0 2px 2px 0;border:0;cursor:pointer;font-family:inherit}
+.datum small{font-size:12px;color:#fff;opacity:.85}
+.datum .werk{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-top:6px}
+.datum.wackel input{outline:2px solid var(--rgl)}
+@media(max-width:480px){.datum .zeile{flex-direction:column;width:100%;max-width:300px}.datum input,.datum .btn{border-radius:2px;width:100%}.datum .btn{margin-top:6px}}
+.ba2{background:#fff;border-top:1px solid var(--bb);border-bottom:1px solid var(--bb)}
+.ba2 .sec-head p{color:var(--minkl)}
+.ba2 .namen{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 20px;max-width:720px}
+.ba2 .namen button{font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--bb);background:#fff;color:var(--minkl);cursor:pointer;border-radius:2px}
+.ba2 .namen button.an{background:var(--rgt);border-color:var(--rgt);color:#fff}
+.ba2 .paar{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:720px;margin:0 auto}
+.ba2 figure{margin:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--blush)}
+.ba2 figure img{width:100%;height:100%;object-fit:cover;display:block}
+.ba2 figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--mink);font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 10px}
+.ba2 .wer{text-align:center;color:var(--minkl);font-size:13px;margin-top:12px}
+.ba2 .rw-more{text-align:center;margin-top:22px}
+.wp{background:var(--blush)}
+.wp ul{list-style:none;padding:0;margin:0 auto;max-width:980px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wp li{background:#fff;border:1px solid var(--bb);padding:24px 22px;text-align:center}
+.wp li i{display:block;font-style:normal;color:var(--rg);font-size:18px;margin-bottom:8px}
+.wp li b{display:block;font-family:'Marcellus',serif;font-weight:400;font-size:19px;margin-bottom:8px;color:var(--mink)}
+.wp li span{color:var(--minkl);font-size:14.5px;line-height:1.6}
+@media(max-width:760px){.wp ul{grid-template-columns:1fr}}
+</style>
 </head><body><div class="band" id="band"><a href="#trial-2027"><i>✦</i><span class="lang-txt">Voor de eerste vijf bruiden van 2027 — je proefsessie in mijn studio, reiskosten voor mij, foto’s inbegrepen. <em>Boek vóór 31 januari →</em></span><span class="kurz-txt">Bruiden 2027: je proefsessie in mijn studio, reiskosten voor mij. <em>Tot 31 jan →</em></span></a><button aria-label="Sluiten" onclick="document.body.classList.remove('mit-band');document.body.classList.add('ohne-band')">×</button></div>
 <script>document.body.classList.add('mit-band');</script>
 
@@ -275,7 +304,7 @@ body.ohne-band .band{display:none}
  <div class="text"><img class="logo-h" src="/media/tb-weiss.png" alt="The Bridal Glam" width="300" height="300"><div class="eyebrow">Bruidsmake-up aan huis · Amsterdam · sinds 2014</div>
  <h1>Jouw natuurlijke glow, <em>geperfectioneerd.</em></h1>
  <p>Bruidsmake-up en bruidskapsel, aan huis of op locatie. Ik kom naar jou toe.</p>
- <div class="btns"><a class="btn" href="/nl/contact/">Proefsessie boeken</a><a class="btn ghost" href="/nl/portfolio/">Bekijk mijn werk</a></div></div>
+ <form class="datum" onsubmit="return datumFrei(this)"><label for="hz-datum">Wanneer trouw je?</label><div class="zeile"><input type="date" id="hz-datum" required><button class="btn" type="submit">Is mijn datum nog vrij?</button></div><small>Opent WhatsApp met je datum. Ik antwoord binnen 24 uur.</small><a class="werk" href="/nl/portfolio/">Bekijk mijn werk →</a></form></div>
  <div class="hint">Scroll</div>
 </section>
 
@@ -289,8 +318,10 @@ body.ohne-band .band{display:none}
   <p class="klein">Voor de eerste vijf bruiden die boeken, bij elke bruidsboeking. De prijs voor je trouwdag blijft precies zoals vermeld. Een proefsessie bij jou thuis blijft mogelijk, met reiskosten zoals vermeld. Het is een werkruimte met studiolicht, geen salon — en ik ben er dol op.</p>
  </div></div></section>
 <section class="blk rw"><div class="sec-head"><div class="eyebrow">Portfolio</div><h2>Bruiden, modellen en de ochtend ervoor</h2><p>Elk gezicht met passie. Elke glow geperfectioneerd.</p></div><div class="rw-grid"><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/fernanda/01.jpg" alt="Fernanda" loading="lazy" width="1066" height="1600"><span>Fernanda</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/betka/01.jpg" alt="Betka" loading="lazy" width="1600" height="1066"><span>Betka</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/mizuki/01.jpg" alt="Mizuki" loading="lazy" width="1066" height="1600"><span>Mizuki</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/luna/01.jpg" alt="Luna" loading="lazy" width="1074" height="1600"><span>Luna</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/erika/01.jpg" alt="Erika" loading="lazy" width="1064" height="1600"><span>Erika</span></a><a class="kachel" href="/nl/portfolio/"><img src="/media/bearbeitet/mahra/01.jpg" alt="Mahra" loading="lazy" width="1068" height="1600"><span>Mahra</span></a></div><div class="rw-more"><a class="btn line" href="/nl/portfolio/">Bekijk het portfolio</a></div></section>
+<section class="blk ba2"><div class="sec-head"><div class="eyebrow">Voor &amp; na</div><h2>Geen masker. <em>Gewoon jij, stralender.</em></h2><p>Echte gezichten, voor en na mijn make-up. Tik op een naam.</p></div><div class="namen"><button type="button" data-k="fernanda" data-w="Fernanda · Bruid" class="an" onclick="baZeig(this)">Fernanda</button><button type="button" data-k="emma" data-w="Emma · Bruid" class="" onclick="baZeig(this)">Emma</button><button type="button" data-k="betka" data-w="Betka · Studio look" class="" onclick="baZeig(this)">Betka</button><button type="button" data-k="mizuki" data-w="Mizuki · Studio look" class="" onclick="baZeig(this)">Mizuki</button><button type="button" data-k="lisa" data-w="Lisa · Studio look" class="" onclick="baZeig(this)">Lisa</button><button type="button" data-k="sanne" data-w="Sanne · Studio look" class="" onclick="baZeig(this)">Sanne</button></div><div class="paar"><figure><img class="v" src="/media/before-after/fernanda/vorher.jpg" alt="Voor" width="720" height="960"><figcaption>Voor</figcaption></figure><figure><img class="n" src="/media/before-after/fernanda/nachher-1.jpg" alt="Na" width="720" height="960"><figcaption>Na</figcaption></figure></div><div class="wer">Fernanda · Bruid</div><div class="rw-more"><a class="btn line" href="/nl/portfolio/">Alle voor- en nafoto’s</a></div></section>
 <section class="blk come"><div class="sec-head"><div class="eyebrow">Aan huis &amp; op locatie</div><h2>Ik kom naar jou toe</h2><p>Thuis, in het hotel of op de trouwlocatie: bruidsmake-up en bruidskapsel aan huis, in Amsterdam en omgeving. Jij gaat zitten, ik breng de rest mee.</p></div>
 <div class="come-grid"><a href="/nl/over-anja/" class="come-foto"><img src="/media/making-06-spiegel.jpg" alt="Anja’s make-upstation op een trouwochtend: verlichte spiegel, paletten en kwasten" loading="lazy" width="700" height="700"></a><a href="/nl/over-anja/" class="come-foto"><img src="/media/band-arbeitsplatz.jpg" alt="Lipstick wordt aangebracht bij een bruid met gevlochten opsteekkapsel en sluier" loading="lazy" width="1373" height="1400"></a><a href="/nl/over-anja/" class="come-foto"><img src="/media/making-05-braut.jpg" alt="Anja’s make-upkoffer met verlichte spiegel, producten en kwasten" loading="lazy" width="700" height="700"></a></div></section>
+<section class="blk wp"><div class="sec-head"><div class="eyebrow">Wedding-proof</div><h2>Gemaakt om te blijven, <em>van de eerste foto tot de laatste dans.</em></h2></div><ul><li><i>✦</i><b>Eerst de huid</b><span>Goed voorbereide huid is de reden dat foundation versmelt in plaats van erop te liggen, en dat alles de hele dag blijft zitten.</span></li><li><i>✦</i><b>Gemaakt voor de camera</b><span>Hij houdt stand in close-up, bij daglicht en met flits.</span></li><li><i>✦</i><b>Vastgezet, kit bij de hand</b><span>Een setting spray zet alles vast, en je touch-upkit ligt klaar voor de dag.</span></li></ul></section>
 <section class="blk voice zwei"><div class="v"><img src="/media/stimme-emma.jpg" alt="Emma" width="320" height="320"><blockquote>“I left her chair feeling confident and gorgeous – and was very impressed that it stayed in place all day, even through a bit of tears during the ceremony!”</blockquote><cite>Emma · Bruid<span>Bruiloft, oktober 2026 · echte Google-review, Engels origineel</span></cite></div><div class="v"><img src="/media/stimme-erika.jpg" alt="Erika" width="320" height="320"><blockquote>“Ik had me geen betere make-upartiest kunnen wensen voor mijn bruiloft. Vanaf het begin had ik het gevoel dat ik in de beste handen was.”</blockquote><cite>Erika · Bruid<span>Bruiloft, juni 2025 · echte Google-review, vertaald uit het Duits</span></cite></div><br><a href="/nl/over-anja/#stimmen">Lees ze allemaal</a></section>
 <section class="blk steps"><div class="sec-head"><div class="eyebrow">Zo werkt het</div><h2>In drie stappen naar jouw glow</h2></div>
  <ol><li><i>1</i><div><b>Schrijf me</b><span>Je datum, je locatie, met hoeveel personen. Ik antwoord binnen 24 uur.</span></div></li>
@@ -326,4 +357,4 @@ function popZu(){document.getElementById('pop').classList.remove('on');try{local
  addEventListener('scroll',function(){if(scrollY>innerHeight*0.25)zeig();},{passive:true});
  setTimeout(zeig,4500);})();
 </script>
-</body></html>
+<script>function datumFrei(f){var v=f.querySelector("input").value;if(!v){f.classList.add("wackel");return false;}var d=new Date(v+"T12:00:00").toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long",year:"numeric"});var txt="Hoi Anja, is "+d+" nog vrij voor mijn bruiloft?";window.open("https://wa.me/31623739358?text="+encodeURIComponent(txt),"_blank");return false;}function baZeig(k){document.querySelectorAll(".ba2 .namen button").forEach(function(x){x.classList.toggle("an",x.dataset.k===k.dataset.k)});var p=document.querySelector(".ba2 .paar");p.querySelector(".v").src="/media/before-after/"+k.dataset.k+"/vorher.jpg";p.querySelector(".n").src="/media/before-after/"+k.dataset.k+"/nachher-1.jpg";document.querySelector(".ba2 .wer").textContent=k.dataset.w;}</script></body></html>

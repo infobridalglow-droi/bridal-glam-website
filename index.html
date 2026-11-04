@@ -261,6 +261,35 @@ body.ohne-band .band{display:none}
 .pop .zu{position:absolute;top:8px;right:8px;z-index:3;width:36px;height:36px;border-radius:50%;border:0;background:rgba(253,250,246,.92);color:var(--mink);font-size:22px;line-height:1;cursor:pointer}
 @media(max-width:819px){.pop{display:none!important}}
 </style><script>(function(){var m={"#services":"/services/","#faq":"/services/#faq","#portfolio":"/portfolio/","#about":"/about/","#contact":"/contact/","#stimmen":"/about/#stimmen"};var t=m[location.hash];if(t){location.replace(t);}})();</script>
+<style>
+.datum{margin-top:22px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.datum label{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.9}
+.datum .zeile{display:flex;gap:0;flex-wrap:wrap;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.datum input{font:inherit;font-size:15px;padding:12px 14px;border:0;border-radius:2px 0 0 2px;background:rgba(255,255,255,.95);color:var(--mink);min-width:180px}
+.datum .btn{border-radius:0 2px 2px 0;border:0;cursor:pointer;font-family:inherit}
+.datum small{font-size:12px;color:#fff;opacity:.85}
+.datum .werk{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-top:6px}
+.datum.wackel input{outline:2px solid var(--rgl)}
+@media(max-width:480px){.datum .zeile{flex-direction:column;width:100%;max-width:300px}.datum input,.datum .btn{border-radius:2px;width:100%}.datum .btn{margin-top:6px}}
+.ba2{background:#fff;border-top:1px solid var(--bb);border-bottom:1px solid var(--bb)}
+.ba2 .sec-head p{color:var(--minkl)}
+.ba2 .namen{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 20px;max-width:720px}
+.ba2 .namen button{font:inherit;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--bb);background:#fff;color:var(--minkl);cursor:pointer;border-radius:2px}
+.ba2 .namen button.an{background:var(--rgt);border-color:var(--rgt);color:#fff}
+.ba2 .paar{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:720px;margin:0 auto}
+.ba2 figure{margin:0;position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--blush)}
+.ba2 figure img{width:100%;height:100%;object-fit:cover;display:block}
+.ba2 figcaption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--mink);font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 10px}
+.ba2 .wer{text-align:center;color:var(--minkl);font-size:13px;margin-top:12px}
+.ba2 .rw-more{text-align:center;margin-top:22px}
+.wp{background:var(--blush)}
+.wp ul{list-style:none;padding:0;margin:0 auto;max-width:980px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wp li{background:#fff;border:1px solid var(--bb);padding:24px 22px;text-align:center}
+.wp li i{display:block;font-style:normal;color:var(--rg);font-size:18px;margin-bottom:8px}
+.wp li b{display:block;font-family:'Marcellus',serif;font-weight:400;font-size:19px;margin-bottom:8px;color:var(--mink)}
+.wp li span{color:var(--minkl);font-size:14.5px;line-height:1.6}
+@media(max-width:760px){.wp ul{grid-template-columns:1fr}}
+</style>
 </head><body><div class="band" id="band"><a href="#trial-2027"><i>✦</i><span class="lang-txt">For the first five brides of 2027 — your trial in my studio, travel on me, photos included. <em>Book by 31 January →</em></span><span class="kurz-txt">2027 brides: your trial in my studio, travel on me. <em>Until 31 Jan →</em></span></a><button aria-label="Close" onclick="document.body.classList.remove('mit-band');document.body.classList.add('ohne-band')">×</button></div>
 <script>document.body.classList.add('mit-band');</script>
 
@@ -275,7 +304,7 @@ body.ohne-band .band{display:none}
  <div class="text"><img class="logo-h" src="/media/tb-weiss.png" alt="The Bridal Glam" width="300" height="300"><div class="eyebrow">Bridal makeup &amp; hair · Amsterdam · since 2014</div>
  <h1>Your natural glow, <em>perfected.</em></h1>
  <p>Bridal hair and makeup, at home or on location. I come to you.</p>
- <div class="btns"><a class="btn" href="/contact/">Book a trial</a><a class="btn ghost" href="/portfolio/">See my work</a></div></div>
+ <form class="datum" onsubmit="return datumFrei(this)"><label for="hz-datum">When is your wedding?</label><div class="zeile"><input type="date" id="hz-datum" required><button class="btn" type="submit">Is my date free?</button></div><small>Opens WhatsApp with your date. I reply within 24 hours.</small><a class="werk" href="/portfolio/">See my work →</a></form></div>
  <div class="hint">Scroll</div>
 </section>
 
@@ -289,8 +318,10 @@ body.ohne-band .band{display:none}
   <p class="klein">For the first five brides who book, for every bridal booking. Your wedding-day price stays exactly as listed. A trial at your home remains possible, with travel as listed. It is a working space with studio light, not a salon — and I love it.</p>
  </div></div></section>
 <section class="blk rw"><div class="sec-head"><div class="eyebrow">Portfolio</div><h2>Brides, models, and the morning before</h2><p>Every face with passion. Every glow, perfected.</p></div><div class="rw-grid"><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/fernanda/01.jpg" alt="Fernanda" loading="lazy" width="1066" height="1600"><span>Fernanda</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/betka/01.jpg" alt="Betka" loading="lazy" width="1600" height="1066"><span>Betka</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/mizuki/01.jpg" alt="Mizuki" loading="lazy" width="1066" height="1600"><span>Mizuki</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/luna/01.jpg" alt="Luna" loading="lazy" width="1074" height="1600"><span>Luna</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/erika/01.jpg" alt="Erika" loading="lazy" width="1064" height="1600"><span>Erika</span></a><a class="kachel" href="/portfolio/"><img src="/media/bearbeitet/mahra/01.jpg" alt="Mahra" loading="lazy" width="1068" height="1600"><span>Mahra</span></a></div><div class="rw-more"><a class="btn line" href="/portfolio/">Open the portfolio</a></div></section>
+<section class="blk ba2"><div class="sec-head"><div class="eyebrow">Before &amp; after</div><h2>No mask. <em>Just you, more radiant.</em></h2><p>Real faces, before and after my makeup. Tap a name.</p></div><div class="namen"><button type="button" data-k="fernanda" data-w="Fernanda · Bride" class="an" onclick="baZeig(this)">Fernanda</button><button type="button" data-k="emma" data-w="Emma · Bride" class="" onclick="baZeig(this)">Emma</button><button type="button" data-k="betka" data-w="Betka · Studio look" class="" onclick="baZeig(this)">Betka</button><button type="button" data-k="mizuki" data-w="Mizuki · Studio look" class="" onclick="baZeig(this)">Mizuki</button><button type="button" data-k="lisa" data-w="Lisa · Studio look" class="" onclick="baZeig(this)">Lisa</button><button type="button" data-k="sanne" data-w="Sanne · Studio look" class="" onclick="baZeig(this)">Sanne</button></div><div class="paar"><figure><img class="v" src="/media/before-after/fernanda/vorher.jpg" alt="Before" width="720" height="960"><figcaption>Before</figcaption></figure><figure><img class="n" src="/media/before-after/fernanda/nachher-1.jpg" alt="After" width="720" height="960"><figcaption>After</figcaption></figure></div><div class="wer">Fernanda · Bride</div><div class="rw-more"><a class="btn line" href="/portfolio/">All before &amp; after photos</a></div></section>
 <section class="blk come"><div class="sec-head"><div class="eyebrow">On location</div><h2>I come to you</h2><p>Home, hotel or venue: bridal hair and makeup on location, in Amsterdam and beyond. You sit down, I bring everything else.</p></div>
 <div class="come-grid"><a href="/about/" class="come-foto"><img src="/media/making-06-spiegel.jpg" alt="Anja’s makeup station on a wedding morning: lit mirror, palettes and brushes" loading="lazy" width="700" height="700"></a><a href="/about/" class="come-foto"><img src="/media/band-arbeitsplatz.jpg" alt="Lipstick being applied to a bride with a braided updo and veil" loading="lazy" width="1373" height="1400"></a><a href="/about/" class="come-foto"><img src="/media/making-05-braut.jpg" alt="Anja’s travel makeup case with lit mirror, products and brushes" loading="lazy" width="700" height="700"></a></div></section>
+<section class="blk wp"><div class="sec-head"><div class="eyebrow">Wedding-proof</div><h2>Made to last, <em>from the first photo to the last dance.</em></h2></div><ul><li><i>✦</i><b>Skin prep first</b><span>Well-prepared skin is why foundation melts in instead of sitting on top, and why everything lasts all day.</span></li><li><i>✦</i><b>Made for the camera</b><span>It holds in close-up, in daylight and in flash.</span></li><li><i>✦</i><b>Locked in, kit in hand</b><span>A setting spray locks it in, and your touch-up kit is ready for the day.</span></li></ul></section>
 <section class="blk voice zwei"><div class="v"><img src="/media/stimme-emma.jpg" alt="Emma" width="320" height="320"><blockquote>“I left her chair feeling confident and gorgeous – and was very impressed that it stayed in place all day, even through a bit of tears during the ceremony!”</blockquote><cite>Emma · Bride<span>Wedding, October 2026 · from a real Google review</span></cite></div><div class="v"><img src="/media/stimme-erika.jpg" alt="Erika" width="320" height="320"><blockquote>“I couldn’t have wished for a better makeup artist for my wedding. From the very beginning I felt I was in the best hands.”</blockquote><cite>Erika · Bride<span>Wedding, June 2025 · from a real Google review</span></cite></div><br><a href="/about/#stimmen">Read them all</a></section>
 <section class="blk steps"><div class="sec-head"><div class="eyebrow">How it works</div><h2>Three steps to your glow</h2></div>
  <ol><li><i>1</i><div><b>Write to me</b><span>Your date, your place, how many people. I reply within 24 hours.</span></div></li>
@@ -326,4 +357,4 @@ function popZu(){document.getElementById('pop').classList.remove('on');try{local
  addEventListener('scroll',function(){if(scrollY>innerHeight*0.25)zeig();},{passive:true});
  setTimeout(zeig,4500);})();
 </script>
-</body></html>
+<script>function datumFrei(f){var v=f.querySelector("input").value;if(!v){f.classList.add("wackel");return false;}var d=new Date(v+"T12:00:00").toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});var txt="Hi Anja, is "+d+" still free for my wedding?";window.open("https://wa.me/31623739358?text="+encodeURIComponent(txt),"_blank");return false;}function baZeig(k){document.querySelectorAll(".ba2 .namen button").forEach(function(x){x.classList.toggle("an",x.dataset.k===k.dataset.k)});var p=document.querySelector(".ba2 .paar");p.querySelector(".v").src="/media/before-after/"+k.dataset.k+"/vorher.jpg";p.querySelector(".n").src="/media/before-after/"+k.dataset.k+"/nachher-1.jpg";document.querySelector(".ba2 .wer").textContent=k.dataset.w;}</script></body></html>
