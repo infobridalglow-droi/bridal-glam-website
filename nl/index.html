@@ -290,6 +290,25 @@ body.ohne-band .band{display:none}
 .wp li span{color:var(--minkl);font-size:14.5px;line-height:1.6}
 @media(max-width:760px){.wp ul{grid-template-columns:1fr}}
 </style>
+<style>
+.dk{position:fixed;inset:0;z-index:120;background:rgba(40,28,20,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.dk[hidden]{display:none}
+.dk .karte{background:var(--cream);color:var(--mink);max-width:460px;width:100%;max-height:92vh;overflow:auto;border-radius:4px;padding:30px 26px 24px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.dk .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;color:var(--minkl);cursor:pointer;padding:4px 8px}
+.dk h3{font-family:'Marcellus',serif;font-weight:400;font-size:24px;line-height:1.25;margin:0 30px 10px 0}
+.dk h3 b{font-weight:400;color:var(--rgt)}
+.dk p{color:var(--minkl);font-size:14.5px;line-height:1.6;margin:0 0 14px}
+.dk .zeichen{font-size:22px;color:var(--rg);display:block;margin-bottom:6px}
+.dk label{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--rgt);margin:12px 0 6px}
+.dk input[type=text]{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:11px 12px;border:1px solid var(--bb);background:#fff;border-radius:2px;color:var(--mink)}
+.dk .chips{display:flex;gap:6px;flex-wrap:wrap}
+.dk .chips button{font:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--bb);background:#fff;color:var(--minkl);cursor:pointer;border-radius:2px}
+.dk .chips button.an{background:var(--rgt);border-color:var(--rgt);color:#fff}
+.dk .aktion{background:var(--blush);border:1px solid var(--bb);padding:12px 14px;font-size:13.5px;color:var(--mink);margin:16px 0 0;line-height:1.55}
+.dk .aktion b{font-weight:500;color:var(--rgt)}
+.dk .los{display:block;width:100%;margin-top:18px;border:0;cursor:pointer;font-family:inherit;text-align:center;background:#25D366}
+.dk .nochmal{display:inline-block;margin-top:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--rgt);background:none;border:0;border-bottom:1px solid var(--rg);padding:0 0 3px;cursor:pointer;font-family:inherit}
+</style>
 </head><body><div class="band" id="band"><a href="#trial-2027"><i>✦</i><span class="lang-txt">Voor de eerste vijf bruiden van 2027 — je proefsessie in mijn studio, reiskosten voor mij, foto’s inbegrepen. <em>Boek vóór 31 januari →</em></span><span class="kurz-txt">Bruiden 2027: je proefsessie in mijn studio, reiskosten voor mij. <em>Tot 31 jan →</em></span></a><button aria-label="Sluiten" onclick="document.body.classList.remove('mit-band');document.body.classList.add('ohne-band')">×</button></div>
 <script>document.body.classList.add('mit-band');</script>
 
@@ -304,7 +323,7 @@ body.ohne-band .band{display:none}
  <div class="text"><img class="logo-h" src="/media/tb-weiss.png" alt="The Bridal Glam" width="300" height="300"><div class="eyebrow">Bruidsmake-up aan huis · Amsterdam · sinds 2014</div>
  <h1>Jouw natuurlijke glow, <em>geperfectioneerd.</em></h1>
  <p>Bruidsmake-up en bruidskapsel, aan huis of op locatie. Ik kom naar jou toe.</p>
- <form class="datum" onsubmit="return datumFrei(this)"><label for="hz-datum">Wanneer trouw je?</label><div class="zeile"><input type="date" id="hz-datum" required><button class="btn" type="submit">Is mijn datum nog vrij?</button></div><small>Opent WhatsApp met je datum. Ik antwoord binnen 24 uur.</small><a class="werk" href="/nl/portfolio/">Bekijk mijn werk →</a></form></div>
+ <form class="datum" onsubmit="return datumPruef(this)"><label for="hz-datum">Wanneer trouw je?</label><div class="zeile"><input type="date" id="hz-datum" required><button class="btn" type="submit">Is mijn datum nog vrij?</button></div><small>Je ziet het antwoord meteen. Ik antwoord persoonlijk binnen 24 uur.</small><a class="werk" href="/nl/portfolio/">Bekijk mijn werk →</a></form></div>
  <div class="hint">Scroll</div>
 </section>
 
@@ -357,4 +376,30 @@ function popZu(){document.getElementById('pop').classList.remove('on');try{local
  addEventListener('scroll',function(){if(scrollY>innerHeight*0.25)zeig();},{passive:true});
  setTimeout(zeig,4500);})();
 </script>
-<script>function datumFrei(f){var v=f.querySelector("input").value;if(!v){f.classList.add("wackel");return false;}var d=new Date(v+"T12:00:00").toLocaleDateString("nl-NL",{weekday:"long",day:"numeric",month:"long",year:"numeric"});var txt="Hoi Anja, is "+d+" nog vrij voor mijn bruiloft?";window.open("https://wa.me/31623739358?text="+encodeURIComponent(txt),"_blank");return false;}function baZeig(k){document.querySelectorAll(".ba2 .namen button").forEach(function(x){x.classList.toggle("an",x.dataset.k===k.dataset.k)});var p=document.querySelector(".ba2 .paar");p.querySelector(".v").src="/media/before-after/"+k.dataset.k+"/vorher.jpg";p.querySelector(".n").src="/media/before-after/"+k.dataset.k+"/nachher-1.jpg";document.querySelector(".ba2 .wer").textContent=k.dataset.w;}</script></body></html>
+<script>function baZeig(k){document.querySelectorAll(".ba2 .namen button").forEach(function(x){x.classList.toggle("an",x.dataset.k===k.dataset.k)});var p=document.querySelector(".ba2 .paar");p.querySelector(".v").src="/media/before-after/"+k.dataset.k+"/vorher.jpg";p.querySelector(".n").src="/media/before-after/"+k.dataset.k+"/nachher-1.jpg";document.querySelector(".ba2 .wer").textContent=k.dataset.w;}</script><div class="dk" id="dk" hidden onclick="if(event.target===this)dkZu()"><div class="karte" role="dialog" aria-modal="true"><button class="x" type="button" onclick="dkZu()" aria-label="Sluiten">×</button><div id="dk-in"></div></div></div><script>
+var DK_T={"loc": "nl-NL", "frage": "Wanneer trouw je?", "knopf": "Is mijn datum nog vrij?", "klein": "Je ziet het antwoord meteen. Ik antwoord persoonlijk binnen 24 uur.", "werk": "Bekijk mijn werk", "werk_href": "/nl/portfolio/", "frei_h": "Goed nieuws: <b>{d}</b> is nog vrij.", "frei_p": "Je datum staat vast zodra je proefsessie geboekt is. Vertel me iets meer, dan stuur ik je je prijs:", "ort": "Waar maak je je klaar?", "ort_ph": "Plaats of locatie", "was": "Wat wil je?", "svc": [["Make-up", "make-up"], ["Haar", "haar"], ["Beide", "haar en make-up"]], "zeit": "Hoe laat is de ceremonie?", "zeit_ph": "bijv. 14:00", "aktion": "<b>Trouw je in 2027?</b> Tot 31 januari hebben de eerste vijf bruiden hun proefsessie in mijn studio – reiskosten voor mij, foto’s inbegrepen.", "senden": "Stuur naar Anja via WhatsApp", "eine_h": "Op <b>{d}</b> is er al één bruid.", "eine_p": "Soms past een tweede bruid, als de tijd het toelaat. Ik haast me nooit, dus ik kijk het eerlijk voor je na.", "fragen": "Vraag het Anja via WhatsApp", "voll_h": "Het spijt me – op <b>{d}</b> ben ik niet beschikbaar.", "voll_p": "Ik wens je een prachtige trouwdag. Heb je nog een andere datum in gedachten? Probeer het gerust.", "nochmal": "Andere datum proberen", "spaet_h": "Mijn agenda voor {y} is nog niet open.", "spaet_p": "Schrijf me, dan bespreken we je datum.", "alt": "Kies een datum in de toekomst.", "m_frei": "Hoi Anja, ik zag op je website dat {d} nog vrij is – ik wil je graag boeken!", "m_eine": "Hoi Anja, ik zag dat er op {d} al een bruid is. Zou het voor mij toch kunnen?", "m_spaet": "Hoi Anja, ik trouw op {d}. Kan ik deze datum al bij je vastleggen?", "m_alt": "Hoi Anja, is {d} nog vrij voor mijn bruiloft?", "m_ort": " Ik maak me klaar in {x}.", "m_svc": " Ik wil graag {x}.", "m_zeit": " De ceremonie begint om {x}.", "zu": "Sluiten"}, DK_URL="/verfuegbarkeit.json", DK_DATA=null;
+fetch(DK_URL,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){DK_DATA=d}).catch(function(){});
+function dkEsc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function dkZu(){document.getElementById("dk").hidden=true}
+function datumPruef(f){var v=f.querySelector("input").value;if(!v)return false;var T=DK_T;
+ var dt=new Date(v+"T12:00:00"),heute=new Date();heute.setHours(0,0,0,0);
+ var d=dt.toLocaleDateString(T.loc,{weekday:"long",day:"numeric",month:"long",year:"numeric"}),y=dt.getFullYear(),h="";
+ var alt=!DK_DATA||!DK_DATA.stand||((heute-new Date(DK_DATA.stand+"T00:00:00"))/864e5>7);
+ if(alt&&dt>=heute){window.open("https://wa.me/31623739358?text="+encodeURIComponent(T.m_alt.replace("{d}",d)),"_blank");return false;}
+ var D=DK_DATA||{},voll=(D.voll||[]).indexOf(v)>=0,eine=(D.eineBraut||[]).indexOf(v)>=0;
+ var felder='<label>'+T.ort+'</label><input type="text" id="dk-ort" placeholder="'+T.ort_ph+'">'
+  +'<label>'+T.was+'</label><div class="chips">'+T.svc.map(function(s){return '<button type="button" data-x="'+s[1]+'" onclick="this.classList.toggle(\'an\');var me=this;this.parentNode.querySelectorAll(\'button\').forEach(function(b){if(b!==me)b.classList.remove(\'an\')})">'+s[0]+'</button>'}).join("")+'</div>'
+  +'<label>'+T.zeit+'</label><input type="text" id="dk-zeit" placeholder="'+T.zeit_ph+'">';
+ var aktion=(y===2027&&heute<=new Date(2027,0,31))?'<div class="aktion">'+T.aktion+'</div>':"";
+ if(dt<heute){h='<span class="zeichen">✦</span><h3>'+T.alt+'</h3><button class="nochmal" type="button" onclick="dkZu()">'+T.nochmal+'</button>';}
+ else if(voll){h='<span class="zeichen">✦</span><h3>'+T.voll_h.replace("{d}",d)+'</h3><p>'+T.voll_p+'</p><button class="nochmal" type="button" onclick="dkZu();document.getElementById(\'hz-datum\').focus()">'+T.nochmal+'</button>';}
+ else if(y>2027){h='<span class="zeichen">✦</span><h3>'+T.spaet_h.replace("{y}",y)+'</h3><p>'+T.spaet_p+'</p>'+felder+'<button class="btn los" type="button" onclick="dkSend(\'m_spaet\',\''+d+'\')">'+T.fragen+'</button>';}
+ else if(eine){h='<span class="zeichen">✦</span><h3>'+T.eine_h.replace("{d}",d)+'</h3><p>'+T.eine_p+'</p>'+felder+'<button class="btn los" type="button" onclick="dkSend(\'m_eine\',\''+d+'\')">'+T.fragen+'</button>';}
+ else{h='<span class="zeichen">✦</span><h3>'+T.frei_h.replace("{d}",d)+'</h3><p>'+T.frei_p+'</p>'+felder+aktion+'<button class="btn los" type="button" onclick="dkSend(\'m_frei\',\''+d+'\')">'+T.senden+'</button>';}
+ document.getElementById("dk-in").innerHTML=h;document.getElementById("dk").hidden=false;return false;}
+function dkSend(art,d){var T=DK_T,m=T[art].replace("{d}",d);
+ var o=document.getElementById("dk-ort"),z=document.getElementById("dk-zeit"),s=document.querySelector(".dk .chips button.an");
+ if(o&&o.value.trim())m+=T.m_ort.replace("{x}",o.value.trim());if(s)m+=T.m_svc.replace("{x}",s.dataset.x);if(z&&z.value.trim())m+=T.m_zeit.replace("{x}",z.value.trim());
+ window.open("https://wa.me/31623739358?text="+encodeURIComponent(m),"_blank");}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")dkZu()});
+</script></body></html>
