@@ -1,0 +1,39 @@
+# Freie Tage auf der Website aus Anjas Google Kalender - alle 30 Minuten (seit 04.11.2026).
+name: Verfuegbarkeit aus dem Kalender
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/verfuegbarkeit/**'
+      - '.github/workflows/verfuegbarkeit.yml'
+permissions:
+  contents: write
+concurrency:
+  group: verfuegbarkeit
+  cancel-in-progress: false
+jobs:
+  abgleich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet icalendar recurring-ical-events
+      - name: Kalender lesen und Liste bauen
+        env:
+          KALENDER_PRIVAT: ${{ secrets.KALENDER_PRIVAT }}
+          KALENDER_GESCHAEFT: ${{ secrets.KALENDER_GESCHAEFT }}
+        run: python .github/verfuegbarkeit/abgleich.py
+      - name: Hochladen, falls geaendert
+        run: |
+          git diff --quiet verfuegbarkeit.json && { echo "nichts geaendert"; exit 0; }
+          git config user.name "Kalender-Abgleich"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add verfuegbarkeit.json
+          git commit -m "Verfuegbarkeit aus dem Kalender aktualisiert"
+          git pull --rebase origin main && git push origin HEAD:main
