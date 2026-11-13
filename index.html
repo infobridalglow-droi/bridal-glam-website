@@ -401,6 +401,7 @@ function datumPruef(f){var v=f.querySelector("input").value;if(!v)return false;v
 function dkSend(art,d){var T=DK_T,m=T[art].replace("{d}",d);
  var o=document.getElementById("dk-ort"),z=document.getElementById("dk-zeit"),s=document.querySelector(".dk .chips button.an");
  if(o&&o.value.trim())m+=T.m_ort.replace("{x}",o.value.trim());if(s)m+=T.m_svc.replace("{x}",s.dataset.x);if(z&&z.value.trim())m+=T.m_zeit.replace("{x}",z.value.trim());
- window.open("https://wa.me/31623739358?text="+encodeURIComponent(m),"_blank");}
+ m+=dkQuelle();window.open("https://wa.me/31623739358?text="+encodeURIComponent(m),"_blank");}
+function dkQuelle(){var q="";try{var v=new URLSearchParams(location.search).get("via")||"",r=(document.referrer||"").toLowerCase(),n={ig:"Instagram",gbp:"Google Maps",fb:"Facebook",pin:"Pinterest",tt:"TikTok",tpw:"ThePerfectWedding"};if(v){q=n[v]||v}else if(r.indexOf("google.")>=0){q="Google"}else if(r.indexOf("instagram.")>=0){q="Instagram"}else if(r.indexOf("facebook.")>=0||r.indexOf("fb.")>=0){q="Facebook"}else if(r.indexOf("pinterest.")>=0){q="Pinterest"}else if(r.indexOf("tiktok.")>=0){q="TikTok"}else if(r.indexOf("bing.")>=0){q="Bing"}else if(r.indexOf("theperfectwedding.")>=0){q="ThePerfectWedding"}}catch(e){}return q?" · via "+q:""}
 document.addEventListener("keydown",function(e){if(e.key==="Escape")dkZu()});
 </script></body></html>
